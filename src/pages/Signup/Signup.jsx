@@ -9,16 +9,10 @@ const Signup = () => {
     return (
         <Container className="Signup">
 
-            <Row>
+            <h1>Sign Up!</h1>
+            <hr />
+            <SignupForm />
 
-                <Col md={{ span: 3, offset: 6 }}>
-
-                    <h1>Sign Up!</h1>
-                    <hr />
-                    <SignupForm />
-                </Col>
-
-            </Row>
 
         </Container>
     )

@@ -7,13 +7,14 @@ import { Container, Row, Col, Button } from 'react-bootstrap'
 
 
 
+
 function App() {
   return (
     <Router>
       <div className="App pb-5">
         <Row>
-          <Col> <Navigation /></Col>
-          <Col> <AppRoutes /></Col>
+          <Col xs={1}> <Navigation /></Col>
+          <Col xs={11}> <AppRoutes /></Col>
         </Row>
       </div>
     </Router>

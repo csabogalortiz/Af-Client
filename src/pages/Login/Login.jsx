@@ -1,4 +1,5 @@
 import { Container, Row, Col, Button } from 'react-bootstrap'
+import LoginForm from '../../components/LoginForm/LoginForm'
 
 
 import './Login.css'
@@ -6,21 +7,16 @@ import './Login.css'
 const Login = () => {
 
     return (
-        <Container className="Login">
+        <Container className="Signup">
 
-            <Row>
+            <h1>Log In!</h1>
+            <hr />
+            <LoginForm />
 
-                <Col md={{ span: 8, offset: 2 }}>
-
-                    <h1>Hii!!</h1>
-                    <hr />
-                    <p>Im your Login!</p>
-                </Col>
-
-            </Row>
 
         </Container>
     )
 }
 
 export default Login
+
