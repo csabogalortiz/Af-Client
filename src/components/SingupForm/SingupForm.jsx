@@ -1,8 +1,7 @@
 import { useState, useContext } from "react"
 import { Form, Button } from "react-bootstrap"
 import authService from "../../services/auth.service"
-
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 // import { MessageContext } from './../../contexts/userMessage.context'
 
@@ -22,14 +21,17 @@ const SignupForm = () => {
         setSignupData({ ...signupData, [name]: value })
     }
 
-
+    const navigate = useNavigate()
     const handleSubmit = e => {
 
         e.preventDefault()
 
         authService
             .signup(signupData)
-            .then(res => console.log('User=', signupData))
+            .then(() => {
+                navigate('/feed')
+
+            })
             .catch(err => console.log(err))
     }
 
