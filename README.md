@@ -1,10 +1,10 @@
 
+
 | URI path                               | Description                       | PROTECTED |
 |-------------|--------------------------|---------------------------------- |-----------|
 |`/login`    |                          | Login or register page            |   No      |   
 |`/feed`      |                          | Feed/ Home                        |   yes     |   
 |`/singup`      |                        | register page                     |   No |   
-
 
 | URI path                              | Description                       | PROTECTED |
 |---------------------------------------|-----------------------------------|-----------|
@@ -13,13 +13,11 @@
 | `/profile/:user_id/retweeted-posts`   | User's Prof RetweetedPosts View   |           |           
 | `/profile/:user_id/fav-posts`         | User's Prof Favs View             |           |
 
-
 | URI path                              | Description                       | PROTECTED         |
 |---------------------------------------|-----------------------------------|-------------------|
 |`/posts/:post_id/details`               | Post Details 	                    |                   |
 |`/posts/:post_id/details/retwweeted`    | List retweeted post               |                   |
  
-
 
 | URI path                                           |         Description                       | PROTECTED |
 |----------------------------------------------------|-------------------------------------------|-----------|

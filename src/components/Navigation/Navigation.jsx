@@ -1,28 +1,3 @@
-// import Container from 'react-bootstrap/Container';
-// import Navbar from 'react-bootstrap/Navbar';
-
-// function Navigation() {
-//     return (
-//         // <>
-//         //     <Navbar bg="dark" variant="dark">
-//         //         <>
-//         //             <Navbar.Brand href="#home">
-//         //                 <img
-//         //                     alt=""
-//         //                     src="https://w7.pngwing.com/pngs/1024/384/png-transparent-black-smiling-emoji-smiley-emoticon-computer-icons-happy-face-icon-face-people-auto-part-thumbnail.png"
-//         //                     width="30"
-//         //                     height="30"
-//         //                     className="d-inline-block align-top"
-//         //                 />{' '}
-//         //                 Feelings App
-//         //             </Navbar.Brand>
-//         //         </>
-//         //     </Navbar>
-//         // </>
-//     );
-// }
-
-// export default Navigation;
 
 import React from 'react';
 import {
@@ -47,13 +22,13 @@ const Sidebar = () => {
 
                 <CDBSidebarContent className="sidebar-content">
                     <CDBSidebarMenu>
-                        <NavLink exact to="/" activeClassName="activeClicked">
+                        <NavLink exact to="/" activeclassname="activeClicked">
                             <CDBSidebarMenuItem icon="columns">#Discover</CDBSidebarMenuItem>
                         </NavLink>
-                        <NavLink exact to="/profile" activeClassName="activeClicked">
+                        <NavLink exact to="/profile" activeclassname="activeClicked">
                             <CDBSidebarMenuItem icon="user">Profile</CDBSidebarMenuItem>
                         </NavLink>
-                        <NavLink exact to="/hero404" target="_blank" activeClassName="activeClicked">
+                        <NavLink exact to="/hero404" target="_blank" activeclassname="activeClicked">
                             <CDBSidebarMenuItem icon="exclamation-circle">Log-Out</CDBSidebarMenuItem>
                         </NavLink>
                     </CDBSidebarMenu>

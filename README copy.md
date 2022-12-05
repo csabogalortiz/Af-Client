@@ -50,9 +50,9 @@ Auth.routes
 | GET         	| `/`             	       | Feed page - Check Roles & Log Status         	       |       |
 | GET         	| `/sign-up` 	           | Signup - Form - (render)                              |       |
 | POST         	| `/sign-up`               | Sign up - Form - (handle)                             |       |
-| GET         	| `/log-in`                | Login - Form-  (render)                               |       |
-| POST         	| `/log-in`                | Login - Form-  (handle) 	                           |       |
-| GET         	| `/logout` 	           | User Log out - Destroy Session- Redirect to `/log-in` |       |           
+| GET         	| `/Login`                | Login - Form-  (render)                               |       |
+| POST         	| `/Login`                | Login - Form-  (handle) 	                           |       |
+| GET         	| `/logout` 	           | User Log out - Destroy Session- Redirect to `/Login` |       |           
 
 
 .routes
