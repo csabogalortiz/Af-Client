@@ -1,13 +1,13 @@
 import { Container, Row, Col, Button } from 'react-bootstrap'
 
-
+import NewPostForm from './../../components/newPostForm/NewPostForm'
 import './Feed.css'
 
 const Feed = () => {
 
     return (
         <Container className="Feed">
-
+            <NewPostForm></NewPostForm>
             <Row>
 
                 <Col md={{ span: 8, offset: 2 }}>

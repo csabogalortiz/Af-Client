@@ -14,7 +14,6 @@ const Login = () => {
             <hr />
             <LoginForm />
 
-
         </Container>
     )
 }

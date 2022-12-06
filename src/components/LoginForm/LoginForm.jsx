@@ -2,8 +2,8 @@ import { useState, useContext } from "react"
 import { Form, Button } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../contexts/auth.context"
-// import { MessageContext } from "../../contexts/userMessage.context"
 import authService from "../../services/auth.service"
+// import { MessageContext } from "../../contexts/userMessage.context"
 
 
 
@@ -19,11 +19,11 @@ const LoginForm = () => {
         setSignupData({ ...signupData, [name]: value })
     }
 
-    const { storeToken } = useContext(AuthContext)
+
 
     const navigate = useNavigate()
-    // const { storeToken, authenticateUser } = useContext(AuthContext)
-    // const { setShowToast, setToastMessage } = useContext(MessageContext)
+    const { storeToken, authenticateUser } = useContext(AuthContext)
+
 
     const handleSubmit = e => {
 
@@ -33,11 +33,8 @@ const LoginForm = () => {
             .login(signupData)
             .then(({ data }) => {
                 const tokenFromServer = data.authToken
-                alert(`Hola-------- ${tokenFromServer}`)
                 storeToken(tokenFromServer)
-                // authenticateUser()
-                // setShowToast(true)
-                // setToastMessage('Sesión iniciada')
+                authenticateUser()
                 navigate('/feed')
             })
             .catch(err => console.log(err))
