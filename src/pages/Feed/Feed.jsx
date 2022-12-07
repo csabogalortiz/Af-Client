@@ -39,7 +39,7 @@ const Feed = () => {
 
                     <h1>FEED!!</h1>
                     {/* <PostsList posts={posts} /> */}
-                    {!posts ? <Loader /> : <PostsList posts={posts} />}
+                    {/* {!posts ? <Loader /> : <PostsList posts={posts} />} */}
                     <NewPostForm></NewPostForm>
                 </Col>
 
