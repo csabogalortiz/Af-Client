@@ -5,15 +5,18 @@ import { AuthContext } from './../../contexts/auth.context'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react';
 
-function PostCard({ title, owner }) {
-
+const PostCard = (props) => {
+    const { title, owner, content } = props;
+    console.log(props)
     const { user } = useContext(AuthContext)
 
     return (
         <Card className="mb-4 CoasterCard">
 
             <Card.Body>
-                <Card.Title>{title}</Card.Title>
+                <Card.Title>{props?.owner?.username}</Card.Title>
+                <h2>{props.title}</h2>
+                <h4>{props.content}</h4>
                 {
                     !owner || owner != user?._id
                         ?
