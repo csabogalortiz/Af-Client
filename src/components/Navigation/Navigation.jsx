@@ -32,29 +32,29 @@ const Sidebar = () => {
 
                         {user ?
                             <>
-                                <NavLink exact to="/login" target="_blank" activeclassname="activeClicked">
+                                <NavLink to="/login" target="_blank" activeclassname="activeClicked">
                                     <CDBSidebarMenuItem as="div" onClick={logoutUser} icon="exclamation-circle">Log-Out</CDBSidebarMenuItem>
                                 </NavLink>
-                                <NavLink exact to="/" activeclassname="activeClicked">
+                                <NavLink to="/" activeclassname="activeClicked">
                                     <CDBSidebarMenuItem icon="columns">#Discover</CDBSidebarMenuItem>
                                 </NavLink>
-                                <NavLink exact to="/profile" activeclassname="activeClicked">
+                                <NavLink to="/profile" activeclassname="activeClicked">
                                     <CDBSidebarMenuItem icon="user">Profile</CDBSidebarMenuItem>
                                 </NavLink>
                             </>
                             :
                             <>
-                                <NavLink exact to="/login" activeclassname="activeClicked">
+                                <NavLink to="/login" activeclassname="activeClicked">
                                     <CDBSidebarMenuItem icon="columns">Log-in</CDBSidebarMenuItem>
                                 </NavLink>
-                                <NavLink exact to="/signup" activeclassname="activeClicked">
+                                <NavLink to="/signup" activeclassname="activeClicked">
                                     <CDBSidebarMenuItem icon="columns">Sing-up</CDBSidebarMenuItem>
                                 </NavLink>
 
 
                             </>
                         }
-                        <NavLink exact to="/" activeclassname="activeClicked">
+                        <NavLink to="/" activeclassname="activeClicked">
                             <CDBSidebarMenuItem>¡Hola, {!user ? 'invitad@' : user.username}!</CDBSidebarMenuItem>
                         </NavLink>
 

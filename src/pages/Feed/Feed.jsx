@@ -1,4 +1,4 @@
-import { Container, Row, Col, Button } from 'react-bootstrap'
+import { Container, Row, Col,  } from 'react-bootstrap'
 
 import NewPostForm from './../../components/newPostForm/NewPostForm'
 import './Feed.css'
@@ -15,6 +15,8 @@ const Feed = () => {
                     <h1>FEED!!</h1>
                     <hr />
                     <p>LOS POSTS VAN A SER UN CONTEXTO YA QUE VA ESTAR EN MUCHOS LUGARES</p>
+                    
+                    
                 </Col>
 
             </Row>
