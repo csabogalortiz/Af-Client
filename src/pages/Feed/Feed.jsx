@@ -11,6 +11,12 @@ import Loader from './../../components/Loader/Loader'
 
 const Feed = () => {
 
+    const [showModal, setShowModal] = useState(false)
+
+    const openModal = () => setShowModal(true)
+    const closeModal = () => setShowModal(false)
+
+
     const [posts, setPosts] = useState()
     const { user } = useContext(AuthContext)
 
@@ -24,6 +30,7 @@ const Feed = () => {
 
     const fireFinalActions = () => {
         loadPosts()
+        closeModal()
     }
 
     useEffect(() => {
@@ -33,19 +40,34 @@ const Feed = () => {
 
 
     return (
+
+        <>
         <Container className="Feed">
             <Row>
                 <Col md={{ span: 8, offset: 2 }}>
+                {user && <Button onClick={openModal} variant="dark" size="sm">Crear nueva</Button>}
+                <hr />
 
                     <h1>FEED!!</h1>
                     {/* <PostsList posts={posts} /> */}
-                    {/* {!posts ? <Loader /> : <PostsList posts={posts} />} */}
-                    <NewPostForm></NewPostForm>
+                    {!posts ? <Loader /> : <PostsList posts={posts} />}
+               
                 </Col>
 
             </Row>
 
         </Container>
+        <Modal show={showModal} onHide={closeModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>N:O</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <NewPostForm fireFinalActions={fireFinalActions} />
+                </Modal.Body>
+            </Modal>
+
+        
+        </>
     )
 }
 

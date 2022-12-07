@@ -21,7 +21,7 @@ class PostService {
 
 
     getPosts() {
-        return this.api.get('/list')
+        return this.api.get('/')
     }
 
     detials(post_id) {
