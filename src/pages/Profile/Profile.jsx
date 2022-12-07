@@ -12,7 +12,7 @@ const Profile = () => {
 
                 <Col md={{ span: 8, offset: 2 }}>
 
-                    <h1>Hii!!</h1>
+                    <h1>Im your Profile!!!</h1>
                     <hr />
                     <p>Im your Profile!</p>
                 </Col>

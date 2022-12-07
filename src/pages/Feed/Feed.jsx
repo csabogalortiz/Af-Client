@@ -42,22 +42,22 @@ const Feed = () => {
     return (
 
         <>
-        <Container className="Feed">
-            <Row>
-                <Col md={{ span: 8, offset: 2 }}>
-                {user && <Button onClick={openModal} variant="dark" size="sm">Crear nueva</Button>}
-                <hr />
+            <Container className="Feed">
+                <Row>
+                    <Col md={{ span: 8, offset: 2 }}>
+                        {user && <Button onClick={openModal} variant="dark" size="sm">Crear nueva</Button>}
+                        <hr />
 
-                    <h1>FEED!!</h1>
-                    {/* <PostsList posts={posts} /> */}
-                    {!posts ? <Loader /> : <PostsList posts={posts} />}
-               
-                </Col>
+                        <h1>FEED!!</h1>
+                        {/* <PostsList posts={posts} /> */}
+                        {!posts ? <Loader /> : <PostsList posts={posts} />}
 
-            </Row>
+                    </Col>
 
-        </Container>
-        <Modal show={showModal} onHide={closeModal}>
+                </Row>
+
+            </Container>
+            <Modal show={showModal} onHide={closeModal}>
                 <Modal.Header closeButton>
                     <Modal.Title>N:O</Modal.Title>
                 </Modal.Header>
@@ -66,7 +66,7 @@ const Feed = () => {
                 </Modal.Body>
             </Modal>
 
-        
+
         </>
     )
 }
