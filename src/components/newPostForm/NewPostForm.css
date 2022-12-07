@@ -1,0 +1,20 @@
+textarea.inputPost.inputPost {
+    border: 0;
+    resize: none;
+    max-height: 600px;
+
+}
+
+.inputPost:focus {
+    box-shadow: none;
+
+}
+
+.file-input input {
+    display: none;
+}
+
+.file-input label:hover {
+    cursor: pointer;
+
+}
