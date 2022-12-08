@@ -1,4 +1,6 @@
 import { useState, useContext } from "react"
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 import { Form, Button, Row, Col } from "react-bootstrap"
 import postService from "./../../services/post.service"
 import uploadServices from "../../services/upload.service"
@@ -75,10 +77,38 @@ const NewPostForm = ({ fireFinalActions }) => {
                 </Form.Select>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="postImg">
-                <Form.Label>Post Image (URL)</Form.Label>
-                <Form.Control type="file" onChange={handleFileUpload} />
+            <Form.Group className="mb-5" controlId="tabs">
+                <Tabs
+                    defaultActiveKey="profile"
+                    id="justify-tab-example"
+                    className="mb-3"
+                    justify
+                >
+                    <Tab eventKey="home" title="Home">
+
+                        <Form.Group className="mb-3" controlId="postImg">
+                            <Form.Label>Post Image (URL)</Form.Label>
+                            <Form.Control type="file" onChange={handleFileUpload} />
+                        </Form.Group>
+
+                    </Tab>
+                    <Tab eventKey="profile" title="Profile">
+                        <h1>hola</h1>
+                    </Tab>
+                    <Tab eventKey="longer-tab" title="Loooonger Tab">
+                        <h1>hola</h1>
+                    </Tab>
+                    <Tab eventKey="contact" title="Contact" disabled>
+                        <h1>hola</h1>
+                    </Tab>
+                </Tabs>
             </Form.Group>
+
+
+
+
+
+
 
 
 

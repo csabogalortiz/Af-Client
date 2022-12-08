@@ -24,6 +24,9 @@ const PostCard = (props) => {
                 <div>
                     <img src={postImg}></img>
                 </div>
+
+
+
                 {
                     !owner || owner != user?._id
                         ?
