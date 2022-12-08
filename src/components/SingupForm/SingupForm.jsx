@@ -85,7 +85,7 @@ const SignupForm = () => {
                 <Form.Control type="text" value={bio} onChange={handleInputChange} name="bio" />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="image">
+            <Form.Group className="mb-3" >
                 <Form.Label>Profile Image</Form.Label>
                 <Form.Control type="file" onChange={handleFileUpload} />
             </Form.Group>

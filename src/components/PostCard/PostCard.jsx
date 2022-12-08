@@ -11,10 +11,14 @@ const PostCard = (props) => {
     const { user } = useContext(AuthContext)
 
     return (
-        <Card className="mb-4 CoasterCard">
+        <Card className="mb-4 PostCard">
 
             <Card.Body>
+
                 <Card.Title>{props?.owner?.username}</Card.Title>
+                <div>
+                    <img src={props?.owner?.profileImg}></img>
+                </div>
                 <h2>{title}</h2>
                 <h4>{content}</h4>
                 {
