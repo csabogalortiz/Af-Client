@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 import { AuthContext } from '../../contexts/auth.context'
 import NewPostForm from './../../components/newPostForm/NewPostForm'
 import Loader from './../../components/Loader/Loader'
-
+import Canvas from './../../components/Canvas/Canvas'
 const Feed = () => {
 
     const [showModal, setShowModal] = useState(false)
@@ -42,6 +42,7 @@ const Feed = () => {
     return (
 
         <>
+            <Canvas></Canvas>
             <Container className="Feed">
                 <Row>
                     <Col md={{ span: 8, offset: 2 }}>

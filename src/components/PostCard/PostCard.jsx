@@ -15,8 +15,8 @@ const PostCard = (props) => {
 
             <Card.Body>
                 <Card.Title>{props?.owner?.username}</Card.Title>
-                <h2>{props.title}</h2>
-                <h4>{props.content}</h4>
+                <h2>{title}</h2>
+                <h4>{content}</h4>
                 {
                     !owner || owner != user?._id
                         ?
