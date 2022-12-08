@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { useContext } from 'react';
 
 const PostCard = (props) => {
-    const { title, owner, content } = props;
+    const { title, owner, content, postImg } = props;
     console.log(props)
     const { user } = useContext(AuthContext)
 
@@ -21,6 +21,9 @@ const PostCard = (props) => {
                 </div>
                 <h2>{title}</h2>
                 <h4>{content}</h4>
+                <div>
+                    <img src={postImg}></img>
+                </div>
                 {
                     !owner || owner != user?._id
                         ?

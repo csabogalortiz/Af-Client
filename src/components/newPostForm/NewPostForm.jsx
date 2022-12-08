@@ -11,28 +11,47 @@ import { AuthContext } from '../../contexts/auth.context';
 const NewPostForm = ({ fireFinalActions }) => {
 
 
-    const [postsData, setPotsData] = useState({
+    const [postData, setPotsData] = useState({
         title: '',
         content: '',
+        postImg: '',
     })
+
+    const [loadingImage, setLoadingImage] = useState(false)
 
     const handleInputChange = e => {
         const { name, value } = e.target
-        setPotsData({ ...postsData, [name]: value })
+        setPotsData({ ...postData, [name]: value })
     }
+
+    const handleFileUpload = e => {
+        setLoadingImage(true)
+
+        const formData = new FormData()
+        formData.append('imageData', e.target.files[0])
+
+        uploadServices
+            .uploadimage(formData)
+            .then(res => {
+                setPotsData({ ...postData, postImg: res.data.cloudinary_url })
+                setLoadingImage(false)
+            })
+            .catch(err => console.log(err))
+    }
+
 
     const handleFormSubmit = e => {
         e.preventDefault()
 
         postService
-            .newPost(postsData)
+            .newPost(postData)
             .then(() => {
                 fireFinalActions()
             })
             .catch(err => console.error(err))
     }
 
-    const { title, content } = postsData
+    const { title, content, postImg } = postData
 
     const { user, logoutUser } = useContext(AuthContext)
 
@@ -55,12 +74,12 @@ const NewPostForm = ({ fireFinalActions }) => {
                     <option value="3">Three</option>
                 </Form.Select>
             </Form.Group>
-            {/* 
-            <Form.Group className="mb-3" controlId="inserImage">
-                <Form.Label>Insert Image (URL)</Form.Label>
+
+            <Form.Group className="mb-3" controlId="postImg">
+                <Form.Label>Post Image (URL)</Form.Label>
                 <Form.Control type="file" onChange={handleFileUpload} />
             </Form.Group>
- */}
+
 
 
             {/* <Form.Group className="file-input">
