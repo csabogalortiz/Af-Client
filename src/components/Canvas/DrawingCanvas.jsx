@@ -3,29 +3,28 @@ import CanvasDraw from "react-canvas-draw";
 import { Button } from "react-bootstrap";
 
 
-function Canvas2({ setData }) {
-    // const { setData } = setData
-    // console.log(setData)
-    const firstCanvas = useRef(null)
-    const secondCanvas = useRef(null)
+function DrawingCanvas(props) {
+
+    const saveCanvasData = props.saveCanvasData
+
+    const canvas = useRef(null)
+
     const [color, setColor] = useState('black')
     const [Radius, setRadius] = useState(4)
 
-    const handleClick = () => {
-        const savedDrawing = firstCanvas.current.getSaveData()
-        setData(savedDrawing)
-        console.log(typeof data)
-        secondCanvas.current.loadSaveData(savedDrawing);
+    const handleSave = (e) => {
+        e.preventDefault();
+        const savedDrawing = canvas.current.getSaveData()
+        saveCanvasData(savedDrawing)
     }
     const clear = (e) => {
         e.preventDefault();
-        firstCanvas.current.clear()
+        canvas.current.clear()
     }
 
     const undo = (e) => {
         e.preventDefault();
-
-        firstCanvas.current.undo()
+        canvas.current.undo()
     }
 
 
@@ -38,14 +37,14 @@ function Canvas2({ setData }) {
                         hideGrid={true}
                         canvasWidth={300}
                         canvasHeight={300}
-                        ref={firstCanvas}
+                        ref={canvas}
                         lazyRadius={0}
                         brushColor={color}
                         brushRadius={Radius}
 
                     />
 
-                    <button onClick={handleClick}>
+                    <button onClick={handleSave}>
                         Save Drawing
                     </button>
                     <button onClick={clear}>
@@ -56,20 +55,9 @@ function Canvas2({ setData }) {
                     </button>
                 </div>
 
-                <div>
-
-                    <CanvasDraw
-                        ref={secondCanvas}
-
-                        hideGrid={true}
-                        disabled={true}
-
-                    />
-                </div>
-
             </div>
         </div >
     )
 }
 
-export default Canvas2
+export default DrawingCanvas

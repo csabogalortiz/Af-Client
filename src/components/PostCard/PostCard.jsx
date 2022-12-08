@@ -4,10 +4,10 @@ import Card from 'react-bootstrap/Card'
 import { AuthContext } from './../../contexts/auth.context'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react';
-import Canvas2 from './../../components/Canvas/Canvas2'
+import DisplayCanvas from '../Canvas/DisplayCanvas';
 
 const PostCard = (props) => {
-    const { title, owner, content, postImg } = props;
+    const { title, owner, content, postImg, canvas } = props;
     const { user } = useContext(AuthContext)
 
     return (
@@ -25,7 +25,7 @@ const PostCard = (props) => {
                     <img src={postImg}></img>
                 </div>
 
-
+                {canvas && <DisplayCanvas canvasData={canvas} />}
 
                 {
                     !owner || owner != user?._id

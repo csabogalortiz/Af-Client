@@ -7,21 +7,34 @@ import uploadServices from "../../services/upload.service"
 import './NewPostForm.css'
 import React from 'react';
 import { AuthContext } from '../../contexts/auth.context';
-import Canvas2 from './../../components/Canvas/Canvas2'
+import DrawingCanvas from './../../components/Canvas/DrawingCanvas'
 
 
 const NewPostForm = ({ fireFinalActions }) => {
 
-    const [draw, setDraw] = useState(null)
 
-    console.log('aqui esta los datos del canvas!!!', draw)
+    // console.log('aqui esta los datos del canvas!!!', draw)
 
     const [postData, setPotsData] = useState({
         title: '',
         content: '',
         postImg: '',
-        canvas: draw,
+        canvas: '',
     })
+
+    const saveCanvasData = (data) => {
+        const newPostData = {}
+
+        newPostData.title = postData.title;
+        newPostData.content = postData.content;
+        newPostData.postImg = postData.postImg;
+        newPostData.canvas = data;
+
+
+        setPotsData(newPostData)
+
+        // setPotsData({ ...postData, canvas: data })
+    }
 
     const [loadingImage, setLoadingImage] = useState(false)
 
@@ -48,7 +61,7 @@ const NewPostForm = ({ fireFinalActions }) => {
 
     const handleFormSubmit = e => {
         e.preventDefault()
-
+        console.log({ postData })
         postService
             .newPost(postData)
             .then(() => {
@@ -97,7 +110,7 @@ const NewPostForm = ({ fireFinalActions }) => {
 
                     </Tab>
                     <Tab eventKey="profile" title="Profile">
-                        <Canvas2 setData={setDraw} />
+                        <DrawingCanvas saveCanvasData={saveCanvasData} />
                     </Tab>
                     <Tab eventKey="longer-tab" title="Loooonger Tab">
                         <h1>hola</h1>
@@ -108,15 +121,6 @@ const NewPostForm = ({ fireFinalActions }) => {
                 </Tabs>
             </Form.Group>
 
-            {/* <Form.Group className="file-input">
-                        <label >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-image" viewBox="0 0 16 16">
-                                <path d="M6.502 7a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
-                                <path d="M14 14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5V14zM4 1a1 1 0 0 0-1 1v10l2.224-2.224a.5.5 0 0 1 .61-.075L8 11l2.157-3.02a.5.5 0 0 1 .76-.063L13 10V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4z" />
-                                </svg>
-                                <input id="file-input" type="file" />
-                                </label>
-                            </Form.Group> */}
             <div className="">
                 <Button variant="dark" type="submit">Share Art</Button>
             </div>
