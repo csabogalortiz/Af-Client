@@ -7,16 +7,20 @@ import uploadServices from "../../services/upload.service"
 import './NewPostForm.css'
 import React from 'react';
 import { AuthContext } from '../../contexts/auth.context';
-
+import Canvas2 from './../../components/Canvas/Canvas2'
 
 
 const NewPostForm = ({ fireFinalActions }) => {
 
+    const [draw, setDraw] = useState(null)
+
+    console.log('aqui esta los datos del canvas!!!', draw)
 
     const [postData, setPotsData] = useState({
         title: '',
         content: '',
         postImg: '',
+        canvas: draw,
     })
 
     const [loadingImage, setLoadingImage] = useState(false)
@@ -93,7 +97,7 @@ const NewPostForm = ({ fireFinalActions }) => {
 
                     </Tab>
                     <Tab eventKey="profile" title="Profile">
-                        <h1>hola</h1>
+                        <Canvas2 setData={setDraw} />
                     </Tab>
                     <Tab eventKey="longer-tab" title="Loooonger Tab">
                         <h1>hola</h1>
@@ -103,14 +107,6 @@ const NewPostForm = ({ fireFinalActions }) => {
                     </Tab>
                 </Tabs>
             </Form.Group>
-
-
-
-
-
-
-
-
 
             {/* <Form.Group className="file-input">
                         <label >

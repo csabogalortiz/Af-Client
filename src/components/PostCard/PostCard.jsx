@@ -4,10 +4,10 @@ import Card from 'react-bootstrap/Card'
 import { AuthContext } from './../../contexts/auth.context'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react';
+import Canvas2 from './../../components/Canvas/Canvas2'
 
 const PostCard = (props) => {
     const { title, owner, content, postImg } = props;
-    console.log(props)
     const { user } = useContext(AuthContext)
 
     return (

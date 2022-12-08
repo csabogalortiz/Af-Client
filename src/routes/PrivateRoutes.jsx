@@ -12,7 +12,7 @@ const PrivateRoute = () => {
     }
 
     if (!user) {
-        console.log('REDIRIGIENDO')
+
         return <Navigate to="/login" />
     }
 
