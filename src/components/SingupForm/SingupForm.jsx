@@ -52,7 +52,6 @@ const SignupForm = () => {
             .signup(userData)
             .then(() => {
                 navigate('/feed')
-
             })
             .catch(err => console.log(err))
     }

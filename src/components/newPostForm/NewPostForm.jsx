@@ -55,6 +55,14 @@ const NewPostForm = ({ fireFinalActions }) => {
                     <option value="3">Three</option>
                 </Form.Select>
             </Form.Group>
+            {/* 
+            <Form.Group className="mb-3" controlId="inserImage">
+                <Form.Label>Insert Image (URL)</Form.Label>
+                <Form.Control type="file" onChange={handleFileUpload} />
+            </Form.Group>
+ */}
+
+
             {/* <Form.Group className="file-input">
                         <label >
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-image" viewBox="0 0 16 16">
