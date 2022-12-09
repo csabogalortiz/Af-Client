@@ -1,53 +1,65 @@
-import { Container, Row, Col, Button } from 'react-bootstrap'
-import { useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom"
-// import postService from './../../services/post.service'
-import authService from '../../services/auth.service'
-import './Profile.css'
+import { useEffect,  } from "react"
+import { Container, Row, Col, Button } from "react-bootstrap"
+import { useState, useContext } from "react"
+import { Link,  } from "react-router-dom"
+import userservice from "../../services/user.service"
+import { AuthContext } from "../../contexts/auth.context"
+const UsersDetails = () => {
 
-const Profile = () => {
-    const [user, setUser] = useState()
-    const { user_id } = useParams()
+    const [userData, setUserData] = useState()
 
+    const  {user} = useContext(AuthContext)
+
+    console.log(user)
+    // console.log(user._id)
     useEffect(() => {
-        authService
-            .details(user_id)
-            .then(({ data }) => setUser(data))
+        userservice
+            .details(user._id)
+            .then(({ data }) => setUserData(data))
             .catch(err => console.error(err))
     }, [])
 
 
+
     return (
-        <Container className="Profile">
-            !post
-            ?
-            <h1>Loading</h1>
-            :
-            <>
-                <h1 className="mb-4">{user.username} Details </h1>
-                <hr />
 
-                <Row>
+        <Container>
 
-                    <Col>
-                        <h3>Content</h3>
-                        <p>{user.bio}</p>
+            {
+                !user
+                    ?
+                    <h1>CARGANDO</h1>
+                    :
+                    <>
+                        <h1 className="mb-4">Detalles de {user.username}</h1>
                         <hr />
 
-                        <Link to="/feed">
-                            <Button as="div" variant="dark">Back</Button>
-                        </Link>
-                    </Col>
+                        <Row>
 
+                            <Col md={{ span: 6, offset: 1 }}>
+                                <h3>Especificaciones</h3>
+                                <p>{user.description}</p>
+                                <ul>
+                                    <li>Biografia: {user.bio}</li>
+                                 
+                                </ul>
+                                <hr />
 
+                                <Link to="/feed">
+                                    <Button as="div" variant="dark">Feed</Button>
+                                </Link>
+                            </Col>
 
-                </Row>
-            </>
+                            <Col md={{ span: 4 }}>
+                                <img src={user.profileImg} style={{ width: '100%' }} />
+                            </Col>
 
+                        </Row>
+                    </>
+            }
 
-
-        </Container>
+        </Container >
     )
 }
 
-export default Profile 
+export default UsersDetails

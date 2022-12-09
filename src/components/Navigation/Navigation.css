@@ -1,0 +1,10 @@
+.image-profile{
+    height: 150px;
+    border-radius: 50%;
+    width: 150px;  
+}
+
+
+element.style {
+    border-radius: 200px;
+}

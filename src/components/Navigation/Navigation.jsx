@@ -10,6 +10,7 @@ import {
 } from 'cdbreact';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../contexts/auth.context';
+import './Navigation.css'
 
 const Sidebar = () => {
     const { user, logoutUser } = useContext(AuthContext)
@@ -57,8 +58,8 @@ const Sidebar = () => {
                         }
                         <NavLink to="/profile/${_id}" activeclassname="activeClicked">
                             <CDBSidebarMenuItem> ¡Hola,  {!user ? 'invitad@' : user.username}!</CDBSidebarMenuItem>
-                            <CDBSidebarMenuItem>
-                                <img src={!user ? 'invitad@' : user.profileImg}></img>
+                            <CDBSidebarMenuItem >
+                                <img  classname="image-profile" src={!user ? 'invitad@' : user.profileImg} style={{width:'100px' , height:'100px',}}></img>
                             </CDBSidebarMenuItem>
 
 
