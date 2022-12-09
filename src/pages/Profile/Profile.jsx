@@ -1,7 +1,6 @@
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
-// import DisplayCanvas from '../Canvas/DisplayCanvas';
 // import postService from './../../services/post.service'
 import authService from '../../services/auth.service'
 import './Profile.css'

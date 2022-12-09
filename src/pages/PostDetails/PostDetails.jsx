@@ -2,9 +2,7 @@ import { Container, Row, Col, Button } from 'react-bootstrap'
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import postService from "./../../services/post.service"
-// import './PostDetails.css'
-// import DisplayCanvas from '../Canvas/DisplayCanvas';
-// import PostCard from '../PostDetails';
+
 
 const PostDetails = () => {
 
@@ -44,11 +42,15 @@ const PostDetails = () => {
                                 <hr />
                             </Col>
 
-                            <Col md={{ span: 4 }}>
+                            <Col>
                                 <img src={post.postImg} style={{ width: '100%' }} />
                             </Col>
 
-                            <Col md={{ span: 4 }}>
+                            <Col>
+                                {/* {canvas && <DisplayCanvas canvasData={post.canvas} />} */}
+                            </Col>
+
+                            <Col>
                                 {/* {canvas && <DisplayCanvas canvasData={post.canvas} />} */}
                             </Col>
 
