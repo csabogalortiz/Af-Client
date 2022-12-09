@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 
 function Canvas2({ setData }) {
     // const { setData } = setData
-    // console.log(setData)
+
     const firstCanvas = useRef(null)
     const secondCanvas = useRef(null)
     const [color, setColor] = useState('black')
@@ -14,7 +14,7 @@ function Canvas2({ setData }) {
     const handleClick = () => {
         const savedDrawing = firstCanvas.current.getSaveData()
         setData(savedDrawing)
-        console.log(typeof data)
+
         secondCanvas.current.loadSaveData(savedDrawing);
     }
     const clear = (e) => {

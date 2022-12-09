@@ -63,7 +63,6 @@ const NewPostForm = ({ fireFinalActions }) => {
 
     const handleFormSubmit = e => {
         e.preventDefault()
-        console.log({ postData })
         postService
             .newPost(postData)
             .then(() => {

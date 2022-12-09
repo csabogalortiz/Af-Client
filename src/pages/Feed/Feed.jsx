@@ -10,6 +10,7 @@ import NewPostForm from './../../components/newPostForm/NewPostForm'
 import Loader from './../../components/Loader/Loader'
 import Canvas2 from './../../components/Canvas/Canvas2'
 import YoutubeEmbed from "./../../components/Video/Video";
+import NewCommentForm from './../../components/NewCommentForm/NewCommentForm'
 
 
 const Feed = () => {
@@ -39,7 +40,7 @@ const Feed = () => {
 
     return (
         <>
-            <Container className="Feed">
+            <Container lassName="Feed">
                 <Row>
                     <Col md={{ span: 8, offset: 2 }}>
                         {user && <Button onClick={openModal} variant="dark" size="sm">Crear nueva</Button>}
@@ -58,6 +59,15 @@ const Feed = () => {
                     <NewPostForm fireFinalActions={fireFinalActions} />
                 </Modal.Body>
             </Modal>
+            {/* 
+            <Modal show={showModal} onHide={closeModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Add Comment</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <NewCommentForm fireFinalActions={fireFinalActions} />
+                </Modal.Body>
+            </Modal> */}
 
 
 

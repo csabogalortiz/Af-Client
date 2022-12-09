@@ -33,7 +33,7 @@ const Sidebar = () => {
                         {user ?
                             <>
                                 <NavLink to="/login" target="_blank" activeclassname="activeClicked">
-                                    <CDBSidebarMenuItem as="div" onClick={logoutUser} icon="exclamation-circle">Log-Out</CDBSidebarMenuItem>
+                                    <CDBSidebarMenuItem as="div" onClick={logoutUser} icon="exclamation-circle">Log-Out ʕ•́ᴥ•̀ʔっ</CDBSidebarMenuItem>
                                 </NavLink>
                                 <NavLink to="/" activeclassname="activeClicked">
                                     <CDBSidebarMenuItem icon="columns">#Discover</CDBSidebarMenuItem>
@@ -55,7 +55,7 @@ const Sidebar = () => {
                             </>
                         }
                         <NavLink to="/" activeclassname="activeClicked">
-                            <CDBSidebarMenuItem>¡Hola, {!user ? 'invitad@' : user.username}!</CDBSidebarMenuItem>
+                            <CDBSidebarMenuItem>¡Hola,  {!user ? 'invitad@' : user.username}!</CDBSidebarMenuItem>
                         </NavLink>
 
                     </CDBSidebarMenu>

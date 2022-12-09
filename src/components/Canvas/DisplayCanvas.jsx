@@ -3,7 +3,7 @@ import { useRef } from "react";
 function DisplayCanvas({ canvasData }) {
     const data = useRef(null)
     data?.current?.loadSaveData(canvasData)
-    console.log({ data })
+
     return (
         <div>
             <CanvasDraw
