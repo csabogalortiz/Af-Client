@@ -9,7 +9,6 @@ import YoutubeEmbed from '../Video/Video';
 import NewCommentForm from './../NewCommentForm/NewCommentForm'
 
 
-
 const PostCard = (props) => {
     const [showModal, setShowModal] = useState(false)
     const openModal = () => setShowModal(true)

@@ -2,7 +2,8 @@ import { Container, Row, Col, Button } from 'react-bootstrap'
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import postService from "./../../services/post.service"
-
+import DisplayCanvas from '../../components/Canvas/DisplayCanvas'
+import YoutubeEmbed from "../../components/Video/Video"
 
 const PostDetails = () => {
 
@@ -47,11 +48,17 @@ const PostDetails = () => {
                             </Col>
 
                             <Col>
-                                {/* {canvas && <DisplayCanvas canvasData={post.canvas} />} */}
+                                {post.canvas && <DisplayCanvas canvasData={post.canvas} />}
                             </Col>
 
                             <Col>
-                                {/* {canvas && <DisplayCanvas canvasData={post.canvas} />} */}
+                                {
+                                    post.videoId &&
+                                    <div className="App">
+                                        <h1>Youtube Embed</h1>
+                                        <YoutubeEmbed embedId={post.splitId} />
+                                    </div>
+                                }
                             </Col>
 
                         </Row>
