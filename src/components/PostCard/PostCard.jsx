@@ -31,7 +31,6 @@ const PostCard = (props) => {
 
     }
 
-
     return (
         <Card className="mb-4 PostCard">
 

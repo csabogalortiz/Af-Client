@@ -24,7 +24,7 @@ class PostService {
         return this.api.get('/')
     }
 
-    detials(post_id) {
+    details(post_id) {
         return this.api.get(`/details/${post_id}`)
     }
 
