@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-class PostService {
+class CommentService {
 
     constructor() {
 
         this.api = axios.create({
-            baseURL: `${process.env.REACT_APP_API_URL}/posts`
+            baseURL: `${process.env.REACT_APP_API_URL}/comments`
         })
         this.api.interceptors.request.use((config) => {
 
@@ -20,23 +20,17 @@ class PostService {
     }
 
 
-    getPosts() {
+    getComment() {
         return this.api.get('/')
     }
 
-    details(post_id) {
-        return this.api.get(`/details/${post_id}`)
+    newComment(commentData) {
+        return this.api.post('/create', commentData)
     }
 
-    newPost(postData) {
-        return this.api.post('/create', postData)
-    }
 
-    delete(post_id) {
-        return this.api.post(`/delete/${post_id}`)
-    }
 }
 
-const postService = new PostService()
+const commentService = new CommentService()
 
-export default postService
+export default commentService

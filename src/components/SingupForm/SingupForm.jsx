@@ -3,13 +3,14 @@ import { Form, Button } from "react-bootstrap"
 import authService from "../../services/auth.service"
 import { useNavigate } from 'react-router-dom'
 import uploadServices from "../../services/upload.service"
+// import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
 // import { MessageContext } from './../../contexts/userMessage.context'
 
 
 const SignupForm = () => {
 
-    const [signupData, setSignupData] = useState({
+    const [userData, setUserData] = useState({
         username: '',
         email: '',
         password: '',
@@ -20,8 +21,8 @@ const SignupForm = () => {
     const [loadingImage, setLoadingImage] = useState(false)
 
     const handleInputChange = e => {
-        const { value, name } = e.target
-        setSignupData({ ...signupData, [name]: value })
+        const { name, value } = e.target
+        setUserData({ ...userData, [name]: value })
     }
 
     const navigate = useNavigate()
@@ -36,7 +37,7 @@ const SignupForm = () => {
         uploadServices
             .uploadimage(formData)
             .then(res => {
-                setSignupData({ ...signupData, profileImg: res.data.cloudinary_url })
+                setUserData({ ...userData, profileImg: res.data.cloudinary_url })
                 setLoadingImage(false)
             })
             .catch(err => console.log(err))
@@ -48,15 +49,14 @@ const SignupForm = () => {
         e.preventDefault()
 
         authService
-            .signup(signupData)
+            .signup(userData)
             .then(() => {
                 navigate('/feed')
-
             })
             .catch(err => console.log(err))
     }
 
-    const { username, password, email, bio, profileImg } = signupData
+    const { username, password, email, bio, profileImg } = userData
 
     return (
 
@@ -85,8 +85,8 @@ const SignupForm = () => {
                 <Form.Control type="text" value={bio} onChange={handleInputChange} name="bio" />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="image">
-                <Form.Label>Profile Image</Form.Label>
+            <Form.Group className="mb-3" controlId="profileImg">
+                <Form.Label>Profile Image (URL)</Form.Label>
                 <Form.Control type="file" onChange={handleFileUpload} />
             </Form.Group>
 
