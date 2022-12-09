@@ -61,6 +61,12 @@ const PostDetails = () => {
                                 }
                             </Col>
 
+
+
+
+
+
+
                         </Row>
                     </>
             }

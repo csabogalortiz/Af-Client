@@ -4,15 +4,21 @@ import authService from "../../services/auth.service"
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../contexts/auth.context';
 import commentService from '../../services/comment.service'
+// import Post from "../../../../server/routes/comments.routes";
+import postService from '../../services/post.service'
 // import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
-// import { MessageContext } from './../../contexts/userMessage.context'
 
-const NewCommentForm = ({ fireFinalActions }) => {
+
+const NewCommentForm = ({ fireFinalActions, postId }) => {
+
+
 
     const [commentData, setCommentData] = useState({
         owner: '',
         description: '',
+        // post_id: '',
+
     })
 
     const handleInputChange = e => {
@@ -23,8 +29,11 @@ const NewCommentForm = ({ fireFinalActions }) => {
 
     const handleSubmit = e => {
         e.preventDefault()
+
         commentService
-            .newComment(commentData)
+            .newComment(commentData, postId)
+
+            // .newComment(commentData)
             .then(() => {
                 fireFinalActions()
                 navigate('/feed')

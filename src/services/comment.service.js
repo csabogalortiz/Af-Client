@@ -24,10 +24,10 @@ class CommentService {
         return this.api.get('/')
     }
 
-    newComment(commentData) {
-        return this.api.post('/create', commentData)
-    }
+    newComment(commentData, post_id) {
 
+        return this.api.post(`/create/${post_id}`, commentData)
+    }
 
 }
 
