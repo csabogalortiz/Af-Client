@@ -20,6 +20,7 @@ const NewPostForm = ({ fireFinalActions }) => {
         content: '',
         postImg: '',
         canvas: '',
+        videoId: '',
     })
 
     const saveCanvasData = (data) => {
@@ -28,6 +29,7 @@ const NewPostForm = ({ fireFinalActions }) => {
         newPostData.title = postData.title;
         newPostData.content = postData.content;
         newPostData.postImg = postData.postImg;
+        newPostData.postImg = postData.videoId;
         newPostData.canvas = data;
 
 
@@ -70,7 +72,7 @@ const NewPostForm = ({ fireFinalActions }) => {
             .catch(err => console.error(err))
     }
 
-    const { title, content, postImg } = postData
+    const { title, content, postImg, videoId } = postData
 
     const { user, logoutUser } = useContext(AuthContext)
 
@@ -82,16 +84,14 @@ const NewPostForm = ({ fireFinalActions }) => {
                 <Form.Control type="text" value={title} onChange={handleInputChange} name="title" />
             </Form.Group>
 
-            <Form.Group className="mb-5" controlId="content">
-                <Form.Control as="textarea" onChange={handleInputChange} placeholder="Interpreta el sentimiento del dia" rows={5} name="content" className="inputPost" value={content} />
-            </Form.Group>
             <Form.Group className="mb-5" controlId="inv">
                 <Form.Select aria-label="Default select example">
                     <option>Open this select menu</option>
                     <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
                 </Form.Select>
+            </Form.Group>
+            <Form.Group className="mb-5" controlId="content">
+                <Form.Control as="textarea" onChange={handleInputChange} placeholder="Interpreta el sentimiento del dia" rows={5} name="content" className="inputPost" value={content} />
             </Form.Group>
 
             <Form.Group className="mb-5" controlId="tabs">
@@ -112,12 +112,12 @@ const NewPostForm = ({ fireFinalActions }) => {
                     <Tab eventKey="profile" title="Profile">
                         <DrawingCanvas saveCanvasData={saveCanvasData} />
                     </Tab>
-                    <Tab eventKey="longer-tab" title="Loooonger Tab">
-                        <h1>hola</h1>
+                    <Tab eventKey="longer-tab" title="Music">
+                        <Form.Group className="mb-5" controlId="videoId">
+                            <Form.Control as="textarea" onChange={handleInputChange} placeholder="Paste your Youtube URL" rows={5} name="videoId" className="inputPost" value={videoId} />
+                        </Form.Group>
                     </Tab>
-                    <Tab eventKey="contact" title="Contact" disabled>
-                        <h1>hola</h1>
-                    </Tab>
+
                 </Tabs>
             </Form.Group>
 
