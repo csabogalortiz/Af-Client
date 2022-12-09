@@ -12,9 +12,6 @@ import DrawingCanvas from './../../components/Canvas/DrawingCanvas'
 
 const NewPostForm = ({ fireFinalActions }) => {
 
-
-    // console.log('aqui esta los datos del canvas!!!', draw)
-
     const [postData, setPotsData] = useState({
         title: '',
         content: '',

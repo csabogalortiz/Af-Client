@@ -73,7 +73,7 @@ const PostCard = (props) => {
                         <Modal.Title>Add Comment</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <NewCommentForm fireFinalActions={fireFinalActions} />
+                        <NewCommentForm fireFinalActions={fireFinalActions} postId={_id} />
                     </Modal.Body>
                 </Modal>
 
