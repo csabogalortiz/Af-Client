@@ -18,7 +18,7 @@ const PostCard = (props) => {
     const fireFinalActions = () => {
         closeModal()
     }
-    const { title, owner, content, postImg, canvas, videoId } = props;
+    const { title, owner, content, postImg, canvas, videoId, _id } = props;
     let splitId = null
 
 
@@ -56,7 +56,7 @@ const PostCard = (props) => {
                             <YoutubeEmbed embedId={splitId} />
                         </div>
                     }
-                    <Link>
+                    <Link to={`/posts/${_id}/details`}>
                         <div className="d-grid mb-5">
                             <Button variant="dark" size="sm">Details</Button>
                         </div>

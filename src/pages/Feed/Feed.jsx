@@ -53,7 +53,7 @@ const Feed = () => {
             </Container>
             <Modal show={showModal} onHide={closeModal}>
                 <Modal.Header closeButton>
-                    <Modal.Title>N:O</Modal.Title>
+                    <Modal.Title>Make a Post</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <NewPostForm fireFinalActions={fireFinalActions} />
