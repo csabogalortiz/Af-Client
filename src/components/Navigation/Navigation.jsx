@@ -51,7 +51,7 @@ const Sidebar = () => {
                                 <NavLink to="/feed" activeclassname="activeClicked">
                                     <CDBSidebarMenuItem icon="columns">Feed</CDBSidebarMenuItem>
                                 </NavLink>
-                                <NavLink to={`/profile/${user._id}`} activeclassname="activeClicked">
+                                <NavLink to={`/myprofile`} activeclassname="activeClicked">
                                     <CDBSidebarMenuItem> ¡Hola,  {!user ? 'invitad@' : user.username}!</CDBSidebarMenuItem>
 
                                 </NavLink>

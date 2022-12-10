@@ -49,7 +49,6 @@ const UsersDetails = ({ isOwner }) => {
                                 ?
                                 <>
                                     <h1> My Profile {userData.username}</h1>
-
                                 </>
                                 :
                                 <>
@@ -60,11 +59,6 @@ const UsersDetails = ({ isOwner }) => {
                                 </>
 
                         }
-
-
-
-
-
                         <Row>
 
                             <Col md={{ span: 6, offset: 1 }}>

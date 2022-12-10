@@ -44,8 +44,6 @@ const SignupForm = () => {
     }
 
     const handleSubmit = e => {
-
-
         e.preventDefault()
 
         authService
@@ -89,9 +87,6 @@ const SignupForm = () => {
                 <Form.Label>Profile Image (URL)</Form.Label>
                 <Form.Control type="file" onChange={handleFileUpload} />
             </Form.Group>
-
-
-
 
             <div className="d-grid">
                 <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Loanding ...' : 'Submit'}</Button>

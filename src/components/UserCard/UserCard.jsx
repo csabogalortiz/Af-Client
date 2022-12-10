@@ -3,12 +3,23 @@ import Card from 'react-bootstrap/Card'
 import { AuthContext } from './../../contexts/auth.context'
 import { Link } from 'react-router-dom'
 import { useContext, useState } from 'react';
+import UserService from '../../services/user.service'
 import "./UserCard.css"
+import { useNavigate } from 'react-router-dom'
 
 const UserCard = (props) => {
 
+    const navigate = useNavigate()
+
     const { username, profileImg, bio, _id } = props;
-    // {`/profile/${owner._id}`}
+
+    const handleFollow = (e) => {
+
+        UserService
+            .followers(_id)
+            .then(() => { })
+            .catch(err => console.log(err))
+    }
 
     const { user } = useContext(AuthContext)
 
@@ -26,7 +37,10 @@ const UserCard = (props) => {
 
                 <Link>
                     <div className="d-grid mb-5">
-                        <Button variant="dark" size="sm">Follow</Button>
+                        {/* {user && <Button onClick={openModal} variant="dark" size="sm">Follow</Button>} */}
+                        <button onClick={handleFollow} variant="dark">
+                            Follow
+                        </button>
                     </div>
                 </Link>
 

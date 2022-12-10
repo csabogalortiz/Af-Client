@@ -7,6 +7,7 @@ import { useContext, useState } from 'react';
 import DisplayCanvas from '../Canvas/DisplayCanvas';
 import YoutubeEmbed from '../Video/Video';
 import NewCommentForm from './../NewCommentForm/NewCommentForm'
+// import FavPostsButton from './../FavPostsButton/FavPostsButton'
 
 
 const PostCard = (props) => {
@@ -60,6 +61,8 @@ const PostCard = (props) => {
                             <YoutubeEmbed embedId={splitId} />
                         </div>
                     }
+
+                    {/* <FavPostsButton></FavPostsButton> */}
                     <Link to={`/posts/${_id}/details`}>
                         <div className="d-grid mb-5">
                             <Button variant="dark" size="sm">Details</Button>

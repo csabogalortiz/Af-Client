@@ -32,8 +32,6 @@ const NewCommentForm = ({ fireFinalActions, postId }) => {
 
         commentService
             .newComment(commentData, postId)
-
-            // .newComment(commentData)
             .then(() => {
                 fireFinalActions()
                 navigate('/feed')

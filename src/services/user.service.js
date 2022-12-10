@@ -22,6 +22,10 @@ class UserService {
         return this.api.get('/')
     }
 
+    followers(user_id) {
+        return this.api.post(`/addfollower/${user_id}`)
+    }
+
     details(user_id) {
         return this.api.get(`/${user_id}`)
     }
@@ -34,9 +38,6 @@ class UserService {
         return this.api.post(`/delete/${user_id}`)
     }
 }
-
-
-
 
 const userservice = new UserService()
 
