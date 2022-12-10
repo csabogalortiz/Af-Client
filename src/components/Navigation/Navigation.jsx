@@ -36,6 +36,7 @@ const Sidebar = () => {
                                 <NavLink to="/login" target="_blank" activeclassname="activeClicked">
                                     <CDBSidebarMenuItem as="div" onClick={logoutUser} icon="exclamation-circle">Log-Out ʕ•́ᴥ•̀ʔっ</CDBSidebarMenuItem>
                                 </NavLink>
+
                                 <NavLink to="/" activeclassname="activeClicked">
                                     <CDBSidebarMenuItem icon="columns">#Discover</CDBSidebarMenuItem>
                                 </NavLink>
@@ -46,6 +47,9 @@ const Sidebar = () => {
 
                                 <NavLink to="/community" activeclassname="activeClicked">
                                     <CDBSidebarMenuItem icon="columns">Community</CDBSidebarMenuItem>
+                                </NavLink>
+                                <NavLink to="/feed" activeclassname="activeClicked">
+                                    <CDBSidebarMenuItem icon="columns">Feed</CDBSidebarMenuItem>
                                 </NavLink>
                                 <NavLink to={`/profile/${user._id}`} activeclassname="activeClicked">
                                     <CDBSidebarMenuItem> ¡Hola,  {!user ? 'invitad@' : user.username}!</CDBSidebarMenuItem>

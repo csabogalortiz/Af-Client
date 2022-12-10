@@ -25,7 +25,8 @@ const AppRoutes = () => {
                 <Route path="/discover" element={<Discover />} />
                 <Route path="/feed" element={<Feed />} />
                 <Route path="/discover/:feeling_id" element={<Feeling />} />
-                <Route path="/profile/:user_id" element={<Profile />} />
+                <Route path="/profile/:user_id" element={<Profile isOwner={false} />} />
+                <Route path="/myprofile" element={<Profile isOwner={true} />} />
                 <Route path="/profile/:user_id/followers" element={<Followers />} />
                 <Route path="/community" element={<Community />} />
                 <Route path="/posts/:post_id/details" element={<PostDetails />} />

@@ -5,22 +5,32 @@ import { Link, } from "react-router-dom"
 import userservice from "../../services/user.service"
 import { AuthContext } from "../../contexts/auth.context"
 import { useParams } from "react-router-dom"
-const UsersDetails = () => {
+import { useLocation } from 'react-router-dom';
+
+const UsersDetails = ({ isOwner }) => {
+
+    let location = useLocation()
+    console.log(location);
 
     const [userData, setUserData] = useState()
 
     const { user } = useContext(AuthContext)
     const params = useParams()
-    const id_del_usuario_en_el_que_estoy = params.user_id
+    let currentUser
 
     useEffect(() => {
+
+        if (isOwner) {
+            currentUser = user._id
+        } else {
+            currentUser = params.user_id
+        }
+
         userservice
-            .details(id_del_usuario_en_el_que_estoy)
+            .details(currentUser)
             .then(({ data }) => setUserData(data))
             .catch(console.error)
     }, [])
-
-
 
     return (
 
@@ -29,11 +39,31 @@ const UsersDetails = () => {
             {
                 !userData
                     ?
-                    <h1>CARGANDO</h1>
+                    <h1>Loading</h1>
                     :
                     <>
-                        <h1 className="mb-4">Detalles de {userData.username}</h1>
+                        {/* <h1 className="mb-4">Detalles de {userData.username}</h1> */}
                         <hr />
+                        {
+                            isOwner
+                                ?
+                                <>
+                                    <h1> My Profile {userData.username}</h1>
+
+                                </>
+                                :
+                                <>
+                                    <div>
+                                        <h1 className="mb-4"> Someone's Profile {userData.username}</h1>
+                                    </div>
+
+                                </>
+
+                        }
+
+
+
+
 
                         <Row>
 

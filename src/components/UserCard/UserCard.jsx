@@ -7,7 +7,8 @@ import "./UserCard.css"
 
 const UserCard = (props) => {
 
-    const { username, profileImg, bio } = props;
+    const { username, profileImg, bio, _id } = props;
+    // {`/profile/${owner._id}`}
 
     const { user } = useContext(AuthContext)
 
@@ -15,10 +16,12 @@ const UserCard = (props) => {
 
         <Card className="mb-4 UserCard">
             <Card.Body>
-                <Card.Title>{username}</Card.Title>
-                <p>{bio}</p>
+                <Link to={`/profile/${_id}`} activeclassname="activeClicked">
+                    <Card.Title>{username}</Card.Title>
+                </Link>
                 <div>
                     <img src={profileImg}></img>
+                    <p>{bio}</p>
                 </div>
 
                 <Link>
