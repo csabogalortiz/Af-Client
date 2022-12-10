@@ -29,16 +29,22 @@ const PostCard = (props) => {
 
 
     }
-
+    {/* <NavLink to="/profile/${_id} */ }
     return (
+
         <Card className="mb-4 PostCard">
 
             <Card.Body>
                 <Container>
-                    <Card.Title>{props?.owner?.username}</Card.Title>
-                    <div>
-                        <img src={props?.owner?.profileImg}></img>
-                    </div>
+                    <Link to={`/profile/${owner._id}`} activeclassname="activeClicked">
+
+                        <Card.Title>{props?.owner?.username}</Card.Title>
+
+                        <div>
+                            <img src={props?.owner?.profileImg}></img>
+
+                        </div>
+                    </Link>
                     <h2>{title}</h2>
                     <h4>{content}</h4>
 

@@ -18,12 +18,12 @@ class UserService {
             return config
         })
     }
-    getPosts() {
+    getUsers() {
         return this.api.get('/')
     }
 
     details(user_id) {
-        return this.api.get(`/details/${user_id}`)
+        return this.api.get(`/${user_id}`)
     }
 
     newPost(userData) {

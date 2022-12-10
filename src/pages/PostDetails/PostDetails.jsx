@@ -4,8 +4,14 @@ import { Link, useParams } from "react-router-dom"
 import postService from "./../../services/post.service"
 import DisplayCanvas from '../../components/Canvas/DisplayCanvas'
 import YoutubeEmbed from "../../components/Video/Video"
+// import Comment from '../../../../server/models/Comment.model'
 
-const PostDetails = () => {
+
+
+
+const PostDetails = (props) => {
+
+    const { title, owner, content, postImg, canvas, videoId, _id, comments, description } = props;
 
     const [post, setPost] = useState()
     const { post_id } = useParams()
@@ -44,6 +50,18 @@ const PostDetails = () => {
                             </Col>
 
                             <Col>
+                                <h3>Comments</h3>
+                                {post.comments.map(elem => {
+                                    return <div>
+                                        <img src={elem.owner.profileImg} style={{ width: '100%' }} />
+                                        <h3>{elem.owner.username}</h3>
+                                        <p>{elem.description}</p>
+                                    </div>
+                                })}
+                                <hr />
+                            </Col>
+
+                            <Col>
                                 <img src={post.postImg} style={{ width: '100%' }} />
                             </Col>
 
@@ -60,11 +78,6 @@ const PostDetails = () => {
                                     </div>
                                 }
                             </Col>
-
-
-
-
-
 
 
                         </Row>

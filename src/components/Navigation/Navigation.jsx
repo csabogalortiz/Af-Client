@@ -43,6 +43,14 @@ const Sidebar = () => {
                                     <CDBSidebarMenuItem icon="user">Profile</CDBSidebarMenuItem>
 
                                 </NavLink> */}
+
+                                <NavLink to="/community" activeclassname="activeClicked">
+                                    <CDBSidebarMenuItem icon="columns">Community</CDBSidebarMenuItem>
+                                </NavLink>
+                                <NavLink to={`/profile/${user._id}`} activeclassname="activeClicked">
+                                    <CDBSidebarMenuItem> ¡Hola,  {!user ? 'invitad@' : user.username}!</CDBSidebarMenuItem>
+
+                                </NavLink>
                             </>
                             :
                             <>
@@ -54,18 +62,9 @@ const Sidebar = () => {
                                 </NavLink>
 
 
+
                             </>
                         }
-                        <NavLink to="/profile/${_id}" activeclassname="activeClicked">
-                            <CDBSidebarMenuItem> ¡Hola,  {!user ? 'invitad@' : user.username}!</CDBSidebarMenuItem>
-                            <CDBSidebarMenuItem >
-                                <img  classname="image-profile" src={!user ? 'invitad@' : user.profileImg} style={{width:'100px' , height:'100px',}}></img>
-                            </CDBSidebarMenuItem>
-
-
-
-
-                        </NavLink>
 
                     </CDBSidebarMenu>
                 </CDBSidebarContent>

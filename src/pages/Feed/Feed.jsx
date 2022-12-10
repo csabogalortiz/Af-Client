@@ -59,19 +59,6 @@ const Feed = () => {
                     <NewPostForm fireFinalActions={fireFinalActions} />
                 </Modal.Body>
             </Modal>
-            {/* 
-            <Modal show={showModal} onHide={closeModal}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Add Comment</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <NewCommentForm fireFinalActions={fireFinalActions} />
-                </Modal.Body>
-            </Modal> */}
-
-
-
-
         </>
     )
 }
