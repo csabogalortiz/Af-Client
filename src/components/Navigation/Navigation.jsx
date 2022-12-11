@@ -33,8 +33,9 @@ const Sidebar = () => {
 
                         {user ?
                             <>
-                                <NavLink to="/login" target="_blank" activeclassname="activeClicked">
-                                    <CDBSidebarMenuItem as="div" onClick={logoutUser} icon="exclamation-circle">Log-Out ʕ•́ᴥ•̀ʔっ</CDBSidebarMenuItem>
+                                <NavLink to={`/myprofile`} activeclassname="activeClicked">
+                                    <CDBSidebarMenuItem> ¡Hola,  {!user ? 'invitad@' : user.username}!</CDBSidebarMenuItem>
+
                                 </NavLink>
 
                                 <NavLink to="/Discover" activeclassname="activeClicked">
@@ -42,7 +43,7 @@ const Sidebar = () => {
                                 </NavLink>
                                 {/* <NavLink to="/profile/${_id}" activeclassname="activeClicked">
                                     <CDBSidebarMenuItem icon="user">Profile</CDBSidebarMenuItem>
-
+                                    
                                 </NavLink> */}
 
                                 <NavLink to="/community" activeclassname="activeClicked">
@@ -51,9 +52,8 @@ const Sidebar = () => {
                                 <NavLink to="/feed" activeclassname="activeClicked">
                                     <CDBSidebarMenuItem icon="columns">Feed</CDBSidebarMenuItem>
                                 </NavLink>
-                                <NavLink to={`/myprofile`} activeclassname="activeClicked">
-                                    <CDBSidebarMenuItem> ¡Hola,  {!user ? 'invitad@' : user.username}!</CDBSidebarMenuItem>
-
+                                <NavLink to="/login" target="_blank" activeclassname="activeClicked">
+                                    <CDBSidebarMenuItem as="div" onClick={logoutUser} icon="exclamation-circle">Log-Out ʕ•́ᴥ•̀ʔっ</CDBSidebarMenuItem>
                                 </NavLink>
                             </>
                             :

@@ -6,11 +6,12 @@ import userservice from "../../services/user.service"
 import { AuthContext } from "../../contexts/auth.context"
 import { useParams } from "react-router-dom"
 import { useLocation } from 'react-router-dom';
+import './Profile.css'
 
 const UsersDetails = ({ isOwner }) => {
 
-    let location = useLocation()
-    console.log(location);
+    // let location = useLocation()
+    // console.log(location);
 
     const [userData, setUserData] = useState()
 
@@ -31,6 +32,7 @@ const UsersDetails = ({ isOwner }) => {
             .then(({ data }) => setUserData(data))
             .catch(console.error)
     }, [])
+
 
     return (
 
@@ -60,10 +62,8 @@ const UsersDetails = ({ isOwner }) => {
                         }
                         <Row>
                             <Col md={{ span: 6, offset: 1 }}>
-                                <h3>Especificaciones</h3>
-                                <p>{userData.description}</p>
                                 <ul>
-                                    <li>Biografia: {userData.bio}</li>
+                                    <li>Bio: {userData.bio}</li>
 
                                 </ul>
                                 <hr />
@@ -76,8 +76,15 @@ const UsersDetails = ({ isOwner }) => {
                                 <img src={userData.profileImg} style={{ width: '100%' }} />
                             </Col>
 
-                            <Col md={{ span: 4 }}>
-                                <li>Followers: {userData.followers}</li>
+                            <Col className="Followers">
+                                <h3>Followers</h3>
+                                {userData.followers.map(elem => {
+                                    return (<div>
+                                        <img src={elem.profileImg} />
+                                        <h3>{elem.username}</h3>
+                                    </div>)
+                                })}
+                                <hr />
                             </Col>
 
                         </Row>

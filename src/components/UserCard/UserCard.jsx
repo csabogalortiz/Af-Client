@@ -38,9 +38,9 @@ const UserCard = (props) => {
                 <Link>
                     <div className="d-grid mb-5">
                         {/* {user && <Button onClick={openModal} variant="dark" size="sm">Follow</Button>} */}
-                        <button onClick={handleFollow} variant="dark">
+                        <Button onClick={handleFollow} variant="dark">
                             Follow
-                        </button>
+                        </Button>
                     </div>
                 </Link>
 
