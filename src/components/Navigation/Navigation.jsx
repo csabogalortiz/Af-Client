@@ -37,7 +37,7 @@ const Sidebar = () => {
                                     <CDBSidebarMenuItem as="div" onClick={logoutUser} icon="exclamation-circle">Log-Out ʕ•́ᴥ•̀ʔっ</CDBSidebarMenuItem>
                                 </NavLink>
 
-                                <NavLink to="/" activeclassname="activeClicked">
+                                <NavLink to="/Discover" activeclassname="activeClicked">
                                     <CDBSidebarMenuItem icon="columns">#Discover</CDBSidebarMenuItem>
                                 </NavLink>
                                 {/* <NavLink to="/profile/${_id}" activeclassname="activeClicked">
