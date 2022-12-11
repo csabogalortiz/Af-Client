@@ -38,9 +38,11 @@ const Feed = () => {
         loadPosts()
     }, [])
 
+    console.log('FEEDDDD',posts)
+
     return (
         <>
-            <Container lassName="Feed">
+            <Container className="Feed">
                 <Row>
                     <Col md={{ span: 8, offset: 2 }}>
                         {user && <Button onClick={openModal} variant="dark" size="sm">Crear nueva</Button>}

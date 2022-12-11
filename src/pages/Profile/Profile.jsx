@@ -8,6 +8,9 @@ import { useParams } from "react-router-dom"
 import { useLocation } from 'react-router-dom';
 import DisplayCanvas from "../../components/Canvas/DisplayCanvas"
 import Video from "../../components/Video/Video"
+import PostCard from "../../components/PostCard/PostCard"
+import YoutubeEmbed from './../../components/Video/Video'
+import PostsList from "../../components/PostsList/PostsList"
 
 import './Profile.css'
 
@@ -35,6 +38,8 @@ const UsersDetails = ({ isOwner }) => {
             .then(({ data }) => setUserData(data))
             .catch(console.error)
     }, [])
+
+
 
 
     return (
@@ -104,21 +109,11 @@ const UsersDetails = ({ isOwner }) => {
 
                                     <Col>
                                         <h3>My Favs</h3>
-                                        {userData.favPosts.map(elem => {
-                                            return (<div>
-                                                <h3>{elem.title}</h3>
-                                                <img src={elem.postImg} />
-
-                                                <Col>
-                                                    {elem.canvas && <DisplayCanvas canvasData={elem.canvas} />}
-                                                </Col>
-
-                                            </div>)
-                                        })}
+                                    <PostsList posts = {userData.favPosts}></PostsList>
                                         <hr />
                                     </Col>
 
-
+ 
 
 
                                 </Tab>
