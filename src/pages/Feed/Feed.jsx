@@ -38,7 +38,7 @@ const Feed = () => {
         loadPosts()
     }, [])
 
-    console.log('FEEDDDD',posts)
+    console.log('FEEDDDD', posts)
 
     return (
         <>
@@ -62,7 +62,11 @@ const Feed = () => {
                 </Modal.Body>
             </Modal>
         </>
+
+
     )
+
+
 }
 
 export default Feed

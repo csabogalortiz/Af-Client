@@ -11,6 +11,9 @@ import Video from "../../components/Video/Video"
 import PostCard from "../../components/PostCard/PostCard"
 import YoutubeEmbed from './../../components/Video/Video'
 import PostsList from "../../components/PostsList/PostsList"
+import PostService from "../../services/post.service"
+
+import { HoverCard, Avatar, Text, Group, Anchor, Stack } from '@mantine/core';
 
 import './Profile.css'
 
@@ -20,6 +23,9 @@ const UsersDetails = ({ isOwner }) => {
     // console.log(location);
 
     const [userData, setUserData] = useState()
+    const [myPostsData, setmyPostsData] = useState(
+        []
+    )
 
     const { user } = useContext(AuthContext)
     const params = useParams()
@@ -37,9 +43,25 @@ const UsersDetails = ({ isOwner }) => {
             .details(currentUser)
             .then(({ data }) => setUserData(data))
             .catch(console.error)
-    }, [])
 
 
+
+
+        PostService
+            .createdPosts(user._id)
+            .then(({ data }) => setmyPostsData(data))
+            .catch(err => console.error(err))
+
+    }, [params])
+
+    const handleFollow = (elem) => {
+        console.log(elem._id)
+        userservice
+            .followers(elem._id)
+            .then(() => { })
+            .catch(err => console.log(err))
+
+    }
 
 
     return (
@@ -82,14 +104,66 @@ const UsersDetails = ({ isOwner }) => {
 
                             <Col md={{ span: 4 }}>
                                 <img src={userData.profileImg} style={{ width: '100%' }} />
+
                             </Col>
+
+
 
                             <Col className="Followers">
                                 <h3>Followers</h3>
                                 {userData.followers.map(elem => {
                                     return (<div>
-                                        <img src={elem.profileImg} />
-                                        <h3>{elem.username}</h3>
+                                        {/* <Link to={`/profile/${elem._id}`} activeclassname="activeClicked" >
+                                            <img src={elem.profileImg} />
+                                        </Link> */}
+                                        {/* <h3>{elem.username}</h3> */}
+
+
+                                        <Group position="center">
+                                            <HoverCard width={230} shadow="md" withArrow openDelay={200} closeDelay={400}>
+                                                <HoverCard.Target>
+                                                    <Avatar src={elem.profileImg} radius="x4 " />
+                                                </HoverCard.Target>
+                                                <HoverCard.Dropdown>
+                                                    <Group>
+                                                        <Avatar src={elem.profileImg} radius="x4 " />
+                                                        <Stack spacing={5}>
+
+
+                                                            <Anchor
+                                                                Link To="https://twitter.com/mantinedev"
+                                                                color="dimmed"
+                                                                size="xs"
+                                                                sx={{ lineHeight: 1 }}
+                                                            >
+                                                                <a href={`/profile/${elem._id}`}> {elem.username}</a>
+                                                            </Anchor>
+
+                                                            <Text size="sm" weight={700} sx={{ lineHeight: 1 }}>
+                                                                {elem.bio}
+                                                            </Text>
+                                                        </Stack>
+                                                    </Group>
+
+                                                    <Text size="sm" mt="md">
+
+                                                    </Text>
+
+                                                    <Group mt="md" spacing="xl">
+                                                        <Link>
+                                                            <div className="container">
+                                                                <Button onClick={() => handleFollow(elem)} variant="dark">
+                                                                    Follow
+                                                                </Button>
+                                                            </div>
+                                                        </Link>
+                                                    </Group>
+                                                </HoverCard.Dropdown>
+                                            </HoverCard>
+                                        </Group>
+
+
+
                                     </div>)
                                 })}
                                 <hr />
@@ -102,20 +176,20 @@ const UsersDetails = ({ isOwner }) => {
                                 className="mb-3"
                             >
                                 <Tab eventKey="My posts" title="My posts">
-                                    <h2>My Posts </h2>
+
+                                    <PostsList posts={myPostsData}  ></PostsList>
+                                    {/* {myPostsData.map(elem => {
+                                        return (<div>
+                                            <h3>{elem.owner.username}</h3>
+                                        </div>)
+                                    })} */}
                                 </Tab>
                                 <Tab eventKey="My Favs" title="My Favs">
-                                    {/* <div>{userData.favPosts} </div> */}
-
                                     <Col>
                                         <h3>My Favs</h3>
-                                    <PostsList posts = {userData.favPosts}></PostsList>
+                                        <PostsList posts={userData.favPosts}></PostsList>
                                         <hr />
                                     </Col>
-
- 
-
-
                                 </Tab>
                                 <Tab eventKey="Compartidos" title="Compartidos">
                                     <h2>Compartidos </h2>
@@ -132,3 +206,5 @@ const UsersDetails = ({ isOwner }) => {
 }
 
 export default UsersDetails
+
+

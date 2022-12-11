@@ -18,6 +18,12 @@ class UserService {
             return config
         })
     }
+
+
+    getUser(user_id) {
+        return this.api.get(`/${user_id}`)
+    }
+
     getUsers() {
         return this.api.get('/')
     }
@@ -26,8 +32,18 @@ class UserService {
         return this.api.post(`/addfollower/${user_id}`)
     }
 
+    unlikePost(post_id) {
+        return this.api.post(`/unlikePost/${post_id}`)
+    }
+
+
     favPost(post_id) {
         return this.api.post(`/favPost/${post_id}`)
+    }
+
+
+    myPosts(post_id) {
+        return this.api.post(`/myPosts/${post_id}`)
     }
 
     details(user_id) {

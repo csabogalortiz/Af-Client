@@ -32,6 +32,10 @@ class PostService {
         return this.api.post('/create', postData)
     }
 
+    createdPosts(user_id) {
+        return this.api.get(`/createdPosts/${user_id}`)
+    }
+
     delete(post_id) {
         return this.api.post(`/delete/${post_id}`)
     }

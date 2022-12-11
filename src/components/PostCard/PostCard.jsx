@@ -19,9 +19,12 @@ const PostCard = (props) => {
     const fireFinalActions = () => {
         closeModal()
     }
-    const { title, owner, content, postImg, canvas, videoId, _id } = props;
+    const { title, owner, content, postImg, canvas, videoId, _id, favPost } = props;
     let splitId = null
 
+    const [isFav, setIsFav] = useState(favPost.includes(_id))
+
+    console.log({ title, isFav })
 
     const { user } = useContext(AuthContext)
 
@@ -31,13 +34,21 @@ const PostCard = (props) => {
     }
 
 
-
     const handleFav = (e) => {
+        setIsFav(true)
         UserService
             .favPost(_id)
             .then(() => { })
             .catch(err => console.log(err))
 
+    }
+
+    const handleUnLike = (e) => {
+        setIsFav(false)
+        UserService
+            .unlikePost(_id)
+            .then(() => { })
+            .catch(err => console.log(err))
     }
 
     return (
@@ -93,37 +104,22 @@ const PostCard = (props) => {
                 <Link>
                     <div className="d-grid mb-5">
                         {/* {user && <Button onClick={openModal} variant="dark" size="sm">Follow</Button>} */}
-                        <Button onClick={handleFav} variant="dark">
-                            ♥
-                        </Button>
+                        {
+                            !isFav ?
+                                <Button onClick={handleFav} size="sm" variant="dark">
+                                    ♡
+                                </Button>
+                                :
+                                <Button onClick={handleUnLike} size="sm" variant="dark">
+                                    ♥
+                                </Button>
+
+                        }
                     </div>
                 </Link>
 
 
-                {/* 
-                {
-                    !owner || owner != user?._id
-                        ?
-                        <>
-                            <Link>
-                                <div className="d-grid">
-                                    <Button variant="dark" size="sm">Ver detalles</Button>
-                                </div>
-                            </Link>
-                        </>
-                        :
-                        <>
-                            <div className="d-grid">
-                                <ButtonGroup aria-label="Basic example">
-                                    <Link>
-                                        <Button variant="dark" size="sm">(ɔ◔‿◔)ɔ ♥</Button>
-                                    </Link>
-                                </ButtonGroup>
-                            </div>
 
-                        </>
-
-                } */}
 
 
             </Card.Body>

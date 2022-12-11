@@ -12,6 +12,7 @@ import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../contexts/auth.context';
 import './Navigation.css'
 
+
 const Sidebar = () => {
     const { user, logoutUser } = useContext(AuthContext)
 
@@ -85,6 +86,8 @@ const Sidebar = () => {
             </CDBSidebar>
         </div>
     );
-};
+
+
+}
 
 export default Sidebar;
