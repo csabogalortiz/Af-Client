@@ -6,6 +6,7 @@ import userservice from "../../services/user.service"
 import { AuthContext } from "../../contexts/auth.context"
 import { useParams } from "react-router-dom"
 import { useLocation } from 'react-router-dom';
+import './Profile.css'
 
 const UsersDetails = ({ isOwner }) => {
 
@@ -61,8 +62,6 @@ const UsersDetails = ({ isOwner }) => {
                         }
                         <Row>
                             <Col md={{ span: 6, offset: 1 }}>
-                                <h3>Especificaciones</h3>
-                                <p>{userData.description}</p>
                                 <ul>
                                     <li>Bio: {userData.bio}</li>
 
@@ -77,13 +76,7 @@ const UsersDetails = ({ isOwner }) => {
                                 <img src={userData.profileImg} style={{ width: '100%' }} />
                             </Col>
 
-                            {/* <Col md={{ span: 4 }}>
-                                <li>Followers: {userData.followers}</li>
-                            </Col> */}
-
-
-
-                            <Col>
+                            <Col className="Followers">
                                 <h3>Followers</h3>
                                 {userData.followers.map(elem => {
                                     return (<div>
