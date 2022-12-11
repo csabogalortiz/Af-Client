@@ -7,6 +7,7 @@ import { useContext, useState } from 'react';
 import DisplayCanvas from '../Canvas/DisplayCanvas';
 import YoutubeEmbed from '../Video/Video';
 import NewCommentForm from './../NewCommentForm/NewCommentForm'
+import UserService from '../../services/user.service';
 // import FavPostsButton from './../FavPostsButton/FavPostsButton'
 
 
@@ -27,10 +28,18 @@ const PostCard = (props) => {
     if (videoId) {
         let idVideo = videoId?.split('=')
         splitId = idVideo[1]
+    }
 
+
+
+    const handleFav = (e) => {
+        UserService
+            .favPost(_id)
+            .then(() => { })
+            .catch(err => console.log(err))
 
     }
-    {/* <NavLink to="/profile/${_id} */ }
+
     return (
 
         <Card className="mb-4 PostCard">
@@ -68,11 +77,6 @@ const PostCard = (props) => {
                             <Button variant="dark" size="sm">Details</Button>
                         </div>
                     </Link>
-                    <Link>
-                        <div className="d-grid mb-5">
-                            <Button variant="dark" size="sm">♥</Button>
-                        </div>
-                    </Link>
                     {user && <Button onClick={openModal} variant="dark" size="sm">💬</Button>}
 
                 </Container>
@@ -85,6 +89,15 @@ const PostCard = (props) => {
                         <NewCommentForm fireFinalActions={fireFinalActions} postId={_id} />
                     </Modal.Body>
                 </Modal>
+
+                <Link>
+                    <div className="d-grid mb-5">
+                        {/* {user && <Button onClick={openModal} variant="dark" size="sm">Follow</Button>} */}
+                        <Button onClick={handleFav} variant="dark">
+                            ♥
+                        </Button>
+                    </div>
+                </Link>
 
 
                 {/* 

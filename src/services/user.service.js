@@ -26,6 +26,10 @@ class UserService {
         return this.api.post(`/addfollower/${user_id}`)
     }
 
+    favPost(post_id) {
+        return this.api.post(`/favPost/${post_id}`)
+    }
+
     details(user_id) {
         return this.api.get(`/${user_id}`)
     }

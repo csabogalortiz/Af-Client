@@ -37,7 +37,7 @@ const Feed = () => {
 
     return (
         <>
-            <Container lassName="Feed">
+            <Container className="Feed">
                 <Row>
                     <Col md={{ span: 8, offset: 2 }}>
                         {user && <Button onClick={openModal} variant="dark" size="sm">Create a feeling</Button>}

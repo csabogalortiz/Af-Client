@@ -1,11 +1,14 @@
 import { useEffect } from "react"
-import { Container, Row, Col, Button } from "react-bootstrap"
+import { Container, Row, Col, Button, Tab, Tabs } from "react-bootstrap"
 import { useState, useContext } from "react"
 import { Link, } from "react-router-dom"
 import userservice from "../../services/user.service"
 import { AuthContext } from "../../contexts/auth.context"
 import { useParams } from "react-router-dom"
 import { useLocation } from 'react-router-dom';
+import DisplayCanvas from "../../components/Canvas/DisplayCanvas"
+import Video from "../../components/Video/Video"
+
 import './Profile.css'
 
 const UsersDetails = ({ isOwner }) => {
@@ -86,6 +89,44 @@ const UsersDetails = ({ isOwner }) => {
                                 })}
                                 <hr />
                             </Col>
+
+                            <Tabs
+                                defaultActiveKey="home"
+                                transition={false}
+                                id="noanim-tab-example"
+                                className="mb-3"
+                            >
+                                <Tab eventKey="My posts" title="My posts">
+                                    <h2>My Posts </h2>
+                                </Tab>
+                                <Tab eventKey="My Favs" title="My Favs">
+                                    {/* <div>{userData.favPosts} </div> */}
+
+                                    <Col>
+                                        <h3>My Favs</h3>
+                                        {userData.favPosts.map(elem => {
+                                            return (<div>
+                                                <h3>{elem.title}</h3>
+                                                <img src={elem.postImg} />
+
+                                                <Col>
+                                                    {elem.canvas && <DisplayCanvas canvasData={elem.canvas} />}
+                                                </Col>
+
+                                            </div>)
+                                        })}
+                                        <hr />
+                                    </Col>
+
+
+
+
+                                </Tab>
+                                <Tab eventKey="Compartidos" title="Compartidos">
+                                    <h2>Compartidos </h2>
+                                </Tab>
+
+                            </Tabs>
 
                         </Row>
                     </>
