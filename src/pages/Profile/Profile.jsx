@@ -57,10 +57,8 @@ const UsersDetails = ({ isOwner }) => {
                                     </div>
 
                                 </>
-
                         }
                         <Row>
-
                             <Col md={{ span: 6, offset: 1 }}>
                                 <h3>Especificaciones</h3>
                                 <p>{userData.description}</p>
@@ -69,7 +67,6 @@ const UsersDetails = ({ isOwner }) => {
 
                                 </ul>
                                 <hr />
-
                                 <Link to="/feed">
                                     <Button as="div" variant="dark">Feed</Button>
                                 </Link>
@@ -77,6 +74,10 @@ const UsersDetails = ({ isOwner }) => {
 
                             <Col md={{ span: 4 }}>
                                 <img src={userData.profileImg} style={{ width: '100%' }} />
+                            </Col>
+
+                            <Col md={{ span: 4 }}>
+                                <li>Followers: {userData.followers}</li>
                             </Col>
 
                         </Row>
