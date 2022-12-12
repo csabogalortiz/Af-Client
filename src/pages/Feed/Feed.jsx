@@ -20,7 +20,7 @@ const Feed = () => {
     const openModal = () => setShowModal(true)
     const closeModal = () => setShowModal(false)
 
-
+    const [refresh, setRefresh] = useState(null)
     const [posts, setPosts] = useState()
     const { user } = useContext(AuthContext)
 
@@ -36,7 +36,7 @@ const Feed = () => {
     }
     useEffect(() => {
         loadPosts()
-    }, [])
+    }, [refresh])
 
     console.log('FEEDDDD', posts)
 
@@ -49,7 +49,7 @@ const Feed = () => {
                         <hr />
                         <h1>FEED!!</h1>
                         {/* <PostsList posts={posts} /> */}
-                        {!posts ? <Loader /> : <PostsList posts={posts} />}
+                        {!posts ? <Loader /> : <PostsList posts={posts} setRefresh={setRefresh} />}
                     </Col>
                 </Row>
             </Container>

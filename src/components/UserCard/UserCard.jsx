@@ -2,7 +2,7 @@ import { Button, Container, Modal } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card'
 import { AuthContext } from './../../contexts/auth.context'
 import { Link } from 'react-router-dom'
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import UserService from '../../services/user.service'
 import "./UserCard.css"
 import { useNavigate } from 'react-router-dom'
@@ -11,17 +11,25 @@ const UserCard = (props) => {
 
     const navigate = useNavigate()
 
-    const { username, profileImg, bio, _id, followers } = props;
+    const { username, profileImg, bio, _id, followers, setRefresh } = props;
+    console.log('que eres tu??? ', followers)
 
+    const { user } = useContext(AuthContext)
 
-    const [isFollower, setisFollower] = useState(followers.includes(_id))
+    const [isFollower, setisFollower] = useState(false)
+
+    console.log('somos amiguis????', isFollower)
+
+    useEffect(() => {
+        setisFollower(followers.includes(user._id))
+    }, [])
 
 
     const handleFollow = (e) => {
         setisFollower(true)
         UserService
             .followers(_id)
-            .then(() => { })
+            .then((response) => setRefresh(response))
             .catch(err => console.log(err))
     }
 
@@ -29,11 +37,9 @@ const UserCard = (props) => {
         setisFollower(false)
         UserService
             .unfollow(_id)
-            .then(() => { })
+            .then((response) => setRefresh(response))
             .catch(err => console.log(err))
     }
-
-    const { user } = useContext(AuthContext)
 
     return (
 

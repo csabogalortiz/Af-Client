@@ -8,6 +8,7 @@ import DisplayCanvas from '../Canvas/DisplayCanvas';
 import YoutubeEmbed from '../Video/Video';
 import NewCommentForm from './../NewCommentForm/NewCommentForm'
 import UserService from '../../services/user.service';
+import postService from '../../services/post.service';
 // import FavPostsButton from './../FavPostsButton/FavPostsButton'
 
 
@@ -19,7 +20,7 @@ const PostCard = (props) => {
     const fireFinalActions = () => {
         closeModal()
     }
-    const { title, owner, content, postImg, canvas, videoId, _id, favPost } = props;
+    const { title, owner, content, postImg, canvas, videoId, _id, favPost, setRefresh } = props;
     let splitId = null
 
     const [isFav, setIsFav] = useState(favPost.includes(_id))
@@ -33,6 +34,13 @@ const PostCard = (props) => {
         splitId = idVideo[1]
     }
 
+    const handleDelete = (e) => {
+        postService
+            .delete(_id)
+            .then((response) => setRefresh(response))
+            .catch(err => console.log(err))
+
+    }
 
     const handleFav = (e) => {
         setIsFav(true)
@@ -101,6 +109,11 @@ const PostCard = (props) => {
                     </Modal.Body>
                 </Modal>
 
+                <Button onClick={handleDelete} size="sm" variant="dark">
+                    Delete
+                </Button>
+
+
                 <Link>
                     <div className="d-grid mb-5">
                         {/* {user && <Button onClick={openModal} variant="dark" size="sm">Follow</Button>} */}
@@ -117,10 +130,6 @@ const PostCard = (props) => {
                         }
                     </div>
                 </Link>
-
-
-
-
 
             </Card.Body>
         </Card >

@@ -44,9 +44,6 @@ const UsersDetails = ({ isOwner }) => {
             .then(({ data }) => setUserData(data))
             .catch(console.error)
 
-
-
-
         PostService
             .createdPosts(user._id)
             .then(({ data }) => setmyPostsData(data))
