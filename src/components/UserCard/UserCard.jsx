@@ -12,13 +12,13 @@ const UserCard = (props) => {
     const navigate = useNavigate()
 
     const { username, profileImg, bio, _id, followers, setRefresh } = props;
-    console.log('que eres tu??? ', followers)
+
 
     const { user } = useContext(AuthContext)
 
     const [isFollower, setisFollower] = useState(false)
 
-    console.log('somos amiguis????', isFollower)
+
 
     useEffect(() => {
         setisFollower(followers.includes(user._id))
@@ -66,14 +66,7 @@ const UserCard = (props) => {
                 }
 
 
-                {/* <Link>
-                    <div className="d-grid mb-5">
-                        {/* {user && <Button onClick={openModal} variant="dark" size="sm">Follow</Button>} */}
-                {/* <Button onClick={handleFollow} variant="dark">
-                            Follow
-                        </Button>
-                    </div>
-                </Link>  */}
+
 
             </Card.Body>
         </Card>

@@ -31,6 +31,8 @@ const AppRoutes = () => {
                 <Route path="/community" element={<Community />} />
                 <Route path="/posts/:post_id/details" element={<PostDetails />} />
                 <Route path="/posts/create" element={<NewPost />} />
+                <Route path="/feeling/:feeling_id" element={<Feeling />} />
+
 
             </Route>
         </Routes>

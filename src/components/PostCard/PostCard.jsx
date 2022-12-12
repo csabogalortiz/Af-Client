@@ -25,7 +25,7 @@ const PostCard = (props) => {
 
     const [isFav, setIsFav] = useState(favPost.includes(_id))
 
-    console.log({ title, isFav })
+
 
     const { user } = useContext(AuthContext)
 

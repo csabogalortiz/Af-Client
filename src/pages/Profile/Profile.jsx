@@ -5,11 +5,6 @@ import { Link, } from "react-router-dom"
 import userservice from "../../services/user.service"
 import { AuthContext } from "../../contexts/auth.context"
 import { useParams } from "react-router-dom"
-import { useLocation } from 'react-router-dom';
-import DisplayCanvas from "../../components/Canvas/DisplayCanvas"
-import Video from "../../components/Video/Video"
-import PostCard from "../../components/PostCard/PostCard"
-import YoutubeEmbed from './../../components/Video/Video'
 import PostsList from "../../components/PostsList/PostsList"
 import PostService from "../../services/post.service"
 
@@ -19,8 +14,7 @@ import './Profile.css'
 
 const UsersDetails = ({ isOwner }) => {
 
-    // let location = useLocation()
-    // console.log(location);
+
 
     const [userData, setUserData] = useState()
     const [myPostsData, setmyPostsData] = useState(

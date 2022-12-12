@@ -19,17 +19,18 @@ class FeelingService {
         })
     }
 
+    // Get one Feeling
+    getFeeling(feeling_id) {
+        return this.api.get(`/${feeling_id}`)
+    }
 
+    // Get all Feelings
     getFeelings() {
         return this.api.get('/')
     }
 
     getRandomFeeling() {
         return this.api.get('/random',)
-    }
-
-    details(feeling_id) {
-        return this.api.get(`/details/${feeling_id}`)
     }
 
     newFeeling(feelingData) {

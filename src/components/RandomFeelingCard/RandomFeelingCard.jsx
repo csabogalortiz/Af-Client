@@ -1,7 +1,7 @@
 import { Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card'
 import './RandomFeelingCard.css'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import feelingService from '../../services/feeling.service';
 
@@ -15,7 +15,9 @@ const RandomFeeling = (props) => {
       <Card.Header as="h5"> Random feeling </Card.Header>
       <hr></hr>
       <Card.Body>
-        <Card.Title>{feeling.title}</Card.Title>
+        <Link to={`/feeling/${feeling._id}`} activeclassname="activeClicked">
+          <Card.Title>{feeling.title}</Card.Title>
+        </Link>
         <Card.Text>
           {feeling.content}
           <hr></hr>

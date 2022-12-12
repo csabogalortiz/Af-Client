@@ -8,11 +8,13 @@ import './NewPostForm.css'
 import React from 'react';
 import { AuthContext } from '../../contexts/auth.context';
 import DrawingCanvas from './../../components/Canvas/DrawingCanvas'
+import FeelingsList from "../FeelingsList/FeelingsList";
 
 
 const NewPostForm = (props) => {
 
     const { fireFinalActions, feeling } = props
+
 
     const [postData, setPotsData] = useState({
         title: '',
@@ -20,21 +22,12 @@ const NewPostForm = (props) => {
         postImg: '',
         canvas: '',
         videoId: '',
+        feeling: feeling._id
     })
 
     const saveCanvasData = (data) => {
-        const newPostData = {}
 
-        newPostData.title = postData.title;
-        newPostData.content = postData.content;
-        newPostData.postImg = postData.postImg;
-        newPostData.postImg = postData.videoId;
-        newPostData.canvas = data;
-
-
-        setPotsData(newPostData)
-
-        // setPotsData({ ...postData, canvas: data })
+        setPotsData({ ...postData, canvas: data })
     }
 
     const [loadingImage, setLoadingImage] = useState(false)
@@ -62,6 +55,7 @@ const NewPostForm = (props) => {
 
     const handleFormSubmit = e => {
         e.preventDefault()
+        console.log(postData)
         postService
             .newPost(postData)
             .then(() => {
