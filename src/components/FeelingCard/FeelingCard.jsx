@@ -26,22 +26,24 @@ const FeelingCard = (props) => {
 
     return (
 
-        <Card className="mb-4 FeelingCard">
+        <Card className='FeelingCard' border="white" style={{ width: '18rem' }}>
+              <Card.Title>
+                <h3>  {title}</h3>
+             
+
+              </Card.Title>
+            <hr></hr>
 
             <Card.Body>
-                <Container>
-                    {/* <Link to={`/profile/${owner._id}`} activeclassname="activeClicked"> */}
 
-                        <Card.Title>{title}</Card.Title>
-
-
-                 
+                        <Card.Text>
                     <h4>{content}</h4>
+                    </Card.Text>
 
 
                  {user && <Button onClick={openModal} variant="dark" size="sm">Edit</Button>}
 
-                </Container>
+            
 
                 <Modal show={showModal} onHide={closeModal}>
                     <Modal.Header closeButton>
@@ -59,6 +61,7 @@ const FeelingCard = (props) => {
         </Card>
     );
 }
+
 
 
 export default FeelingCard

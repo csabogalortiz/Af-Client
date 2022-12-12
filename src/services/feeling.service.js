@@ -24,6 +24,10 @@ class FeelingService {
         return this.api.get('/')
     }
 
+    getRandomFeelings(){
+        return this.api.get('/random',)
+    }
+
     details(feeling_id) {
         return this.api.get(`/details/${feeling_id}`)
     }

@@ -9,7 +9,7 @@ import Loader from './../../components/Loader/Loader'
 import NewFeelingForm from '../../components/FeelingsForm/FeelingsForm'
 import feelingService from '../../services/feeling.service'
 import FeelingsList from '../../components/FeelingsList/FeelingsList'
-import { HoverCard, Avatar, Text, Group, Anchor, Stack } from '@mantine/core';
+
 
 const Feed = () => {
 

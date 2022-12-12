@@ -11,6 +11,7 @@ import Loader from './../../components/Loader/Loader'
 import Canvas2 from './../../components/Canvas/Canvas2'
 import YoutubeEmbed from "./../../components/Video/Video";
 import NewCommentForm from './../../components/NewCommentForm/NewCommentForm'
+import RandomFeeling from '../../components/RandomFeelingCard/RandomFeelingCard'
 
 
 const Feed = () => {
@@ -38,11 +39,13 @@ const Feed = () => {
         loadPosts()
     }, [])
 
-    console.log('FEEDDDD', posts)
-
     return (
         <>
             <Container className="Feed">
+                <Row>
+                    <RandomFeeling/>
+                </Row>
+                
                 <Row>
                     <Col md={{ span: 8, offset: 2 }}>
                         {user && <Button onClick={openModal} variant="dark" size="sm">Crear nueva</Button>}
