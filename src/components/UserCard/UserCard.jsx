@@ -11,12 +11,24 @@ const UserCard = (props) => {
 
     const navigate = useNavigate()
 
-    const { username, profileImg, bio, _id } = props;
+    const { username, profileImg, bio, _id, followers } = props;
+
+
+    const [isFollower, setisFollower] = useState(followers.includes(_id))
+
 
     const handleFollow = (e) => {
-
+        setisFollower(true)
         UserService
             .followers(_id)
+            .then(() => { })
+            .catch(err => console.log(err))
+    }
+
+    const handleUnFollow = (e) => {
+        setisFollower(false)
+        UserService
+            .unfollow(_id)
             .then(() => { })
             .catch(err => console.log(err))
     }
@@ -35,14 +47,27 @@ const UserCard = (props) => {
                     <p>{bio}</p>
                 </div>
 
-                <Link>
+                {
+                    !isFollower ?
+                        <Button onClick={handleFollow} size="sm" variant="dark">
+                            Follow
+                        </Button>
+                        :
+                        <Button onClick={handleUnFollow} size="sm" variant="dark">
+                            Unfollow
+                        </Button>
+
+                }
+
+
+                {/* <Link>
                     <div className="d-grid mb-5">
                         {/* {user && <Button onClick={openModal} variant="dark" size="sm">Follow</Button>} */}
-                        <Button onClick={handleFollow} variant="dark">
+                {/* <Button onClick={handleFollow} variant="dark">
                             Follow
                         </Button>
                     </div>
-                </Link>
+                </Link>  */}
 
             </Card.Body>
         </Card>

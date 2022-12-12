@@ -110,7 +110,7 @@ const UsersDetails = ({ isOwner }) => {
 
 
                             <Col className="Followers">
-                                <h3>Followers</h3>
+                                <h3>Following</h3>
                                 {userData.followers.map(elem => {
                                     return (<div>
                                         {/* <Link to={`/profile/${elem._id}`} activeclassname="activeClicked" >
