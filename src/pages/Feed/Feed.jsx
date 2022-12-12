@@ -8,9 +8,6 @@ import { Link } from 'react-router-dom'
 import { AuthContext } from '../../contexts/auth.context'
 import NewPostForm from './../../components/newPostForm/NewPostForm'
 import Loader from './../../components/Loader/Loader'
-import Canvas2 from './../../components/Canvas/Canvas2'
-import YoutubeEmbed from "./../../components/Video/Video";
-import NewCommentForm from './../../components/NewCommentForm/NewCommentForm'
 import RandomFeeling from '../../components/RandomFeelingCard/RandomFeelingCard'
 
 
