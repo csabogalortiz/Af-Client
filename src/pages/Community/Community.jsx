@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom'
 const Community = () => {
 
     const [users, setUsers] = useState()
+    const [refresh, setRefresh] = useState(null)
 
     const loadUsers = () => {
         UserService
@@ -20,7 +21,7 @@ const Community = () => {
 
     useEffect(() => {
         loadUsers()
-    }, [])
+    }, [refresh])
 
 
     return (
@@ -29,7 +30,7 @@ const Community = () => {
             <Row>
 
                 <Col md={{ span: 8, offset: 2 }}>
-                    {!users ? <Loader /> : <UsersList users={users} />}
+                    {!users ? <Loader /> : <UsersList users={users} setRefresh={setRefresh} />}
 
                     <h1>Hii!!</h1>
                     <hr />

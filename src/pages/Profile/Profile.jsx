@@ -44,9 +44,6 @@ const UsersDetails = ({ isOwner }) => {
             .then(({ data }) => setUserData(data))
             .catch(console.error)
 
-
-
-
         PostService
             .createdPosts(user._id)
             .then(({ data }) => setmyPostsData(data))
@@ -110,7 +107,7 @@ const UsersDetails = ({ isOwner }) => {
 
 
                             <Col className="Followers">
-                                <h3>Followers</h3>
+                                <h3>Following</h3>
                                 {userData.followers.map(elem => {
                                     return (<div>
                                         {/* <Link to={`/profile/${elem._id}`} activeclassname="activeClicked" >

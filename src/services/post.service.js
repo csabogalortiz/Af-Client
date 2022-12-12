@@ -37,7 +37,7 @@ class PostService {
     }
 
     delete(post_id) {
-        return this.api.post(`/delete/${post_id}`)
+        return this.api.delete(`/delete/${post_id}`)
     }
 }
 

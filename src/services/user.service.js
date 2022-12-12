@@ -19,11 +19,12 @@ class UserService {
         })
     }
 
-
+    // Get Single user
     getUser(user_id) {
         return this.api.get(`/${user_id}`)
     }
 
+    // Get All Users
     getUsers() {
         return this.api.get('/')
     }
@@ -32,10 +33,14 @@ class UserService {
         return this.api.post(`/addfollower/${user_id}`)
     }
 
+    unfollow(user_id) {
+        return this.api.post(`/unfollow/${user_id}`)
+    }
+
+
     unlikePost(post_id) {
         return this.api.post(`/unlikePost/${post_id}`)
     }
-
 
     favPost(post_id) {
         return this.api.post(`/favPost/${post_id}`)
