@@ -32,7 +32,10 @@ const RandomFeeling = () => {
           <Card.Title>{feeling.title}</Card.Title>
           <Card.Text>
            {feeling.content}
+       <hr></hr>
+       <h6> Interpret the feeling</h6>
           </Card.Text>
+          
         </Card.Body>
       </Card>
     );
