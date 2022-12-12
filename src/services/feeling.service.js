@@ -24,7 +24,7 @@ class FeelingService {
         return this.api.get('/')
     }
 
-    getRandomFeelings(){
+    getRandomFeeling() {
         return this.api.get('/random',)
     }
 

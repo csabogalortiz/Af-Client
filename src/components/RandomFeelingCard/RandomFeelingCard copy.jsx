@@ -5,10 +5,24 @@ import './RandomFeelingCard.css'
 import { useEffect, useState } from 'react';
 import feelingService from '../../services/feeling.service';
 
-const RandomFeeling = (props) => {
 
-  const { feeling } = props
 
+const RandomFeeling = () => {
+
+  const [feeling, setFeeling] = useState({})
+
+  useEffect(() => {
+    loadRandomFeeling()
+  }, [])
+
+
+  const loadRandomFeeling = () => {
+
+    feelingService
+      .getRandomFeeling()
+      .then(({ data }) => setFeeling(data))
+      .catch(err => console.log(err))
+  }
 
   return (
     <Card className='randomFeelingCard' border="white">

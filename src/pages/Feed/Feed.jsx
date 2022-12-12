@@ -9,9 +9,21 @@ import { AuthContext } from '../../contexts/auth.context'
 import NewPostForm from './../../components/newPostForm/NewPostForm'
 import Loader from './../../components/Loader/Loader'
 import RandomFeeling from '../../components/RandomFeelingCard/RandomFeelingCard'
+import feelingService from '../../services/feeling.service'
 
 
 const Feed = () => {
+
+    const [feeling, setFeeling] = useState({})
+
+    const loadRandomFeeling = () => {
+
+        feelingService
+            .getRandomFeeling()
+            .then(({ data }) => setFeeling(data))
+            .catch(err => console.log(err))
+    }
+
 
     const [showModal, setShowModal] = useState(false)
 
@@ -22,27 +34,35 @@ const Feed = () => {
     const [posts, setPosts] = useState()
     const { user } = useContext(AuthContext)
 
+
+
     const loadPosts = () => {
         PostService
             .getPosts()
             .then(({ data }) => setPosts(data))
             .catch(err => console.log(err))
     }
+
+
     const fireFinalActions = () => {
         loadPosts()
         closeModal()
     }
+
+
     useEffect(() => {
         loadPosts()
+        loadRandomFeeling()
     }, [refresh])
 
     return (
         <>
             <Container className="Feed">
                 <Row>
-                    <RandomFeeling/>
+                    <RandomFeeling feeling={feeling} />
+
                 </Row>
-                
+
                 <Row>
                     <Col md={{ span: 8, offset: 2 }}>
                         {user && <Button onClick={openModal} variant="dark" size="sm">Crear nueva</Button>}
@@ -58,7 +78,7 @@ const Feed = () => {
                     <Modal.Title>Make a Post</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <NewPostForm fireFinalActions={fireFinalActions} />
+                    <NewPostForm fireFinalActions={fireFinalActions} feeling={feeling} />
                 </Modal.Body>
             </Modal>
         </>

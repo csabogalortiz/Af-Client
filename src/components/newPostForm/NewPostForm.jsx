@@ -10,7 +10,9 @@ import { AuthContext } from '../../contexts/auth.context';
 import DrawingCanvas from './../../components/Canvas/DrawingCanvas'
 
 
-const NewPostForm = ({ fireFinalActions }) => {
+const NewPostForm = (props) => {
+
+    const { fireFinalActions, feeling } = props
 
     const [postData, setPotsData] = useState({
         title: '',
@@ -76,16 +78,9 @@ const NewPostForm = ({ fireFinalActions }) => {
 
         <Form onSubmit={handleFormSubmit}>
             <Form.Group className="mb-3" controlId="name">
-                <Form.Label>Nombre</Form.Label>
-                <Form.Control type="text" value={title} onChange={handleInputChange} name="title" />
+                <Form.Label>{feeling?.title}</Form.Label>
             </Form.Group>
 
-            <Form.Group className="mb-5" controlId="inv">
-                <Form.Select aria-label="Default select example">
-                    <option>Open this select menu</option>
-                    <option value="1">One</option>
-                </Form.Select>
-            </Form.Group>
             <Form.Group className="mb-5" controlId="content">
                 <Form.Control as="textarea" onChange={handleInputChange} placeholder="Interpreta el sentimiento del dia" rows={5} name="content" className="inputPost" value={content} />
             </Form.Group>
