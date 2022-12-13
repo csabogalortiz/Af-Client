@@ -9,7 +9,7 @@ import Loader from './../../components/Loader/Loader'
 import NewFeelingForm from '../../components/FeelingsForm/FeelingsForm'
 import feelingService from '../../services/feeling.service'
 import FeelingsList from '../../components/FeelingsList/FeelingsList'
-
+import SearchBar from '../../components/SearchBar/SearchBar'
 
 const Feed = () => {
 
@@ -20,12 +20,18 @@ const Feed = () => {
 
 
     const [feelings, setFeelings] = useState()
+    const [copyFeelings, setCopyFeelings] = useState()
+
+
     const { user } = useContext(AuthContext)
 
     const loadFeelings = () => {
         feelingService
             .getFeelings()
-            .then(({ data }) => setFeelings(data))
+            .then(({ data }) =>{
+                 setFeelings(data)
+                 setCopyFeelings(data)
+                })
             .catch(err => console.log(err))
     }
     const fireFinalActions = () => {
@@ -36,6 +42,22 @@ const Feed = () => {
         loadFeelings()
     }, [])
 
+
+    const filterFeelings = query => {
+        if (query === '') {
+            setCopyFeelings(feelings)
+        } else {
+            console.log({query})
+            console.log({feelings})
+
+            const filteredFeelings = feelings.filter(elem =>  elem.title.toLowerCase().includes(query.toLowerCase()))
+            console.log({filteredFeelings})
+            setCopyFeelings(filteredFeelings)
+        }
+    }
+
+
+
     return (
         <>
             <Container className="Feed">
@@ -44,8 +66,11 @@ const Feed = () => {
                         {user && <Button onClick={openModal} variant="dark" size="sm">Create a feeling</Button>}
                         <hr />
                         <h1>Dictionary</h1>
+                        <SearchBar filterFeelings={filterFeelings} />
+
+
                         {/* <PostsList posts={posts} /> */}
-                        {!feelings ? <Loader /> : <FeelingsList posts={feelings} />}
+                        {!copyFeelings ? <Loader /> : <FeelingsList posts={copyFeelings} />}
                     </Col>
                 </Row>
             </Container>
