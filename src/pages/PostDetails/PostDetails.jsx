@@ -7,8 +7,6 @@ import YoutubeEmbed from "../../components/Video/Video"
 // import Comment from '../../../../server/models/Comment.model'
 
 
-
-
 const PostDetails = (props) => {
 
     const { title, owner, content, postImg, canvas, videoId, _id, comments, description } = props;
@@ -16,6 +14,7 @@ const PostDetails = (props) => {
     const [post, setPost] = useState()
     const { post_id } = useParams()
 
+    console.log({ post })
 
     useEffect(() => {
         postService

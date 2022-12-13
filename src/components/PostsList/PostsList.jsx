@@ -14,6 +14,7 @@ const PostsList = ({ posts, setRefresh }) => {
 
 
 
+
     useEffect(() => {
         UserService
             .getUser(user._id)
@@ -23,6 +24,8 @@ const PostsList = ({ posts, setRefresh }) => {
             })
             .catch(err => console.log(err))
     }, [])
+
+
 
 
     return (

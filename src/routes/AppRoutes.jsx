@@ -24,7 +24,7 @@ const AppRoutes = () => {
             <Route element={<PrivateRoute />}>
                 <Route path="/discover" element={<Discover />} />
                 <Route path="/feed" element={<Feed />} />
-                <Route path="/discover/:feeling_id" element={<Feeling />} />
+                {/* <Route path="/discover/:feeling_id" element={<Feeling />} /> */}
                 <Route path="/profile/:user_id" element={<Profile isOwner={false} />} />
                 <Route path="/myprofile" element={<Profile isOwner={true} />} />
                 <Route path="/profile/:user_id/followers" element={<Followers />} />
@@ -32,8 +32,6 @@ const AppRoutes = () => {
                 <Route path="/posts/:post_id/details" element={<PostDetails />} />
                 <Route path="/posts/create" element={<NewPost />} />
                 <Route path="/feeling/:feeling_id" element={<Feeling />} />
-
-
             </Route>
         </Routes>
     )

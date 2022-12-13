@@ -15,7 +15,6 @@ import './Profile.css'
 const UsersDetails = ({ isOwner }) => {
 
 
-
     const [userData, setUserData] = useState()
     const [myPostsData, setmyPostsData] = useState(
         []

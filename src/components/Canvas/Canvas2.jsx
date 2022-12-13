@@ -64,6 +64,7 @@ function Canvas2({ setData }) {
                         hideGrid={true}
                         disabled={true}
 
+
                     />
                 </div>
 

@@ -28,6 +28,11 @@ class PostService {
         return this.api.get(`/details/${post_id}`)
     }
 
+
+    postsOfFeeling(feeling_id) {
+        return this.api.get(`/ofFeeling/${feeling_id}/`)
+
+    }
     newPost(postData) {
         return this.api.post('/create', postData)
     }
