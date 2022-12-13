@@ -33,7 +33,7 @@ const RandomFeeling = () => {
         <Card.Text>
           {feeling.content}
           <hr></hr>
-          <h6> Interpret the feeling</h6>
+          <h2> Interpret the feeling</h2>
         </Card.Text>
 
       </Card.Body>

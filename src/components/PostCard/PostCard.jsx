@@ -9,8 +9,6 @@ import YoutubeEmbed from '../Video/Video';
 import NewCommentForm from './../NewCommentForm/NewCommentForm'
 import UserService from '../../services/user.service';
 import postService from '../../services/post.service';
-// import FavPostsButton from './../FavPostsButton/FavPostsButton'
-
 
 const PostCard = (props) => {
     const [showModal, setShowModal] = useState(false)
@@ -20,12 +18,13 @@ const PostCard = (props) => {
     const fireFinalActions = () => {
         closeModal()
     }
-    const { title, owner, content, postImg, canvas, videoId, _id, favPost, setRefresh } = props;
+    const { title, owner, content, postImg, canvas, videoId, _id, favPost, setRefresh, setRefreshUser, sharedPosts } = props;
     let splitId = null
+    console.log('es un SAHRED???', sharedPosts)
 
     const [isFav, setIsFav] = useState(favPost.includes(_id))
 
-
+    const [isShared, setIsShared] = useState(sharedPosts.includes(_id))
 
     const { user } = useContext(AuthContext)
 
@@ -34,30 +33,66 @@ const PostCard = (props) => {
         splitId = idVideo[1]
     }
 
+
+
     const handleDelete = (e) => {
         postService
             .delete(_id)
-            .then((response) => setRefresh(response))
+            .then((response) => {
+                // setRefresh(response)
+                setRefreshUser(response)
+            })
             .catch(err => console.log(err))
 
     }
 
     const handleFav = (e) => {
-        setIsFav(true)
+
         UserService
             .favPost(_id)
-            .then(() => { })
+            .then((response) => {
+                // setRefresh(response)
+                setRefreshUser(response)
+            })
             .catch(err => console.log(err))
 
     }
 
     const handleUnLike = (e) => {
-        setIsFav(false)
+
         UserService
             .unlikePost(_id)
-            .then(() => { })
+            .then((response) => {
+                // setRefresh(response)
+                setRefreshUser(response)
+            })
+
             .catch(err => console.log(err))
     }
+
+    const handleShare = (e) => {
+
+        UserService
+            .sharePost(_id)
+            .then((response) => {
+                // setRefresh(response)
+                setRefreshUser(response)
+            })
+            .catch(err => console.log(err))
+    }
+
+    const handleUnShare = (e) => {
+
+        UserService
+            .unSharePost(_id)
+            .then((response) => {
+                // setRefresh(response)
+                setRefreshUser(response)
+            })
+            .catch(err => console.log(err))
+
+    }
+
 
     return (
 
@@ -65,7 +100,7 @@ const PostCard = (props) => {
 
             <Card.Body>
                 <Container>
-                    <Link to={`/profile/${owner._id}`} activeclassname="activeClicked">
+                    <Link to={`/profile/${owner?._id}`} activeclassname="activeClicked">
 
                         <Card.Title>{props?.owner?.username}</Card.Title>
 
@@ -116,9 +151,9 @@ const PostCard = (props) => {
 
                 <Link>
                     <div className="d-grid mb-5">
-                        {/* {user && <Button onClick={openModal} variant="dark" size="sm">Follow</Button>} */}
                         {
-                            !isFav ?
+                            !favPost.includes(_id)
+                                ?
                                 <Button onClick={handleFav} size="sm" variant="dark">
                                     ♡
                                 </Button>
@@ -126,10 +161,35 @@ const PostCard = (props) => {
                                 <Button onClick={handleUnLike} size="sm" variant="dark">
                                     ♥
                                 </Button>
-
                         }
                     </div>
                 </Link>
+
+                <Link>
+                    <div className="d-grid mb-5">
+                        {
+                            !sharedPosts.includes(_id)
+                                ?
+                                <Button onClick={handleShare} size="sm" variant="primary">
+                                    ⬛
+                                </Button>
+                                :
+                                <Button onClick={handleUnShare} size="sm" variant="primary">
+                                    ⬜
+                                </Button>
+                        }
+
+
+                    </div>
+                </Link>
+
+
+
+
+
+
+
+
 
             </Card.Body>
         </Card >

@@ -37,13 +37,21 @@ class UserService {
         return this.api.post(`/unfollow/${user_id}`)
     }
 
+    favPost(post_id) {
+        return this.api.post(`/favPost/${post_id}`)
+    }
 
     unlikePost(post_id) {
         return this.api.post(`/unlikePost/${post_id}`)
     }
 
-    favPost(post_id) {
-        return this.api.post(`/favPost/${post_id}`)
+
+    sharePost(post_id) {
+        return this.api.post(`/sharePost/${post_id}`)
+    }
+
+    unSharePost(post_id) {
+        return this.api.post(`/unSharePost/${post_id}`)
     }
 
 

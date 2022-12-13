@@ -64,13 +64,15 @@ const UsersDetails = ({ isOwner }) => {
                     <h1>Loading</h1>
                     :
                     <>
-                        {/* <h1 className="mb-4">Detalles de {userData.username}</h1> */}
+
                         <hr />
                         {
                             isOwner
                                 ?
                                 <>
                                     <h1> My Profile {userData.username}</h1>
+
+
                                 </>
                                 :
                                 <>
@@ -159,31 +161,41 @@ const UsersDetails = ({ isOwner }) => {
                                 <hr />
                             </Col>
 
+
+
                             <Tabs
                                 defaultActiveKey="home"
                                 transition={false}
                                 id="noanim-tab-example"
                                 className="mb-3"
                             >
+
+
+
                                 <Tab eventKey="My posts" title="My posts">
 
                                     <PostsList posts={myPostsData}  ></PostsList>
-                                    {/* {myPostsData.map(elem => {
-                                        return (<div>
-                                            <h3>{elem.owner.username}</h3>
-                                        </div>)
-                                    })} */}
+
                                 </Tab>
-                                <Tab eventKey="My Favs" title="My Favs">
-                                    <Col>
-                                        <h3>My Favs</h3>
-                                        <PostsList posts={userData.favPosts}></PostsList>
-                                        <hr />
-                                    </Col>
-                                </Tab>
+
                                 <Tab eventKey="Compartidos" title="Compartidos">
-                                    <h2>Compartidos </h2>
+                                    <h3>Shared</h3>
+                                    <PostsList posts={userData.sharedPosts}></PostsList>
+                                    <hr />
                                 </Tab>
+
+                                {
+                                    isOwner &&
+                                    <Tab eventKey="My Favs" title="My Favs">
+                                        <Col>
+                                            <h3>My Favs</h3>
+                                            <PostsList posts={userData.favPosts}></PostsList>
+                                            <hr />
+                                        </Col>
+                                    </Tab>
+
+                                }
+
 
                             </Tabs>
 

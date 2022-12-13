@@ -28,10 +28,14 @@ function Canvas2({ setData }) {
         firstCanvas.current.undo()
     }
 
+    const changeColor = (e) => {
+        setColor(e.target.value)
+    }
+
 
     return (
         <div>
-            <div class="container">
+            <div classclassName="container">
                 <div className="canvasDraw">
                     <CanvasDraw
                         style={{ border: '1px solid', borderRadius: '20px' }}
@@ -54,6 +58,7 @@ function Canvas2({ setData }) {
                     <button onClick={undo}>
                         Undo Stroke
                     </button>
+                    <input id="color-input" onChange={changeColor} type='color'></input>
                 </div>
 
                 <div>

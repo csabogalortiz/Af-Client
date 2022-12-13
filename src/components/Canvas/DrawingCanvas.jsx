@@ -27,6 +27,11 @@ function DrawingCanvas(props) {
         canvas.current.undo()
     }
 
+    const changeColor = (e) => {
+        setColor(e.target.value)
+    }
+
+
 
     return (
         <div>
@@ -43,7 +48,9 @@ function DrawingCanvas(props) {
                         brushRadius={Radius}
 
                     />
-
+                    <div>
+                        <input id="color-input" onChange={changeColor} type='color'></input>
+                    </div>
                     <button onClick={handleSave}>
                         Save Drawing
                     </button>
@@ -53,6 +60,7 @@ function DrawingCanvas(props) {
                     <button onClick={undo}>
                         Undo Stroke
                     </button>
+
                 </div>
 
             </div>

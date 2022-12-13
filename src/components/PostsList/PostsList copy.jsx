@@ -12,9 +12,8 @@ const PostsList = ({ posts, setRefresh }) => {
 
     const [favPost, setFavPost] = useState([])
 
-    const [sharedPosts, setsharedPost] = useState([])
+    const [sharedPost, setsharedPost] = useState([])
 
-    const [refreshUser, setRefreshUser] = useState([])
 
 
 
@@ -22,14 +21,11 @@ const PostsList = ({ posts, setRefresh }) => {
         UserService
             .getUser(user._id)
             .then((response) => {
-                console.log("llega shared?", response)
                 const favPostIDs = response.data.favPosts.map(post => post._id)
                 setFavPost(favPostIDs)
-                const sharedPostIDs = response.data.sharedPosts.map(post => post._id)
-                setsharedPost(sharedPostIDs)
             })
             .catch(err => console.log(err))
-    }, [refreshUser])
+    }, [])
 
 
 
@@ -39,7 +35,7 @@ const PostsList = ({ posts, setRefresh }) => {
             {posts.map(elm => {
                 return (
                     <Col xs={12} key={elm._id} >
-                        <PostCard {...elm} favPost={favPost} sharedPosts={sharedPosts} setRefresh={setRefresh} setRefreshUser={setRefreshUser} />
+                        <PostCard {...elm} favPost={favPost} setRefresh={setRefresh} />
                     </Col>
                 )
             })}
@@ -48,5 +44,3 @@ const PostsList = ({ posts, setRefresh }) => {
 }
 
 export default PostsList
-
-

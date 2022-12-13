@@ -21,7 +21,7 @@ const RandomFeeling = (props) => {
         <Card.Text>
           {feeling.content}
           <hr></hr>
-          <h6> Interpret the feeling</h6>
+          <p> Interpret the feeling</p>
         </Card.Text>
 
       </Card.Body>

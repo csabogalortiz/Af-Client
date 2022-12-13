@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { useContext, useState } from 'react';
 
 import FeelingsForm from './../FeelingsForm/FeelingsForm'
-// import FavPostsButton from './../FavPostsButton/FavPostsButton'
+
 
 const FeelingCard = (props) => {
     const [showModal, setShowModal] = useState(false)
