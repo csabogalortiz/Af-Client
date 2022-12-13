@@ -6,16 +6,23 @@ import { Button } from "react-bootstrap";
 function DrawingCanvas(props) {
 
     const saveCanvasData = props.saveCanvasData
-
+    const canSend = props.canSend
+    const setCanSend = props.setCanSend
+    const setPotsData = props.setPotsData
     const canvas = useRef(null)
 
     const [color, setColor] = useState('black')
     const [Radius, setRadius] = useState(4)
 
     const handleSave = (e) => {
+        console.log('entro en handleSave')
         e.preventDefault();
         const savedDrawing = canvas.current.getSaveData()
-        saveCanvasData(savedDrawing)
+        // saveCanvasData(savedDrawing)
+        setPotsData(postData => {
+            return ({ ...postData, canvas: savedDrawing })
+        })
+        setCanSend(false)
     }
     const clear = (e) => {
         e.preventDefault();
@@ -35,7 +42,7 @@ function DrawingCanvas(props) {
 
     return (
         <div>
-            <div class="container">
+            <div className="container">
                 <div className="canvasDraw">
                     <CanvasDraw
                         style={{ border: '1px solid', borderRadius: '20px' }}
@@ -51,9 +58,17 @@ function DrawingCanvas(props) {
                     <div>
                         <input id="color-input" onChange={changeColor} type='color'></input>
                     </div>
-                    <button onClick={handleSave}>
-                        Save Drawing
-                    </button>
+                    {
+                        canSend
+                            ?
+                            <button onClick={handleSave}>Save Drawing </button>
+                            :
+                            <p>Saved </p>
+
+
+                    }
+
+
                     <button onClick={clear}>
                         Clear Canvas
                     </button>

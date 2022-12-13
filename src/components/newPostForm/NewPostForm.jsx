@@ -1,20 +1,18 @@
-import { useState, useContext } from "react"
+import './NewPostForm.css'
+import { React, useState, useContext } from "react"
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import { Form, Button, Row, Col } from "react-bootstrap"
+import { Form, Button } from "react-bootstrap"
 import postService from "./../../services/post.service"
 import uploadServices from "../../services/upload.service"
-import './NewPostForm.css'
-import React from 'react';
 import { AuthContext } from '../../contexts/auth.context';
 import DrawingCanvas from './../../components/Canvas/DrawingCanvas'
-import FeelingsList from "../FeelingsList/FeelingsList";
+
 
 
 const NewPostForm = (props) => {
 
-    const { fireFinalActions, feeling } = props
-
+    const { fireFinalActions, feeling, setRefresh } = props
 
     const [postData, setPotsData] = useState({
         title: '',
@@ -22,11 +20,15 @@ const NewPostForm = (props) => {
         postImg: '',
         canvas: '',
         videoId: '',
-        feeling: feeling._id
+        feeling: feeling._id,
+        mediaType: '',
     })
 
-    const saveCanvasData = (data) => {
+    const [canSend, setCanSend] = useState(true)
 
+    const saveCanvasData = (data) => {
+        console.log('entro en saveCanvas')
+        setCanSend(true)
         setPotsData({ ...postData, canvas: data })
     }
 
@@ -55,11 +57,11 @@ const NewPostForm = (props) => {
 
     const handleFormSubmit = e => {
         e.preventDefault()
-        console.log(postData)
         postService
             .newPost(postData)
             .then(() => {
                 fireFinalActions()
+                setRefresh(postData)
             })
             .catch(err => console.error(err))
     }
@@ -67,6 +69,8 @@ const NewPostForm = (props) => {
     const { title, content, postImg, videoId } = postData
 
     const { user, logoutUser } = useContext(AuthContext)
+
+    console.log('canSend-------------------', canSend)
 
     return (
 
@@ -79,14 +83,23 @@ const NewPostForm = (props) => {
                 <Form.Control as="textarea" onChange={handleInputChange} placeholder="Interpreta el sentimiento del dia" rows={5} name="content" className="inputPost" value={content} />
             </Form.Group>
 
-            <Form.Group className="mb-5" controlId="tabs">
+            <Form.Select aria-label="Default select example " onChange={handleInputChange} name="mediaType">
+                <option>Select media  </option>
+                <option value="IMG">Picture</option>
+                <option value="CANVAS">Draw</option>
+                <option value="SONG">Music</option>
+                <option value="TEXT">Text</option>
+
+            </Form.Select>
+
+            <Form.Group className="mb-5 mt-5" controlId="tabs">
                 <Tabs
                     defaultActiveKey="profile"
                     id="justify-tab-example"
                     className="mb-3"
                     justify
                 >
-                    <Tab eventKey="home" title="Home">
+                    <Tab eventKey="Share an Image" title="Share an Image">
 
                         <Form.Group className="mb-3" controlId="postImg">
                             <Form.Label>Post Image (URL)</Form.Label>
@@ -94,8 +107,8 @@ const NewPostForm = (props) => {
                         </Form.Group>
 
                     </Tab>
-                    <Tab eventKey="profile" title="Profile">
-                        <DrawingCanvas saveCanvasData={saveCanvasData} />
+                    <Tab eventKey="Draw" title="Draw">
+                        <DrawingCanvas saveCanvasData={saveCanvasData} canSend={canSend} setCanSend={setCanSend} setPotsData={setPotsData} />
                     </Tab>
                     <Tab eventKey="longer-tab" title="Music">
                         <Form.Group className="mb-5" controlId="videoId">

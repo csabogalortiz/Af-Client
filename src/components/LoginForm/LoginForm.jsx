@@ -3,9 +3,6 @@ import { Form, Button } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../contexts/auth.context"
 import authService from "../../services/auth.service"
-// import { MessageContext } from "../../contexts/userMessage.context"
-
-
 
 const LoginForm = () => {
 
@@ -19,14 +16,11 @@ const LoginForm = () => {
         setSignupData({ ...signupData, [name]: value })
     }
 
-
-
     const navigate = useNavigate()
     const { storeToken, authenticateUser } = useContext(AuthContext)
 
 
     const handleSubmit = e => {
-
         e.preventDefault()
 
         authService

@@ -16,13 +16,10 @@ const FeelingCard = (props) => {
     const fireFinalActions = () => {
         closeModal()
     }
+
+
     const { title, content, post, _id } = props;
-
-
-
     const { user } = useContext(AuthContext)
-
-
 
     return (
 

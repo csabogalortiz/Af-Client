@@ -19,12 +19,10 @@ class FeelingService {
         })
     }
 
-    // Get one Feeling
     getFeeling(feeling_id) {
         return this.api.get(`/${feeling_id}`)
     }
 
-    // Get all Feelings
     getFeelings() {
         return this.api.get('/')
     }

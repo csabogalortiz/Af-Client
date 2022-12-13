@@ -1,11 +1,10 @@
-import { Button, Container, Modal } from 'react-bootstrap';
+import "./UserCard.css"
+import { Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from './../../contexts/auth.context'
-import { Link } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react';
 import UserService from '../../services/user.service'
-import "./UserCard.css"
-import { useNavigate } from 'react-router-dom'
 
 const UserCard = (props) => {
 
@@ -18,13 +17,9 @@ const UserCard = (props) => {
 
     const [isFollower, setisFollower] = useState(false)
 
-
-
     useEffect(() => {
         setisFollower(followers.includes(user._id))
     }, [])
-
-
     const handleFollow = (e) => {
         setisFollower(true)
         UserService
@@ -45,14 +40,13 @@ const UserCard = (props) => {
 
         <Card className="mb-4 UserCard">
             <Card.Body>
-                <Link to={`/profile/${_id}`} activeclassname="activeClicked">
-                    <Card.Title>{username}</Card.Title>
-                </Link>
                 <div>
                     <img src={profileImg}></img>
                     <p>{bio}</p>
                 </div>
-
+                <Link to={`/profile/${_id}`} activeclassname="activeClicked">
+                    <Card.Title>{username}</Card.Title>
+                </Link>
                 {
                     !isFollower ?
                         <Button onClick={handleFollow} size="sm" variant="dark">
@@ -65,11 +59,9 @@ const UserCard = (props) => {
 
                 }
 
-
-
-
             </Card.Body>
         </Card>
+
     )
 }
 

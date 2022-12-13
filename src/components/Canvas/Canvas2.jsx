@@ -50,7 +50,7 @@ function Canvas2({ setData }) {
                     />
 
                     <button onClick={handleClick}>
-                        Save Drawing
+                        hellooooooooooooooooooo
                     </button>
                     <button onClick={clear}>
                         Clear Canvas

@@ -1,16 +1,8 @@
-import { useContext } from 'react'
-import React from 'react';
-import {
-    CDBSidebar,
-    CDBSidebarContent,
-    CDBSidebarFooter,
-    CDBSidebarHeader,
-    CDBSidebarMenu,
-    CDBSidebarMenuItem,
-} from 'cdbreact';
+import './Navigation.css'
+import { React, useContext } from 'react'
+import { CDBSidebar, CDBSidebarContent, CDBSidebarFooter, CDBSidebarHeader, CDBSidebarMenu, CDBSidebarMenuItem } from 'cdbreact';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../contexts/auth.context';
-import './Navigation.css'
 
 
 const Sidebar = () => {
@@ -42,10 +34,6 @@ const Sidebar = () => {
                                 <NavLink to="/Discover" activeclassname="activeClicked">
                                     <CDBSidebarMenuItem icon="columns">#Discover</CDBSidebarMenuItem>
                                 </NavLink>
-                                {/* <NavLink to="/profile/${_id}" activeclassname="activeClicked">
-                                    <CDBSidebarMenuItem icon="user">Profile</CDBSidebarMenuItem>
-                                    
-                                </NavLink> */}
 
                                 <NavLink to="/community" activeclassname="activeClicked">
                                     <CDBSidebarMenuItem icon="columns">Community</CDBSidebarMenuItem>
@@ -86,8 +74,6 @@ const Sidebar = () => {
             </CDBSidebar>
         </div>
     );
-
-
 }
 
 export default Sidebar;

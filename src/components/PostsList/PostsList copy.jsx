@@ -12,7 +12,7 @@ const PostsList = ({ posts, setRefresh }) => {
 
     const [favPost, setFavPost] = useState([])
 
-    const [sharedPost, setsharedPost] = useState([])
+    const [sharedPosts, setsharedPosts] = useState([])
 
 
 

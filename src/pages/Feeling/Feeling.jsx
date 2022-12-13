@@ -16,8 +16,6 @@ const Feeling = () => {
     const { feeling_id } = useParams()
 
 
-    console.log({ feelingData })
-
 
     useEffect(() => {
         FeelingService

@@ -12,21 +12,26 @@ const PostsList = ({ posts, setRefresh }) => {
 
     const [favPost, setFavPost] = useState([])
 
-    const [sharedPosts, setsharedPost] = useState([])
+    const [sharedPosts, setSharedPosts] = useState([])
 
     const [refreshUser, setRefreshUser] = useState([])
 
 
 
     useEffect(() => {
+
         UserService
             .getUser(user._id)
             .then((response) => {
-                console.log("llega shared?", response)
-                const favPostIDs = response.data.favPosts.map(post => post._id)
+                const favPostIDs = response.data.favPosts.map(post => {
+                    return post._id
+                })
                 setFavPost(favPostIDs)
-                const sharedPostIDs = response.data.sharedPosts.map(post => post._id)
-                setsharedPost(sharedPostIDs)
+                const sharedPostIDs = response.data.sharedPosts.map(post => {
+                    return post
+                })
+                setSharedPosts(sharedPostIDs)
+
             })
             .catch(err => console.log(err))
     }, [refreshUser])

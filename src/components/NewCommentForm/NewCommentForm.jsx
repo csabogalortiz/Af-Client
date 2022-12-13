@@ -1,23 +1,13 @@
-import { useState, useContext } from "react"
+import { useState } from "react"
 import { Form, Button } from "react-bootstrap"
-import authService from "../../services/auth.service"
 import { useNavigate } from 'react-router-dom'
-import { AuthContext } from '../../contexts/auth.context';
 import commentService from '../../services/comment.service'
-// import Post from "../../../../server/routes/comments.routes";
-import postService from '../../services/post.service'
-// import ErrorMessage from "../ErrorMessage/ErrorMessage"
-
-
 
 const NewCommentForm = ({ fireFinalActions, postId }) => {
-
-
 
     const [commentData, setCommentData] = useState({
         owner: '',
         description: '',
-        // post_id: '',
 
     })
 

@@ -45,15 +45,13 @@ const UsersDetails = ({ isOwner }) => {
     }, [params])
 
     const handleFollow = (elem) => {
-        console.log(elem._id)
+
         userservice
             .followers(elem._id)
             .then(() => { })
             .catch(err => console.log(err))
 
     }
-
-
     return (
 
         <Container>
@@ -105,11 +103,6 @@ const UsersDetails = ({ isOwner }) => {
                                 <h3>Following</h3>
                                 {userData.followers.map(elem => {
                                     return (<div>
-                                        {/* <Link to={`/profile/${elem._id}`} activeclassname="activeClicked" >
-                                            <img src={elem.profileImg} />
-                                        </Link> */}
-                                        {/* <h3>{elem.username}</h3> */}
-
 
                                         <Group position="center">
                                             <HoverCard width={230} shadow="md" withArrow openDelay={200} closeDelay={400}>
@@ -161,17 +154,12 @@ const UsersDetails = ({ isOwner }) => {
                                 <hr />
                             </Col>
 
-
-
                             <Tabs
                                 defaultActiveKey="home"
                                 transition={false}
                                 id="noanim-tab-example"
                                 className="mb-3"
                             >
-
-
-
                                 <Tab eventKey="My posts" title="My posts">
 
                                     <PostsList posts={myPostsData}  ></PostsList>

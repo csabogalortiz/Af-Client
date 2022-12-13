@@ -19,7 +19,6 @@ class CommentService {
         })
     }
 
-
     getComment() {
         return this.api.get('/')
     }
@@ -28,7 +27,6 @@ class CommentService {
 
         return this.api.post(`/create/${post_id}`, commentData)
     }
-
 }
 
 const commentService = new CommentService()

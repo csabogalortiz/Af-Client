@@ -4,7 +4,6 @@ import { Link, useParams } from "react-router-dom"
 import postService from "./../../services/post.service"
 import DisplayCanvas from '../../components/Canvas/DisplayCanvas'
 import YoutubeEmbed from "../../components/Video/Video"
-// import Comment from '../../../../server/models/Comment.model'
 
 
 const PostDetails = (props) => {
@@ -13,8 +12,6 @@ const PostDetails = (props) => {
 
     const [post, setPost] = useState()
     const { post_id } = useParams()
-
-    console.log({ post })
 
     useEffect(() => {
         postService

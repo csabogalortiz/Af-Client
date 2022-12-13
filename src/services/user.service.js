@@ -46,8 +46,8 @@ class UserService {
     }
 
 
-    sharePost(post_id) {
-        return this.api.post(`/sharePost/${post_id}`)
+    sharedPosts(post_id) {
+        return this.api.post(`/sharedPosts/${post_id}`)
     }
 
     unSharePost(post_id) {

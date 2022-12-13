@@ -1,5 +1,5 @@
 import './PostCard.css'
-import { Button, Container, Modal } from 'react-bootstrap';
+import { Button, Container, Modal, Col } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card'
 import { AuthContext } from './../../contexts/auth.context'
 import { Link } from 'react-router-dom'
@@ -18,9 +18,8 @@ const PostCard = (props) => {
     const fireFinalActions = () => {
         closeModal()
     }
-    const { title, owner, content, postImg, canvas, videoId, _id, favPost, setRefresh, setRefreshUser, sharedPosts } = props;
+    const { title, owner, content, postImg, canvas, videoId, _id, favPost, setRefresh, setRefreshUser, sharedPosts, mediaType } = props;
     let splitId = null
-    console.log('es un SAHRED???', sharedPosts)
 
     const [isFav, setIsFav] = useState(favPost.includes(_id))
 
@@ -33,13 +32,10 @@ const PostCard = (props) => {
         splitId = idVideo[1]
     }
 
-
-
     const handleDelete = (e) => {
         postService
             .delete(_id)
             .then((response) => {
-                // setRefresh(response)
                 setRefreshUser(response)
             })
             .catch(err => console.log(err))
@@ -51,7 +47,6 @@ const PostCard = (props) => {
         UserService
             .favPost(_id)
             .then((response) => {
-                // setRefresh(response)
                 setRefreshUser(response)
             })
             .catch(err => console.log(err))
@@ -63,7 +58,6 @@ const PostCard = (props) => {
         UserService
             .unlikePost(_id)
             .then((response) => {
-                // setRefresh(response)
                 setRefreshUser(response)
             })
 
@@ -73,9 +67,8 @@ const PostCard = (props) => {
     const handleShare = (e) => {
 
         UserService
-            .sharePost(_id)
+            .sharedPosts(_id)
             .then((response) => {
-                // setRefresh(response)
                 setRefreshUser(response)
             })
             .catch(err => console.log(err))
@@ -86,7 +79,6 @@ const PostCard = (props) => {
         UserService
             .unSharePost(_id)
             .then((response) => {
-                // setRefresh(response)
                 setRefreshUser(response)
             })
             .catch(err => console.log(err))
@@ -111,12 +103,18 @@ const PostCard = (props) => {
                     </Link>
                     <h2>{title}</h2>
                     <h4>{content}</h4>
+                    <p>{mediaType} </p>
+                    {mediaType === 'IMG' &&
+                        <div>
+                            <img src={postImg}></img>
+                        </div>
 
-                    <div>
-                        <img src={postImg}></img>
-                    </div>
-
-                    {canvas && <DisplayCanvas canvasData={canvas} />}
+                    }
+                    {mediaType === 'CANVAS' &&
+                        <div>
+                            {canvas && <DisplayCanvas canvasData={canvas} />}
+                        </div>
+                    }
                     {
                         videoId &&
                         <div className="App">
@@ -124,8 +122,6 @@ const PostCard = (props) => {
                             <YoutubeEmbed embedId={splitId} />
                         </div>
                     }
-
-                    {/* <FavPostsButton></FavPostsButton> */}
                     <Link to={`/posts/${_id}/details`}>
                         <div className="d-grid mb-5">
                             <Button variant="dark" size="sm">Details</Button>
@@ -149,7 +145,7 @@ const PostCard = (props) => {
                 </Button>
 
 
-                <Link>
+                <Col>
                     <div className="d-grid mb-5">
                         {
                             !favPost.includes(_id)
@@ -163,9 +159,9 @@ const PostCard = (props) => {
                                 </Button>
                         }
                     </div>
-                </Link>
+                </Col>
 
-                <Link>
+                <Col>
                     <div className="d-grid mb-5">
                         {
                             !sharedPosts.includes(_id)
@@ -178,23 +174,12 @@ const PostCard = (props) => {
                                     ⬜
                                 </Button>
                         }
-
-
                     </div>
-                </Link>
-
-
-
-
-
-
-
-
+                </Col>
 
             </Card.Body>
         </Card >
     );
 }
-
 
 export default PostCard
