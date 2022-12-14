@@ -4,12 +4,15 @@
     width: 150px;
 }
 
-
 element.style {
     border-radius: 200px;
-
 }
 
 .pro-sidebar {
     position: fixed !important;
+
+}
+
+.css-dip3t8 {
+    background-color: black !important;
 }

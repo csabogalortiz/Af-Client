@@ -9,7 +9,8 @@ const NewFeelingForm = ({ fireFinalActions }) => {
 
     const [feelingData, setFeelingData] = useState({
         owner: '',
-        description: ''
+        description: '',
+        language: '',
     })
 
     const [errors, setErrors] = useState([])
@@ -33,7 +34,7 @@ const NewFeelingForm = ({ fireFinalActions }) => {
             .catch(err => setErrors(err.response.data.errorMessages))
     }
 
-    const { title, content } = feelingData
+    const { title, content, language } = feelingData
 
     return (
 
@@ -43,6 +44,14 @@ const NewFeelingForm = ({ fireFinalActions }) => {
                 <Form.Label>Nombre</Form.Label>
                 <Form.Control type="text" value={title} onChange={handleInputChange} name="title" />
             </Form.Group>
+
+
+            <Form.Group className="mb-3" controlId="language">
+                <Form.Label>Language</Form.Label>
+                <Form.Control type="text" value={language} onChange={handleInputChange} name="language" />
+            </Form.Group>
+
+
 
             <Form.Group className="mb-3" controlId="description">
                 <Form.Control as="textarea" onChange={handleInputChange} placeholder="Post your feeling" rows={5} name="content" className="inputPost" value={content} />

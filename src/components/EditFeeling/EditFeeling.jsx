@@ -7,10 +7,11 @@ import ErrorMessage from './../ErrorMessage/ErrorMessage'
 
 
 const EditFeelingForm = ({ feeling, fireFinalActions }) => {
-    const { title, content } = feeling
+    const { title, content, language } = feeling
     const [updateFeeling, setupdateFeeling] = useState({
         title: title,
         content: content,
+        language: language,
 
     })
 
@@ -44,6 +45,11 @@ const EditFeelingForm = ({ feeling, fireFinalActions }) => {
             <Form.Group className="mb-3" controlId="title">
                 <Form.Label>Title</Form.Label>
                 <Form.Control type="text" value={updateFeeling.title} onChange={handleInputChange} name="title" />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="language">
+                <Form.Label>Language</Form.Label>
+                <Form.Control type="text" value={updateFeeling.language} onChange={handleInputChange} name="language" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="content">

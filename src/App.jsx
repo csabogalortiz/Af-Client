@@ -5,18 +5,14 @@ import AppRoutes from './routes/AppRoutes';
 import { Row, Col } from 'react-bootstrap'
 
 
+
 function App() {
   return (
     <Router>
-      <div className="App pb-5">
-        <Row>
-          <Col xs={1}>
-            <Navigation />
-          </Col>
-          <Col xs={11}>
-            <AppRoutes />
-          </Col>
-        </Row>
+      <div className="App" style={{ display: 'flex' }}>
+
+        <AppRoutes />
+        <Navigation />
       </div>
     </Router>
   );

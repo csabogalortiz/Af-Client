@@ -7,8 +7,8 @@ import { useContext, useState } from 'react';
 import EditFeeling from './../EditFeeling/EditFeeling'
 
 
-const FeelingCard = ({ title, content, post, _id }) => {
-    const feeling = { title, content, post, _id }
+const FeelingCard = ({ title, content, post, _id, language }) => {
+    const feeling = { title, content, post, _id, language }
     const [showModal, setShowModal] = useState(false)
     const openModal = () => setShowModal(true)
     const closeModal = () => setShowModal(false)
@@ -28,7 +28,9 @@ const FeelingCard = ({ title, content, post, _id }) => {
                 </Card.Title>
             </Link>
             <hr></hr>
-
+            <>
+                <h4> {language}</h4>
+            </>
             <Card.Body>
 
                 <Card.Text>

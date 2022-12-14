@@ -40,7 +40,7 @@ const Feeling = () => {
 
                     <h1>{feelingData.title}</h1>
                     <p>{feelingData.content}</p>
-
+                    <p>{feelingData.language}</p>
                     <hr></hr>
 
                 </Col>
