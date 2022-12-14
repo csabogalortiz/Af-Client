@@ -4,11 +4,11 @@ import Card from 'react-bootstrap/Card'
 import { AuthContext } from './../../contexts/auth.context'
 import { Link } from 'react-router-dom'
 import { useContext, useState } from 'react';
+import EditFeeling from './../EditFeeling/EditFeeling'
 
-import FeelingsForm from './../FeelingsForm/FeelingsForm'
 
-
-const FeelingCard = (props) => {
+const FeelingCard = ({ title, content, post, _id }) => {
+    const feeling = { title, content, post, _id }
     const [showModal, setShowModal] = useState(false)
     const openModal = () => setShowModal(true)
     const closeModal = () => setShowModal(false)
@@ -17,47 +17,39 @@ const FeelingCard = (props) => {
         closeModal()
     }
 
-
-    const { title, content, post, _id } = props;
     const { user } = useContext(AuthContext)
 
     return (
 
-        <Link to={`/feeling/${_id}`} activeclassname="activeClicked">
-            <Card className='FeelingCard' border="white" style={{ width: '18rem' }}>
+        <Card className='FeelingCard' border="white" style={{ width: '18rem' }}>
+            <Link to={`/feeling/${_id}`} activeclassname="activeClicked">
                 <Card.Title>
-                    <h3>  {title}</h3>
-
-
+                    <h3> {title}</h3>
                 </Card.Title>
-                <hr></hr>
+            </Link>
+            <hr></hr>
 
-                <Card.Body>
+            <Card.Body>
 
-                    <Card.Text>
-                        <h4>{content}</h4>
-                    </Card.Text>
-
-
-                    {user && <Button onClick={openModal} variant="dark" size="sm">Edit</Button>}
+                <Card.Text>
+                    <h4>{content}</h4>
+                </Card.Text>
 
 
+                {user && <Button onClick={openModal} variant="dark" size="sm">Edit</Button>}
 
-                    <Modal show={showModal} onHide={closeModal}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Edit Feeling</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <FeelingsForm fireFinalActions={fireFinalActions} feelingId={_id} />
-                        </Modal.Body>
-                    </Modal>
+                <Modal show={showModal} onHide={closeModal}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Edit Feeling</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <EditFeeling fireFinalActions={fireFinalActions} feeling={feeling} />
+                    </Modal.Body>
+                </Modal>
 
+            </Card.Body>
+        </Card>
 
-
-
-                </Card.Body>
-            </Card>
-        </Link>
     );
 }
 

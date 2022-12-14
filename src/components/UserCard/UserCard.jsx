@@ -20,7 +20,8 @@ const UserCard = (props) => {
     useEffect(() => {
         setisFollower(followers.includes(user._id))
     }, [])
-    const handleFollow = (e) => {
+
+    const handleFollow = () => {
         setisFollower(true)
         UserService
             .followers(_id)
@@ -28,7 +29,7 @@ const UserCard = (props) => {
             .catch(err => console.log(err))
     }
 
-    const handleUnFollow = (e) => {
+    const handleUnFollow = () => {
         setisFollower(false)
         UserService
             .unfollow(_id)

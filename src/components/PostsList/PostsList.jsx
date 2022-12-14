@@ -16,27 +16,18 @@ const PostsList = ({ posts, setRefresh }) => {
 
     const [refreshUser, setRefreshUser] = useState([])
 
-
-
     useEffect(() => {
-
         UserService
             .getUser(user._id)
             .then((response) => {
-                const favPostIDs = response.data.favPosts.map(post => {
-                    return post._id
-                })
+                const favPostIDs = response.data.favPosts.map(post => post._id)
                 setFavPost(favPostIDs)
-                const sharedPostIDs = response.data.sharedPosts.map(post => {
-                    return post
-                })
-                setSharedPosts(sharedPostIDs)
 
+                const sharedPostIDs = response.data.sharedPosts.map(post => post._id)
+                setSharedPosts(sharedPostIDs)
             })
             .catch(err => console.log(err))
     }, [refreshUser])
-
-
 
 
     return (

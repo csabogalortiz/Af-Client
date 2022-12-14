@@ -35,9 +35,14 @@ class FeelingService {
         return this.api.post('/create', feelingData)
     }
 
+    edit(feeling_id, updateFeeling) {
+        return this.api.put(`/edit/${feeling_id}`, updateFeeling)
+    }
+
     delete(feeling_id) {
         return this.api.post(`/delete/${feeling_id}`)
     }
+
 }
 
 const feelingService = new FeelingService()

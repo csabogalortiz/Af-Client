@@ -17,7 +17,6 @@ const Feed = () => {
     const [feeling, setFeeling] = useState({})
 
     const loadRandomFeeling = () => {
-
         feelingService
             .getRandomFeeling()
             .then(({ data }) => setFeeling(data))
@@ -34,6 +33,7 @@ const Feed = () => {
     const { user } = useContext(AuthContext)
 
     const loadPosts = () => {
+        setPosts()
         PostService
             .getPosts()
             .then(({ data }) => setPosts(data))
@@ -54,8 +54,7 @@ const Feed = () => {
         <>
             <Container className="Feed">
                 <Row>
-                    <RandomFeeling feeling={feeling} />
-
+                    <RandomFeeling {...feeling} />
                 </Row>
 
                 <Row>

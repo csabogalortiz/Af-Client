@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../contexts/auth.context"
 import authService from "../../services/auth.service"
+import ErrorMessage from './../ErrorMessage/ErrorMessage'
 
 const LoginForm = () => {
 
@@ -11,6 +12,8 @@ const LoginForm = () => {
         password: ''
     })
 
+
+    const [errors, setErrors] = useState([])
     const handleInputChange = e => {
         const { value, name } = e.target
         setSignupData({ ...signupData, [name]: value })
@@ -29,7 +32,7 @@ const LoginForm = () => {
                 const tokenFromServer = data.authToken
                 storeToken(tokenFromServer)
                 authenticateUser()
-                navigate('/feed')
+                navigate(`/feed`)
             })
             .catch(err => console.log(err))
     }

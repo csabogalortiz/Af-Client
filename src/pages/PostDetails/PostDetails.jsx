@@ -6,9 +6,7 @@ import DisplayCanvas from '../../components/Canvas/DisplayCanvas'
 import YoutubeEmbed from "../../components/Video/Video"
 
 
-const PostDetails = (props) => {
-
-    const { title, owner, content, postImg, canvas, videoId, _id, comments, description } = props;
+const PostDetails = () => {
 
     const [post, setPost] = useState()
     const { post_id } = useParams()
@@ -21,7 +19,6 @@ const PostDetails = (props) => {
     }, [])
 
     return (
-
 
         <Container>
 

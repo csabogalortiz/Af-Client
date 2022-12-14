@@ -10,14 +10,10 @@ import PostsList from '../../components/PostsList/PostsList'
 
 const Feeling = () => {
 
-
     const [feelingData, setFeelingData] = useState({})
     const [postsOfFeeling, setpostsOfFeeling] = useState([])
 
-
     const { feeling_id } = useParams()
-
-
 
     useEffect(() => {
         FeelingService
@@ -32,11 +28,11 @@ const Feeling = () => {
             .catch(err => console.error(err))
     }, [])
 
-    
+
 
     return (
         <Container className="Feeling">
-     
+
 
             <Row>
 

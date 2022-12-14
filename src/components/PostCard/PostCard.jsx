@@ -10,7 +10,8 @@ import NewCommentForm from './../NewCommentForm/NewCommentForm'
 import UserService from '../../services/user.service';
 import postService from '../../services/post.service';
 
-const PostCard = (props) => {
+const PostCard = ({ title, owner, content, postImg, canvas, videoId, _id, favPost, setRefresh, setRefreshUser, sharedPosts, mediaType }) => {
+
     const [showModal, setShowModal] = useState(false)
     const openModal = () => setShowModal(true)
     const closeModal = () => setShowModal(false)
@@ -18,7 +19,7 @@ const PostCard = (props) => {
     const fireFinalActions = () => {
         closeModal()
     }
-    const { title, owner, content, postImg, canvas, videoId, _id, favPost, setRefresh, setRefreshUser, sharedPosts, mediaType } = props;
+
     let splitId = null
 
     const [isFav, setIsFav] = useState(favPost.includes(_id))
@@ -32,7 +33,7 @@ const PostCard = (props) => {
         splitId = idVideo[1]
     }
 
-    const handleDelete = (e) => {
+    const handleDelete = () => {
         postService
             .delete(_id)
             .then((response) => {
@@ -42,7 +43,7 @@ const PostCard = (props) => {
 
     }
 
-    const handleFav = (e) => {
+    const handleFav = () => {
 
         UserService
             .favPost(_id)
@@ -53,7 +54,7 @@ const PostCard = (props) => {
 
     }
 
-    const handleUnLike = (e) => {
+    const handleUnLike = () => {
 
         UserService
             .unlikePost(_id)
@@ -64,7 +65,7 @@ const PostCard = (props) => {
             .catch(err => console.log(err))
     }
 
-    const handleShare = (e) => {
+    const handleShare = () => {
 
         UserService
             .sharedPosts(_id)
@@ -74,7 +75,7 @@ const PostCard = (props) => {
             .catch(err => console.log(err))
     }
 
-    const handleUnShare = (e) => {
+    const handleUnShare = () => {
 
         UserService
             .unSharePost(_id)
@@ -82,9 +83,7 @@ const PostCard = (props) => {
                 setRefreshUser(response)
             })
             .catch(err => console.log(err))
-
     }
-
 
     return (
 
@@ -93,12 +92,9 @@ const PostCard = (props) => {
             <Card.Body>
                 <Container>
                     <Link to={`/profile/${owner?._id}`} activeclassname="activeClicked">
-
-                        <Card.Title>{props?.owner?.username}</Card.Title>
-
+                        <Card.Title>{owner?.username}</Card.Title>
                         <div>
-                            <img src={props?.owner?.profileImg}></img>
-
+                            <img src={owner?.profileImg}></img>
                         </div>
                     </Link>
                     <h2>{title}</h2>
@@ -108,7 +104,6 @@ const PostCard = (props) => {
                         <div>
                             <img src={postImg}></img>
                         </div>
-
                     }
                     {mediaType === 'CANVAS' &&
                         <div>
@@ -143,7 +138,6 @@ const PostCard = (props) => {
                 <Button onClick={handleDelete} size="sm" variant="dark">
                     Delete
                 </Button>
-
 
                 <Col>
                     <div className="d-grid mb-5">

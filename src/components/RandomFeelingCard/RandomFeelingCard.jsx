@@ -5,21 +5,18 @@ import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import feelingService from '../../services/feeling.service';
 
-const RandomFeeling = (props) => {
-
-  const { feeling } = props
-
+const RandomFeeling = ({ _id, content, title }) => {
 
   return (
     <Card className='randomFeelingCard' border="white">
       <Card.Header as="h5"> Random feeling </Card.Header>
       <hr></hr>
       <Card.Body>
-        <Link to={`/feeling/${feeling._id}`} activeclassname="activeClicked">
-          <Card.Title>{feeling.title}</Card.Title>
+        <Link to={`/feeling/${_id}`} activeclassname="activeClicked">
+          <Card.Title>{title}</Card.Title>
         </Link>
         <Card.Text>
-          {feeling.content}
+          {content}
           <hr></hr>
           <p> Interpret the feeling</p>
         </Card.Text>

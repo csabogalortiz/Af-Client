@@ -4,26 +4,25 @@ import authService from "../../services/auth.service"
 import { useNavigate } from 'react-router-dom'
 import uploadServices from "../../services/upload.service"
 import ErrorMessage from "../ErrorMessage/ErrorMessage"
+import UserService from "../../services/user.service"
 
-// import { MessageContext } from './../../contexts/userMessage.context'
+const EditProfileForm = ({ user, fireFinalActions }) => {
 
+    const { username, email, bio, profileImg, coverImg } = user
 
-const SignupForm = () => {
-
-    const [userData, setUserData] = useState({
-        username: '',
-        email: '',
-        password: '',
-        bio: '',
-        profileImg: '',
-        coverImg: ''
+    const [updateUser, setUpdateUser] = useState({
+        username: username,
+        email: email,
+        bio: bio,
+        profileImg: profileImg,
+        coverImg: coverImg
     })
     const [errors, setErrors] = useState([])
     const [loadingImage, setLoadingImage] = useState(false)
 
     const handleInputChange = e => {
         const { name, value } = e.target
-        setUserData({ ...userData, [name]: value })
+        setUpdateUser({ ...updateUser, [name]: value })
     }
 
     const navigate = useNavigate()
@@ -37,10 +36,11 @@ const SignupForm = () => {
         const formData = new FormData()
         formData.append('imageData', e.target.files[0])
 
+
         uploadServices
             .uploadimage(formData)
             .then(res => {
-                setUserData({ ...userData, [e.target.name]: res.data.cloudinary_url })
+                setUpdateUser({ ...updateUser, [e.target.name]: res.data.cloudinary_url })
                 setLoadingImage(false)
             })
             .catch(err => console.log(err))
@@ -49,17 +49,13 @@ const SignupForm = () => {
     const handleSubmit = e => {
         e.preventDefault()
 
-        authService
-            .signup(userData)
+        UserService
+            .edit(user._id, updateUser)
             .then(() => {
-                navigate('/login')
+                fireFinalActions()
             })
             .catch(err => setErrors(err.response.data.errorMessages))
     }
-
-    const { username, password, email, bio, } = userData
-
-    console.log(userData)
 
     return (
 
@@ -68,24 +64,12 @@ const SignupForm = () => {
 
             <Form.Group className="mb-3" controlId="username">
                 <Form.Label>Username</Form.Label>
-                <Form.Control type="text" value={username} onChange={handleInputChange} name="username" />
-            </Form.Group>
-
-
-            <Form.Group className="mb-3" controlId="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" value={password} onChange={handleInputChange} name="password" />
-            </Form.Group>
-
-
-            <Form.Group className="mb-3" controlId="email">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="email" value={email} onChange={handleInputChange} name="email" />
+                <Form.Control type="text" value={updateUser.username} onChange={handleInputChange} name="username" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="bio">
                 <Form.Label>Bio</Form.Label>
-                <Form.Control type="text" value={bio} onChange={handleInputChange} name="bio" />
+                <Form.Control type="text" value={updateUser.bio} onChange={handleInputChange} name="bio" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="profileImg">
@@ -102,11 +86,11 @@ const SignupForm = () => {
 
 
             <div className="d-grid">
-                <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Loanding ...' : 'Submit'}</Button>
+                <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Loanding ...' : 'Edit'}</Button>
             </div>
 
         </Form>
     )
 }
 
-export default SignupForm
+export default EditProfileForm

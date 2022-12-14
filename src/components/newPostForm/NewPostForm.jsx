@@ -7,12 +7,11 @@ import postService from "./../../services/post.service"
 import uploadServices from "../../services/upload.service"
 import { AuthContext } from '../../contexts/auth.context';
 import DrawingCanvas from './../../components/Canvas/DrawingCanvas'
+import ErrorMessage from './../ErrorMessage/ErrorMessage'
 
 
 
-const NewPostForm = (props) => {
-
-    const { fireFinalActions, feeling, setRefresh } = props
+const NewPostForm = ({ fireFinalActions, feeling, setRefresh }) => {
 
     const [postData, setPotsData] = useState({
         title: '',
@@ -25,6 +24,8 @@ const NewPostForm = (props) => {
     })
 
     const [canSend, setCanSend] = useState(true)
+
+    const [errors, setErrors] = useState([])
 
     const saveCanvasData = (data) => {
         console.log('entro en saveCanvas')
@@ -63,7 +64,7 @@ const NewPostForm = (props) => {
                 fireFinalActions()
                 setRefresh(postData)
             })
-            .catch(err => console.error(err))
+            .catch(err => setErrors(err.response.data.errorMessages))
     }
 
     const { title, content, postImg, videoId } = postData
@@ -89,7 +90,6 @@ const NewPostForm = (props) => {
                 <option value="CANVAS">Draw</option>
                 <option value="SONG">Music</option>
                 <option value="TEXT">Text</option>
-
             </Form.Select>
 
             <Form.Group className="mb-5 mt-5" controlId="tabs">
@@ -100,12 +100,10 @@ const NewPostForm = (props) => {
                     justify
                 >
                     <Tab eventKey="Share an Image" title="Share an Image">
-
                         <Form.Group className="mb-3" controlId="postImg">
                             <Form.Label>Post Image (URL)</Form.Label>
                             <Form.Control type="file" onChange={handleFileUpload} />
                         </Form.Group>
-
                     </Tab>
                     <Tab eventKey="Draw" title="Draw">
                         <DrawingCanvas saveCanvasData={saveCanvasData} canSend={canSend} setCanSend={setCanSend} setPotsData={setPotsData} />
@@ -115,9 +113,9 @@ const NewPostForm = (props) => {
                             <Form.Control as="textarea" onChange={handleInputChange} placeholder="Paste your Youtube URL" rows={5} name="videoId" className="inputPost" value={videoId} />
                         </Form.Group>
                     </Tab>
-
                 </Tabs>
             </Form.Group>
+            {errors.length ? <ErrorMessage>{errors.map(elm => <p key={elm}>{elm}</p>)}</ErrorMessage> : undefined}
 
             <div className="">
                 <Button variant="dark" type="submit">Share Art</Button>

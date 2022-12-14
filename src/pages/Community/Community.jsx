@@ -41,8 +41,6 @@ const Community = () => {
 
                 </Col>
 
-
-
             </Row>
 
         </Container>
