@@ -28,6 +28,8 @@ function AuthProviderWrapper(props) {
                     setUser(null)
                     setIsLoading(false)
                 })
+        } else {
+            logoutUser()
         }
     }
 

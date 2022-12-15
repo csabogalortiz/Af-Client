@@ -21,14 +21,11 @@ const RandomFeeling = ({ _id, content, title, language }) => {
       </div>
       <div className="rf_HeroBTN mt-4">
         <Link to={`/feeling/${_id}`} className="mt-4">
-          <Button as="div" variant="outline-light" size="lg">DETAILS</Button>
+          <Button as="div" variant="outline-light rounded" size="lg">DETAILS</Button>
         </Link>
       </div>
 
     </Container>
-
-
-
 
 
 

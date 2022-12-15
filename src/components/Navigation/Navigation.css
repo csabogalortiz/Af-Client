@@ -10,9 +10,13 @@ element.style {
 
 .pro-sidebar {
     position: fixed !important;
-
+    color: white
 }
 
 .css-dip3t8 {
     background-color: black !important;
+}
+
+.sidebar-content {
+    position: fixed
 }

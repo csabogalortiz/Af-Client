@@ -7,8 +7,8 @@ import { useContext, useState } from 'react';
 import EditFeeling from './../EditFeeling/EditFeeling'
 
 
-const FeelingCard = ({ title, content, post, _id, language }) => {
-    const feeling = { title, content, post, _id, language }
+const FeelingCard = ({ title, content, post, _id, language, img }) => {
+    const feeling = { title, content, post, _id, language, img }
     const [showModal, setShowModal] = useState(false)
     const openModal = () => setShowModal(true)
     const closeModal = () => setShowModal(false)
@@ -19,25 +19,29 @@ const FeelingCard = ({ title, content, post, _id, language }) => {
 
     const { user } = useContext(AuthContext)
 
+
+
     return (
 
         <Card className='FeelingCard' border="white" style={{ width: '18rem' }}>
-            <Link to={`/feeling/${_id}`} activeclassname="activeClicked">
-                <Card.Title>
-                    <h3> {title}</h3>
-                </Card.Title>
-            </Link>
-            <hr></hr>
-            <>
-                <h4> {language}</h4>
-            </>
-            <Card.Body>
-
-                <Card.Text>
-                    <h4>{content}</h4>
-                </Card.Text>
+            <div className='card2'>
 
 
+                <Link to={`/feeling/${_id}`} activeclassname="activeClicked">
+                    <img src={img} class="FeelingCard-img" />
+
+
+
+                    <h3 className="text-title"> {title}</h3>
+
+
+                </Link>
+
+                <p className='text-body'> <h5 className="feelingCard"> {language}</h5> </p>
+
+
+
+                <p className='text-body'><span> {content}</span></p>
                 {user && <Button onClick={openModal} variant="dark" size="sm">Edit</Button>}
 
                 <Modal show={showModal} onHide={closeModal}>
@@ -48,8 +52,7 @@ const FeelingCard = ({ title, content, post, _id, language }) => {
                         <EditFeeling fireFinalActions={fireFinalActions} feeling={feeling} />
                     </Modal.Body>
                 </Modal>
-
-            </Card.Body>
+            </div>
         </Card>
 
     );

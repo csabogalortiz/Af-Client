@@ -30,7 +30,7 @@ const SidebarComponent = () => {
                             </NavLink>
 
                             <NavLink to="/Discover" activeclassname="activeClicked">
-                                <CDBSidebarMenuItem icon="columns">#Discover</CDBSidebarMenuItem>
+                                <CDBSidebarMenuItem icon="columns">Discover</CDBSidebarMenuItem>
                             </NavLink>
 
                             <NavLink to="/community" activeclassname="activeClicked">
@@ -40,7 +40,7 @@ const SidebarComponent = () => {
                                 <CDBSidebarMenuItem icon="columns">Feed</CDBSidebarMenuItem>
                             </NavLink>
                             <NavLink to="/login" target="_blank" activeclassname="activeClicked">
-                                <CDBSidebarMenuItem as="div" onClick={logoutUser} icon="exclamation-circle">Log-Out ʕ•́ᴥ•̀ʔっ</CDBSidebarMenuItem>
+                                <CDBSidebarMenuItem as="div" onClick={logoutUser} icon="exclamation-circle">Log-Out</CDBSidebarMenuItem>
                             </NavLink>
                         </>
                         :
@@ -66,7 +66,7 @@ const SidebarComponent = () => {
                         padding: '20px 5px',
                     }}
                 >
-                    Footer Aqui
+
                 </div>
             </CDBSidebarFooter>
         </Sidebar>

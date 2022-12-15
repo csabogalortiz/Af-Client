@@ -10,11 +10,14 @@ import NewPostForm from './../../components/newPostForm/NewPostForm'
 import Loader from './../../components/Loader/Loader'
 import RandomFeeling from '../../components/RandomFeelingCard/RandomFeelingCard'
 import feelingService from '../../services/feeling.service'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import 'animate.css'
 
 const Feed = () => {
 
     const [feeling, setFeeling] = useState({})
+
 
     const loadRandomFeeling = () => {
         feelingService
@@ -52,17 +55,29 @@ const Feed = () => {
 
     return (
         <>
-            <Container className="Feed">
+
+            <Container className="Feed animate__animated animate__fadeIn">
+
                 <Row>
                     <RandomFeeling {...feeling} />
                 </Row>
-
                 <Row>
-                    <Col md={{ span: 8, offset: 2 }}>
-                        {user && <Button onClick={openModal} variant="dark" size="sm">Crear nueva</Button>}
-                        <hr />
-                        <h1>FEED!!</h1>
-
+                    <Col>
+                        <Link onClick={openModal} style={{ textDecoration: 'none' }}>
+                            <div className='CreatePost d-flex justify-content-around align-items-center px-3 gap-3' >
+                                <div className='colInPost'>
+                                    <img src={user.profileImg} class='createPostImg' ></img>
+                                </div>
+                                <div className="createPostUser">
+                                    <p className='m-0'>How would you express this feeling artistically?</p>
+                                </div>
+                                {/* <Col>
+                                    <div className='CreatePost'>
+                                        {user && <Button onClick={openModal} ></Button>}
+                                    </div>
+                                </Col> */}
+                            </div>
+                        </Link>
                         {!posts ? <Loader /> : <PostsList posts={posts} setRefresh={setRefresh} />}
 
                     </Col>

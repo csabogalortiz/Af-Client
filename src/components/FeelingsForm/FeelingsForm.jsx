@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
 import feelingService from './../../services/feeling.service'
 import ErrorMessage from './../ErrorMessage/ErrorMessage'
+import uploadServices from "../../services/upload.service"
 
 
 const NewFeelingForm = ({ fireFinalActions }) => {
@@ -11,9 +12,29 @@ const NewFeelingForm = ({ fireFinalActions }) => {
         owner: '',
         description: '',
         language: '',
+        img: '',
     })
 
     const [errors, setErrors] = useState([])
+
+    const [loadingImage, setLoadingImage] = useState(false)
+
+    const handleFileUpload = e => {
+        setLoadingImage(true)
+
+        const formData = new FormData()
+        formData.append('imageData', e.target.files[0])
+
+        uploadServices
+            .uploadimage(formData)
+            .then(res => {
+                setFeelingData({ ...feelingData, img: res.data.cloudinary_url })
+                setLoadingImage(false)
+            })
+            .catch(err => console.log(err))
+    }
+
+
 
     const handleInputChange = e => {
         const { name, value } = e.target
@@ -34,7 +55,7 @@ const NewFeelingForm = ({ fireFinalActions }) => {
             .catch(err => setErrors(err.response.data.errorMessages))
     }
 
-    const { title, content, language } = feelingData
+    const { title, content, language, img } = feelingData
 
     return (
 
@@ -55,6 +76,11 @@ const NewFeelingForm = ({ fireFinalActions }) => {
 
             <Form.Group className="mb-3" controlId="description">
                 <Form.Control as="textarea" onChange={handleInputChange} placeholder="Post your feeling" rows={5} name="content" className="inputPost" value={content} />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="img">
+                <Form.Label>Post Image (URL)</Form.Label>
+                <Form.Control type="file" onChange={handleFileUpload} />
             </Form.Group>
 
 

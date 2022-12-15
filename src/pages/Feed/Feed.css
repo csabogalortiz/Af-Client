@@ -1,0 +1,36 @@
+.CreatePost {
+    background-color: #222222 !important;
+    border-radius: 15px !important;
+    height: 150px !important;
+    width: 600px;
+    font-weight: 400 !important;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.custom-btn {
+    background-color: #222222 !important;
+}
+
+.btn-dark {
+    --bs-btn-bg: #222222 !important;
+}
+
+.createPostImg {
+    object-fit: cover;
+    border-radius: 50% !important;
+    width: 100px !important;
+    height: 100px;
+    padding: 0px !important;
+}
+
+.createPostUser p {
+    text-align: start !important;
+    font-size: 20px !important;
+    color: rgb(116, 116, 116)
+}
+
+.colInPost {
+    padding: 0px;
+}

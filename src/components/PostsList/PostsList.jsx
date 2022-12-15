@@ -34,7 +34,7 @@ const PostsList = ({ posts, setRefresh }) => {
         <Row>
             {posts.map(elm => {
                 return (
-                    <Col xs={12} key={elm._id} >
+                    <Col lg={4} key={elm._id} >
                         <PostCard {...elm} favPost={favPost} sharedPosts={sharedPosts} setRefresh={setRefresh} setRefreshUser={setRefreshUser} />
                     </Col>
                 )

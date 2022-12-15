@@ -48,7 +48,7 @@ function DrawingCanvas(props) {
                     <CanvasDraw
                         style={{ border: '1px solid', borderRadius: '20px' }}
                         hideGrid={true}
-                        canvasWidth={300}
+                        canvasWidth={450}
                         canvasHeight={300}
                         ref={canvas}
                         lazyRadius={0}
@@ -62,7 +62,7 @@ function DrawingCanvas(props) {
                     {
                         canSend
                             ?
-                            
+
                             <button onClick={handleSave}>Save Drawing </button>
                             :
                             <p>Saved </p>

@@ -1,10 +1,28 @@
-.PostCard img {
-    height: 150px;
-    border-radius: 50%;
-    width: 150px;
+.PostCard {
+    background-color: black;
+}
+
+.postsCards {
+    color: rgb(255, 255, 255);
+    background: #19191E;
+    border-radius: 35.3232px 35.3232px 0px 0px;
 
 }
 
-.PostCard {
-    background-color: black;
+.imgOfPost {
+    object-fit: cover;
+    border-radius: 50% !important;
+    height: 100px;
+    width: 100px;
+}
+
+.backgroundForImg {
+    object-fit: cover;
+    background-color: white;
+}
+
+.postImage {
+    object-fit: cover;
+    height: 320px;
+    width: 100%;
 }

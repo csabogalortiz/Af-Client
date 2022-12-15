@@ -7,6 +7,8 @@ function DisplayCanvas({ canvasData }) {
     return (
         <div>
             <CanvasDraw
+                canvasWidth={320}
+                canvasHeight={320}
                 ref={data}
                 hideGrid={true}
                 disabled={true}
