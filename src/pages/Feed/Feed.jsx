@@ -58,12 +58,12 @@ const Feed = () => {
 
             <Container className="Feed animate__animated animate__fadeIn">
 
-                <Row>
+                <Row className="animate__fadeInDown">
                     <RandomFeeling {...feeling} />
                 </Row>
                 <Row>
                     <Col>
-                        <Link onClick={openModal} style={{ textDecoration: 'none' }}>
+                        <Link className='d-flex justify-content-center' onClick={openModal} style={{ textDecoration: 'none' }}>
                             <div className='CreatePost d-flex justify-content-around align-items-center px-3 gap-3' >
                                 <div className='colInPost'>
                                     <img src={user.profileImg} class='createPostImg' ></img>
@@ -71,12 +71,15 @@ const Feed = () => {
                                 <div className="createPostUser">
                                     <p className='m-0'>How would you express this feeling artistically?</p>
                                 </div>
+
                                 {/* <Col>
                                     <div className='CreatePost'>
                                         {user && <Button onClick={openModal} ></Button>}
                                     </div>
                                 </Col> */}
                             </div>
+                            <hr>
+                            </hr>
                         </Link>
                         {!posts ? <Loader /> : <PostsList posts={posts} setRefresh={setRefresh} />}
 
@@ -84,10 +87,8 @@ const Feed = () => {
                 </Row>
             </Container>
             <Modal show={showModal} onHide={closeModal}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Make a Post</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
+
+                <Modal.Body className="Modal">
                     <NewPostForm fireFinalActions={fireFinalActions} feeling={feeling} setRefresh={setRefresh} />
                 </Modal.Body>
             </Modal>

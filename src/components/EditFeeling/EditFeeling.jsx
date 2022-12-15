@@ -58,10 +58,11 @@ const EditFeelingForm = ({ feeling, fireFinalActions }) => {
 
 
             <div className="">
-                <Button variant="dark" type="submit">Edit feeling</Button>
+                <Button variant="outline-light rounded" type="submit">Edit feeling</Button>
             </div>
         </Form>
     )
 }
+
 
 export default EditFeelingForm

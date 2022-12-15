@@ -4,6 +4,8 @@ import { Link, useParams } from "react-router-dom"
 import postService from "./../../services/post.service"
 import DisplayCanvas from '../../components/Canvas/DisplayCanvas'
 import YoutubeEmbed from "../../components/Video/Video"
+import './PostDetails.css'
+
 
 
 const PostDetails = () => {
@@ -20,7 +22,7 @@ const PostDetails = () => {
 
     return (
 
-        <Container>
+        <div className="container-fluid">
 
             <Link to="/feed">
                 <Button as="div" variant="dark">Back</Button>
@@ -32,17 +34,37 @@ const PostDetails = () => {
                     <h1>Loading</h1>
                     :
                     <>
-                        <h1 className="mb-4">{post.title} Details </h1>
-                        <hr />
 
-                        <Row>
-                            <Col>
+                        <div className="profile-pic">
+
+
+                            <img src={post.postImg} style={{ width: '100%' }} />
+
+
+
+
+                            {post.canvas && <DisplayCanvas canvasData={post.canvas} />}
+
+                            {
+                                post.videoId &&
+                                <div className="App">
+                                    <YoutubeEmbed embedId={post.splitId} />
+                                </div>
+                            }
+
+
+                        </div>
+                        <div className=" information">
+                            <div >
+
+                                <h1 >{post.title} Details </h1>
+                                <hr />
+
+
                                 <h3>Content</h3>
                                 <p>{post.content}</p>
                                 <hr />
-                            </Col>
 
-                            <Col>
                                 <h3>Comments</h3>
                                 {post.comments.map(elem => {
                                     return <div>
@@ -52,34 +74,28 @@ const PostDetails = () => {
                                     </div>
                                 })}
                                 <hr />
-                            </Col>
-
-                            <Col>
-                                <img src={post.postImg} style={{ width: '100%' }} />
-                            </Col>
-
-                            <Col>
-                                {post.canvas && <DisplayCanvas canvasData={post.canvas} />}
-                            </Col>
-
-                            <Col>
-                                {
-                                    post.videoId &&
-                                    <div className="App">
-                                        <h1>Youtube Embed</h1>
-                                        <YoutubeEmbed embedId={post.splitId} />
-                                    </div>
-                                }
-                            </Col>
 
 
-                        </Row>
+
+                            </div>
+                        </div>
+
+
+
+
                     </>
             }
 
 
-        </Container>
+        </div >
+
+
     )
+
+
 }
 
+
+
 export default PostDetails
+

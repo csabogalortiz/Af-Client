@@ -26,3 +26,88 @@
     height: 320px;
     width: 100%;
 }
+
+.cardText {
+    color: white
+}
+
+.cardText p {
+    font-size: small;
+}
+
+.actionButtons {
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-evenly
+}
+
+.actionButton {
+    margin: 5px;
+    padding: 3px;
+    width: 30px;
+    height: 30px;
+}
+
+@keyframes pinkBack {
+    from {
+        background-color: none;
+    }
+
+    to {
+        background-color: rgba(252, 58, 184, 0.658);
+    }
+}
+
+@keyframes greenBack {
+    from {
+        background-color: none;
+    }
+
+    to {
+        background-color: rgba(120, 255, 219, 0.637);
+    }
+}
+
+@keyframes blueBack {
+    from {
+        background-color: none;
+    }
+
+    to {
+        background-color: rgba(148, 196, 241, 0.637);
+    }
+}
+
+
+@keyframes purpleBack {
+    from {
+        background-color: none;
+    }
+
+    to {
+        background-color: rgba(194, 53, 255, 0.637);
+    }
+}
+
+.actionButton:hover {
+    border-radius: 50%;
+    animation-fill-mode: forwards;
+    animation-duration: 0.3s;
+
+}
+
+.love:hover {
+    animation-name: pinkBack;
+}
+
+.share:hover {
+    animation-name: greenBack;
+}
+
+.comment:hover {
+    animation-name: purpleBack;
+}
+
+.edit:hover {
+    animation-name: yellowBack;
+}

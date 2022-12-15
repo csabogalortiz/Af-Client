@@ -10,6 +10,7 @@ import NewCommentForm from './../NewCommentForm/NewCommentForm'
 import UserService from '../../services/user.service';
 import postService from '../../services/post.service';
 import 'animate.css'
+import { MdFavorite, MdFavoriteBorder, MdOutlineModeComment, MdOutlineShare, MdShare, MdOutlineMoreHoriz } from "react-icons/md";
 
 
 const PostCard = ({ title, owner, content, postImg, canvas, videoId, _id, favPost, setRefresh, setRefreshUser, sharedPosts, mediaType }) => {
@@ -89,7 +90,7 @@ const PostCard = ({ title, owner, content, postImg, canvas, videoId, _id, favPos
 
     return (
 
-        <Card style={{ width: '24rem' }} className="mb-4 postsCards" >
+        <Card className="mb-4 postsCards rounded" >
             <div style={{ width: "100%" }} className='p-0 m-0'>
                 {mediaType === 'IMG' &&
                     <div>
@@ -105,71 +106,69 @@ const PostCard = ({ title, owner, content, postImg, canvas, videoId, _id, favPos
                 {
                     videoId &&
                     <div className="App">
-                        <h1>Youtube Embed</h1>
                         <YoutubeEmbed style={{ width: "100%" }} embedId={splitId} />
                     </div>
                 }
             </div>
-            <Card.Body  >
-                <Link to={`/profile/${owner?._id}`} activeclassname="activeClicked">
-                    <Card.Title>{owner?.username}</Card.Title>
-                    <div className='p-0 m-0 imgOfPost'>
-                        <img className="imgOfPost" src={owner?.profileImg}></img>
-                    </div>
-                </Link>
-                <h2>{title}</h2>
-                <h4>{content}</h4>
-                <Card.Text>
-                    <h2>{title}</h2>
-                    <h4>{content}</h4>
+            <Card.Body>
+                <div>
+                    <Link className='d-flex justify-content-around align-items-center px-3 gap-3' to={`/profile/${owner?._id}`} activeclassname="activeClicked" style={{ textDecoration: 'none' }}>
+                        <div className='p-0 m-0 imgOfPost'>
+                            <img className="imgOfPost" src={owner?.profileImg}></img>
+                        </div>
+                        <Card.Title className="cardText" style={{ textDecoration: 'none' }}>{owner?.username}</Card.Title>
+                    </Link>
+                </div>
+                <hr>
+                </hr>
+                <Card.Text className='cardText'>
+                    <p>{content}</p>
                 </Card.Text>
 
-                <div className='d-flex justify-content-around align-items-center px-3 gap-3'>
+                <hr>
+                </hr>
 
-                    <Link to={`/posts/${_id}/details`}>
-                        <div className="d-grid mb-5">
-                            <Button variant="dark" size="sm">Details</Button>
-                        </div>
-                    </Link>
-                    {user && <Button onClick={openModal} variant="dark" size="lg"></Button>}
+                <div className='actionButtons d-flex justify-content-around align-items-center pt-2 px-3 gap-3'>
+                    <div className="actionButton comment d-grid mb-5">
+                        {user && <MdOutlineModeComment onClick={openModal} variant="dark" size="lg" />}
 
-
+                        {/* 
                     <Button onClick={handleDelete} size="sm" variant="dark">
-                        Delete
-                    </Button>
+                    Delete
+                </Button> */}
+                    </div>
 
-                    <div className="d-grid mb-5">
+                    <div className="actionButton love d-grid mb-5">
                         {
                             !favPost.includes(_id)
                                 ?
-                                <Button onClick={handleFav} size="sm" variant="dark">
-                                    ♡
-                                </Button>
+                                <MdFavoriteBorder onClick={handleFav} size="sm" />
                                 :
-                                <Button onClick={handleUnLike} size="sm" variant="dark">
-                                    ♥
-                                </Button>
+                                <MdFavorite onClick={handleUnLike} size="sm" color="FE53BB" />
+
                         }
                     </div>
 
-                    <div className="d-grid mb-5">
+                    <div className="actionButton share d-grid mb-5">
                         {
                             !sharedPosts.includes(_id)
                                 ?
-                                <Button onClick={handleShare} size="sm" variant="primary">
-                                    ⬛
-                                </Button>
+                                <MdOutlineShare MdShare onClick={handleShare} size="sm" />
                                 :
-                                <Button onClick={handleUnShare} size="sm" variant="primary">
-                                    ⬜
-                                </Button>
+                                <MdShare onClick={handleUnShare} size="sm" color="00FFD4" />
+
                         }
                     </div>
+                    <Link className='actionButton' to={`/posts/${_id}/details`}>
+                        <div className="d-grid mb-5">
+                            <MdOutlineMoreHoriz variant="dark" size="sm" color="A166FF" />
+                        </div>
+                    </Link>
                 </div>
 
                 <Modal show={showModal} onHide={closeModal}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Add Comment</Modal.Title>
+                        <Modal.Title>Add a Comment</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <NewCommentForm fireFinalActions={fireFinalActions} postId={_id} />

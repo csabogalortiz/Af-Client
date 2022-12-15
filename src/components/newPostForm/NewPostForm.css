@@ -18,3 +18,31 @@ textarea.inputPost.inputPost {
     cursor: pointer;
 
 }
+
+.formGlobal {
+    background-color: #010101;
+    border: 2px solid rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 25px;
+}
+
+.FeelingTitle h3 {
+    font-weight: 600;
+
+}
+
+.formTabs {
+    color: rgb(116, 255, 255)
+}
+
+.formTabsPurple {
+    color: rgb(192, 63, 252)
+}
+
+.formTabsPink {
+    color: rgb(255, 184, 30)
+}
+
+.formTextArea {
+    background-color: #010101;
+}

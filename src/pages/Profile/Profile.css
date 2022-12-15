@@ -1,6 +1,57 @@
 .Followers img {
     border-radius: 50%;
+}
 
+.profileImg {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+}
+
+.coverImg {
+    object-fit: cover;
+    width: 1000px;
+    height: 20px;
+}
+
+.distribution {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.profileUsername {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 80.564px;
+    line-height: 232px;
+}
+
+.profileBio {
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 20px;
+    line-height: 58px;
+}
+
+.followers {
+    border-radius: 50%;
+}
+
+.followers h3 {
+    font-weight: 200;
+    font-size: 20px;
+    padding-right: 20px;
+}
+
+.profileTabs {
+    color: aqua;
 
 }
 

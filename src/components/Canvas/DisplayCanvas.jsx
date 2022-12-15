@@ -12,6 +12,7 @@ function DisplayCanvas({ canvasData }) {
                 ref={data}
                 hideGrid={true}
                 disabled={true}
+                backgroundColor="black"
 
             />
         </div >

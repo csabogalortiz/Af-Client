@@ -23,7 +23,7 @@ const Discover = () => {
 
     const { user } = useContext(AuthContext)
 
-    console.log('USEEER', user)
+
     const loadFeelings = () => {
         feelingService
             .getFeelings()
@@ -55,7 +55,7 @@ const Discover = () => {
 
     return (
         <>
-            <Container className="Feed">
+            < div className="Feed">
                 <Row>
 
                     <Col md={{ span: 8, offset: 2 }}>
@@ -73,7 +73,7 @@ const Discover = () => {
                         {!copyFeelings ? <Loader /> : <FeelingsList posts={copyFeelings} />}
                     </Col>
                 </Row>
-            </Container>
+            </div >
             <Modal show={showModal} onHide={closeModal}>
                 <Modal.Header closeButton>
                     <Modal.Title>Make a feeling</Modal.Title>

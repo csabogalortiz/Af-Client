@@ -48,12 +48,13 @@ function DrawingCanvas(props) {
                     <CanvasDraw
                         style={{ border: '1px solid', borderRadius: '20px' }}
                         hideGrid={true}
-                        canvasWidth={450}
+                        canvasWidth={400}
                         canvasHeight={300}
                         ref={canvas}
                         lazyRadius={0}
                         brushColor={color}
                         brushRadius={Radius}
+                        backgroundColor="black"
 
                     />
                     <div>

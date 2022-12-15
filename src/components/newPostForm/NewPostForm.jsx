@@ -20,7 +20,7 @@ const NewPostForm = ({ fireFinalActions, feeling, setRefresh }) => {
         canvas: '',
         videoId: '',
         feeling: feeling._id,
-        mediaType: '',
+        mediaType: "TEXT",
     })
 
     const [canSend, setCanSend] = useState(true)
@@ -55,6 +55,10 @@ const NewPostForm = ({ fireFinalActions, feeling, setRefresh }) => {
             .catch(err => console.log(err))
     }
 
+    const handleMediaType = (e) => {
+        console.log(e)
+        setPotsData({ ...postData, mediaType: e })
+    }
 
     const handleFormSubmit = e => {
         e.preventDefault()
@@ -71,46 +75,48 @@ const NewPostForm = ({ fireFinalActions, feeling, setRefresh }) => {
 
     const { user, logoutUser } = useContext(AuthContext)
 
-    console.log('canSend-------------------', canSend)
+
 
     return (
 
-        <Form onSubmit={handleFormSubmit}>
-            <Form.Group className="mb-3" controlId="name">
-                <Form.Label>{feeling?.title}</Form.Label>
+        <Form className="formGlobal" onSubmit={handleFormSubmit}>
+            <Form.Group className="FeelingTitle mb-3" controlId="name">
+                <h3> Feeling of the Day: {feeling?.title}</h3>
             </Form.Group>
-
-            <Form.Group className="mb-5" controlId="content">
-                <Form.Control as="textarea" onChange={handleInputChange} placeholder="Interpreta el sentimiento del dia" rows={5} name="content" className="inputPost" value={content} />
-            </Form.Group>
-
-            <Form.Select aria-label="Default select example " onChange={handleInputChange} name="mediaType">
-                <option>Select media  </option>
-                <option value="IMG">Picture</option>
-                <option value="CANVAS">Draw</option>
+            {/* 
+            <Form.Select className="mb-3" aria-label="Default select example" onChange={handleInputChange} name="mediaType">
+                <option>What type of art are you sharing? </option>
+                <option value="IMG">Photo</option>
+                <option value="CANVAS">Drawing</option>
                 <option value="SONG">Music</option>
                 <option value="TEXT">Text</option>
-            </Form.Select>
+            </Form.Select> */}
+
+            <Form.Group className="mb-5 formType" controlId="content">
+                <Form.Control as="textarea" onChange={handleInputChange} placeholder="A few words about this post..." rows={5} name="content" className="inputPost formTextArea" value={content} />
+            </Form.Group>
 
             <Form.Group className="mb-5 mt-5" controlId="tabs">
                 <Tabs
+                    onSelect={(e) => { handleMediaType(e) }}
+                    variant='pills'
                     defaultActiveKey="profile"
                     id="justify-tab-example"
-                    className="mb-3"
+                    className="mb-3 "
                     justify
                 >
-                    <Tab eventKey="Share an Image" title="Share an Image">
+                    <Tab tabClassName='formTabs' eventKey="IMG" title="Picture" style={{ color: 'red' }}>
                         <Form.Group className="mb-3" controlId="postImg">
-                            <Form.Label>Post Image (URL)</Form.Label>
+                            <Form.Label className='formTabs'> Share a Picture</Form.Label>
                             <Form.Control type="file" onChange={handleFileUpload} />
                         </Form.Group>
                     </Tab>
-                    <Tab eventKey="Draw" title="Draw">
+                    <Tab tabClassName='formTabsPurple' eventKey="CANVAS" title="Draw">
                         <DrawingCanvas saveCanvasData={saveCanvasData} canSend={canSend} setCanSend={setCanSend} setPotsData={setPotsData} />
                     </Tab>
-                    <Tab eventKey="longer-tab" title="Music">
+                    <Tab tabClassName='formTabsPink' eventKey="SONG" title="Music">
                         <Form.Group className="mb-5" controlId="videoId">
-                            <Form.Control as="textarea" onChange={handleInputChange} placeholder="Paste your Youtube URL" rows={5} name="videoId" className="inputPost" value={videoId} />
+                            <Form.Control as="input" pattern="^(https?\:\/\/)?((www\.)?youtube\.com|youtu\.be)\/.+$" onChange={handleInputChange} placeholder="Paste your Youtube URL" rows={5} name="videoId" className="inputPost" value={videoId} />
                         </Form.Group>
                     </Tab>
                 </Tabs>
@@ -118,9 +124,9 @@ const NewPostForm = ({ fireFinalActions, feeling, setRefresh }) => {
             {errors.length ? <ErrorMessage>{errors.map(elm => <p key={elm}>{elm}</p>)}</ErrorMessage> : undefined}
 
             <div className="">
-                <Button variant="dark" type="submit">Share Art</Button>
+                <Button variant="outline-light rounded" size="lg" type="submit">Share Your Art Piece</Button>
             </div>
-        </Form>
+        </Form >
 
 
     );
