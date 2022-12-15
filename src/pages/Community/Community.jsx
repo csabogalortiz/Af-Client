@@ -24,14 +24,13 @@ const Community = () => {
 
 
     return (
-        <Container className="Community">
+        <Container className="mt-5 Community">
+            <div className="rf_Hero_SubTitle_Page mt-3 mb-4">
+                <p>Where Feelings and People Meet</p>
+            </div>
 
-            <h1>Welcome to our Commmunity!!</h1>
-            <p>Where Feelings and People Meet</p>
-            <hr />
-
+            <h1 className='rf_Hero_Title_Community'>Our Commmunity</h1>
             <Row>
-
                 <Col md={{ span: 8, offset: 2 }}>
                     {!users ? <Loader /> : <UsersList users={users} setRefresh={setRefresh} />}
 

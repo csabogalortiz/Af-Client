@@ -18,5 +18,10 @@ element.style {
 }
 
 .sidebar-content {
-    position: fixed
+    position: fixed;
+    color: white
+}
+
+.item-content {
+    color: white
 }

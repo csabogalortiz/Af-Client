@@ -6,12 +6,14 @@ import { AuthContext } from './../../contexts/auth.context'
 import { useContext, useEffect, useState } from 'react';
 import UserService from '../../services/user.service'
 
+const cardStyles = ['CardColorZero', 'CardColorOne', 'CardColorTwo', 'CardColorThree', 'CardColorFour', 'CardColorFive']
+
 const UserCard = (props) => {
 
     const navigate = useNavigate()
 
-    const { username, profileImg, bio, _id, followers, setRefresh } = props;
-
+    const { index, username, profileImg, bio, _id, followers, setRefresh } = props;
+    console.log('index', index)
 
     const { user } = useContext(AuthContext)
 
@@ -39,26 +41,33 @@ const UserCard = (props) => {
 
     return (
 
-        <Card className="mb-4 UserCard">
+        <Card className={`mb-4 UserCard ${cardStyles[index]}`} style={{ minHeight: '400px' }}>
             <Card.Body>
                 <div>
-                    <img src={profileImg}></img>
-                    <p>{bio}</p>
+                    <div className='mb-2'>
+                        <img src={profileImg}></img>
+                    </div>
+                    <Link className='mt-4 userCardText' style={{ textDecoration: 'none' }} to={`/profile/${_id}`} activeclassname="activeClicked">
+                        <h2>{username}</h2>
+                    </Link>
                 </div>
-                <Link to={`/profile/${_id}`} activeclassname="activeClicked">
-                    <Card.Title>{username}</Card.Title>
-                </Link>
-                {
-                    !isFollower ?
-                        <Button onClick={handleFollow} size="sm" variant="dark">
-                            Follow
-                        </Button>
-                        :
-                        <Button onClick={handleUnFollow} size="sm" variant="dark">
-                            Unfollow
-                        </Button>
+                <hr></hr>
+                <div>
+                    <div className='mt-4'>
+                        <p>{bio}</p>
+                    </div>
+                    {
+                        !isFollower ?
+                            <Button onClick={handleFollow} size="lg" variant="dark">
+                                Follow
+                            </Button>
+                            :
+                            <Button onClick={handleUnFollow} size="lg" variant="dark">
+                                Unfollow
+                            </Button>
 
-                }
+                    }
+                </div>
 
             </Card.Body>
         </Card>

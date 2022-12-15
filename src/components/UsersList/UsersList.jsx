@@ -5,10 +5,10 @@ const UsersList = ({ users, setRefresh }) => {
 
     return (
         <Row>
-            {users.map(elm => {
+            {users.map((elm, index) => {
                 return (
                     <Col sm={{ span: 4 }} key={elm._id} >
-                        <UserCard {...elm} setRefresh={setRefresh} />
+                        <UserCard {...elm} index={index % 6} setRefresh={setRefresh} />
                     </Col>
                 )
             })}

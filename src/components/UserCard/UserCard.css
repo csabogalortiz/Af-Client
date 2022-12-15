@@ -1,12 +1,57 @@
 .UserCard img {
     height: 150px;
+    object-fit: cover;
     border-radius: 50%;
     width: 150px;
+    background: rgb(7, 251, 31);
+    background: linear-gradient(90deg, rgb(220, 74, 255) 0%, rgb(170, 51, 255) 100%);
+
+}
+
+.card-title h2 {
+    color: white;
+    font-size: 30px;
+    font-weight: 200;
+}
+
+.userCardText {
+    color: white;
+    font-size: 30px;
+    font-weight: bolder !important
+}
+
+.cardButton {
+    background-color: #19191E;
+    height: 80px;
+    border-radius: 20px;
+}
+
+.CardColorZero {
     background: rgb(7, 225, 251);
     background: linear-gradient(90deg, rgba(7, 225, 251, 1) 0%, rgba(82, 150, 246, 1) 100%);
 }
 
-.UserCard {
+.CardColorOne {
+    background: rgb(7, 251, 31);
+    background: linear-gradient(90deg, rgb(220, 74, 255) 0%, rgb(170, 51, 255) 100%);
+}
+
+.CardColorTwo {
     background: rgb(7, 225, 251);
-    background: linear-gradient(90deg, rgba(7, 225, 251, 1) 0%, rgba(82, 150, 246, 1) 100%);
+    background: linear-gradient(90deg, rgba(7, 225, 251, 1) 0%, rgb(74, 150, 255) 100%);
+}
+
+.CardColorThree {
+    background: rgb(7, 225, 251);
+    background: linear-gradient(90deg, rgb(109, 7, 251) 0%, rgba(82, 150, 246, 1) 100%);
+}
+
+.CardColorFour {
+    background: rgb(7, 225, 251);
+    background: linear-gradient(90deg, rgb(251, 141, 7) 0%, rgb(246, 148, 82) 100%);
+}
+
+.CardColorFive {
+    background: rgb(7, 225, 251);
+    background: linear-gradient(90deg, rgb(251, 7, 92) 0%, rgb(246, 82, 161) 100%);
 }

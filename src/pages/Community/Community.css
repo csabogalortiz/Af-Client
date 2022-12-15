@@ -1,0 +1,24 @@
+.rf_Hero_SubTitle_Page {
+
+    font-family: 'Montserrat';
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 55px;
+    letter-spacing: 0.51em;
+    color: #FFFFFF;
+}
+
+
+.rf_Hero_Title_Community {
+    font-family: 'Montserrat' sans-serif;
+    font-size: 80px;
+    font-weight: 800;
+    letter-spacing: -4px;
+    background: #07E1FB;
+    background: linear-gradient(to right, #7d12ff 0%, #55ccff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 40px;
+}

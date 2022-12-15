@@ -13,8 +13,9 @@ import 'animate.css'
 import { MdFavorite, MdFavoriteBorder, MdOutlineModeComment, MdOutlineShare, MdShare, MdOutlineMoreHoriz } from "react-icons/md";
 
 
-const PostCard = ({ title, owner, content, postImg, canvas, videoId, _id, favPost, setRefresh, setRefreshUser, sharedPosts, mediaType }) => {
-
+const PostCard = (props) => {
+    console.log({ props })
+    const { title, owner, content, postImg, canvas, videoId, _id, favPost, feeling, setRefresh, setRefreshUser, sharedPosts, mediaType } = props
     const [showModal, setShowModal] = useState(false)
     const openModal = () => setShowModal(true)
     const closeModal = () => setShowModal(false)
@@ -122,6 +123,8 @@ const PostCard = ({ title, owner, content, postImg, canvas, videoId, _id, favPos
                 <hr>
                 </hr>
                 <Card.Text className='cardText'>
+                    <p>{feeling?.title}</p>
+                    {/* <h4>{feeling}</h4> */}
                     <p>{content}</p>
                 </Card.Text>
 

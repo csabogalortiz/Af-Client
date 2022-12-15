@@ -31,29 +31,23 @@ const Feeling = () => {
 
 
     return (
-        <Container className="Feeling">
 
-
+        <Container className='mt-5'>
             <Row>
-
-                <Col md={{ span: 8, offset: 2 }}>
-
-                    <h1>{feelingData.title}</h1>
+                <h1 className='rf_Hero_Title'>{feelingData.title}</h1>
+                <div className="rf_Hero_SubTitle mt-3 mb-4">
+                    <p> Language: {feelingData.language}</p>
+                </div>
+                <div className="rf_Hero_body">
                     <p>{feelingData.content}</p>
-                    <p>{feelingData.language}</p>
-                    <hr></hr>
-
-                </Col>
-
-                <Col>
-                    <h3>Posts of this feeling</h3>
-                    <PostsList posts={postsOfFeeling}></PostsList>
-                    <hr />
-                </Col>
+                </div>
 
             </Row>
+            <Row>
+                <PostsList posts={postsOfFeeling}></PostsList>
+            </Row>
 
-        </Container>
+        </Container >
     )
 }
 

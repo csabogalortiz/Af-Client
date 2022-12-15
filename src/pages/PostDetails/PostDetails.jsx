@@ -19,14 +19,10 @@ const PostDetails = () => {
             .then(({ data }) => setPost(data))
             .catch(err => console.error(err))
     }, [])
-
     return (
 
-        <div className="container-fluid">
+        <div style={{ width: '100%' }} >
 
-            <Link to="/feed">
-                <Button as="div" variant="dark">Back</Button>
-            </Link>
 
             {
                 !post
@@ -34,55 +30,58 @@ const PostDetails = () => {
                     <h1>Loading</h1>
                     :
                     <>
-
-                        <div className="profile-pic">
-
-
-                            <img src={post.postImg} style={{ width: '100%' }} />
-
-
+                        <Container>
+                            <Row>
+                                <Col xs={6}>
+                                    <div className="  information">
+                                        <div >
 
 
-                            {post.canvas && <DisplayCanvas canvasData={post.canvas} />}
+                                            <h5 className="rf_Hero_Title mt-4">  {post.feeling.title}  </h5>
 
-                            {
-                                post.videoId &&
-                                <div className="App">
-                                    <YoutubeEmbed embedId={post.splitId} />
-                                </div>
-                            }
+                                            <p className="content mt-4"> {post.content}</p>
+                                            <hr />
 
+                                            <img className="profileimg " src={post.owner.profileImg} /> <span className=" d-flex justify-content-around align-items-center pt-2 px-3 gap-3 ">{post.owner.username} </span>
 
-                        </div>
-                        <div className=" information">
-                            <div >
-
-                                <h1 >{post.title} Details </h1>
-                                <hr />
-
-
-                                <h3>Content</h3>
-                                <p>{post.content}</p>
-                                <hr />
-
-                                <h3>Comments</h3>
-                                {post.comments.map(elem => {
-                                    return <div>
-                                        <img src={elem.owner.profileImg} style={{ width: '100%' }} />
-                                        <h3>{elem.owner.username}</h3>
-                                        <p>{elem.description}</p>
+                                        </div>
                                     </div>
-                                })}
-                                <hr />
+                                </Col>
+                                <Col xs={6}>
+                                    <div className="profile-pic mt-5">
 
 
 
-                            </div>
-                        </div>
+                                        <img src={post.postImg} style={{ width: '100%' }} />
 
 
 
 
+                                        {post.canvas && <DisplayCanvas canvasData={post.canvas} />}
+
+                                        {
+                                            post.videoId &&
+                                            <div className="App">
+                                                <YoutubeEmbed embedId={post.splitId} />
+                                            </div>
+                                        }
+
+
+                                    </div>
+                                </Col>
+
+                            </Row >
+                            <h3 className='mt-5'>Comments</h3>
+                            <hr />
+                            {post.comments.map(elem => {
+                                return <div>
+                                    <img className="img-owner" src={elem.owner.profileImg} style={{ width: '100%' }} />
+                                    <h3>{elem.owner.username}</h3>
+                                    <p>{elem.description}</p>
+                                </div>
+                            })}
+
+                        </Container>
                     </>
             }
 

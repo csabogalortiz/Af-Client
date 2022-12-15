@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom"
 import PostsList from "../../components/PostsList/PostsList"
 import PostService from "../../services/post.service"
 import EditProfileForm from "../../components/SingupForm/EditProfileForm"
-import { MdFavorite, MdFavoriteBorder, MdOutlineModeComment, MdOutlineShare, MdShare, MdOutlineMoreHoriz } from "react-icons/md";
+import { MdFavorite, MdFavoriteBorder, MdOutlineModeComment, MdOutlineStarPurple500, MdShare, MdOutlineMoreHoriz } from "react-icons/md";
 import { HoverCard, Avatar, Text, Group, Anchor, Stack } from '@mantine/core';
 
 import './Profile.css'
@@ -59,7 +59,7 @@ const UsersDetails = ({ isOwner }) => {
         <Container>
 
             <div className="coverImg">
-                <img src={userData?.coverImg}></img>
+                <img className="coverImg" src={userData?.coverImg}></img>
             </div>
             <div>
                 <img className="profileImg" src={userData?.profileImg}></img>
@@ -87,7 +87,7 @@ const UsersDetails = ({ isOwner }) => {
                         </div>
 
 
-                        <div className='d-flex justify-content-center followers' >
+                        <div className='d-flex justify-content-center followers mb-5' >
                             <h3>Following</h3>
 
                             {userData.followers.map(elem => {
@@ -129,44 +129,38 @@ const UsersDetails = ({ isOwner }) => {
                             })}
                         </div>
 
-
-
-
                         <Tabs
                             defaultActiveKey="home"
                             transition={false}
                             id="noanim-tab-example"
                             className="mb-3 distribution"
+                            variant="pills"
+                            fill
+                            justify
+                            mt-4
                         >
-                            <Tab tabClassName='profileTabs' eventKey="My posts" title={<MdFavorite />} >
-                                <PostsList posts={myPostsData}  ></PostsList>
+                            <Tab tabClassName='profileTabs' eventKey="My posts" title={<MdOutlineStarPurple500 size={'2em'} />} >
+                                <PostsList posts={myPostsData} ></PostsList>
                             </Tab>
 
-                            <Tab eventKey="Compartidos" title="Compartidos">
+                            <Tab tabClassName='profileTabs' eventKey="Compartidos" title={<MdShare size={'2em'} />} >
                                 <h3>Shared</h3>
                                 <PostsList posts={userData.sharedPosts}></PostsList>
-                                <hr />
                             </Tab>
-
                             {
                                 isOwner &&
-                                <Tab eventKey="My Favs" title="My Favs">
+                                <Tab tabClassName='profileTabs' eventKey="My Favs" title={<MdFavorite size={'2em'} />}>
 
                                     <h3>My Favs</h3>
                                     <PostsList posts={userData.favPosts}></PostsList>
-                                    <hr />
-
                                 </Tab>
-
                             }
-
-
                         </Tabs>
 
-
                     </>
-            }
 
+
+            }
 
             {user && <Button onClick={openModal} variant="dark" size="sm">Edit Profile</Button>}
 
