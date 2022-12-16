@@ -19,6 +19,7 @@
 
 .detailsCard {
     margin: 60px;
+    text-align: left;
 }
 
 .content {
@@ -61,8 +62,8 @@
 .img-owner {
     border-radius: 50%;
     object-fit: cover;
-    width: 100px !important;
-    height: 100px;
+    width: 80px !important;
+    height: 80px;
     margin-top: 5px
 }
 

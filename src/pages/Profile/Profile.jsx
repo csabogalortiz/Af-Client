@@ -79,7 +79,7 @@ const UsersDetails = ({ isOwner }) => {
                                 ?
                                 <h1 className="profileUsername">{userData.username}</h1>
                                 :
-                                <h1 className="mb-4 profileUsername"> {userData.username}</h1>
+                                <h1 className="mb-2 profileUsername"> {userData.username}</h1>
                         }
 
                         <div className="profileBio">
@@ -94,17 +94,17 @@ const UsersDetails = ({ isOwner }) => {
                                 return (<div>
                                     <Group className="followers_bubbles" position="center ">
                                         <HoverCard width={230} shadow="md" withArrow openDelay={200} closeDelay={400}>
-                                            <HoverCard.Target>
+                                            <HoverCard.Target className="followers_bubbles">
                                                 <Avatar src={elem.profileImg} radius="x4 " />
                                             </HoverCard.Target>
-                                            <HoverCard.Dropdown>
+                                            <HoverCard.Dropdown className="followers_toast">
                                                 <Group>
                                                     <Avatar src={elem.profileImg} radius="x4 " />
                                                     <Stack spacing={5}>
 
                                                         <Anchor
                                                         >
-                                                            <a href={`/profile/${elem._id}`}> {elem.username}</a>
+                                                            <a s className="followers_toast_Name" tyle={{ textDecoration: 'none' }} href={`/profile/${elem._id}`}> {elem.username}</a>
                                                         </Anchor>
 
                                                         <Text size="sm" weight={700} sx={{ lineHeight: 1 }}>
@@ -118,7 +118,7 @@ const UsersDetails = ({ isOwner }) => {
                                                 <Group mt="md" spacing="xl">
                                                     <Link>
                                                         <div className="container">
-                                                            <Button onClick={() => handleFollow(elem)} variant="dark">Follow</Button>
+                                                            <Button onClick={() => handleFollow(elem)} variant="outline-light rounded">Follow</Button>
                                                         </div>
                                                     </Link>
                                                 </Group>
@@ -139,19 +139,20 @@ const UsersDetails = ({ isOwner }) => {
                             justify
                             mt-4
                         >
-                            <Tab tabClassName='profileTabs' eventKey="My posts" title={<MdOutlineStarPurple500 size={'2em'} />} >
+                            <Tab tabClassName='profileTabs mb-5' eventKey="My posts" title={<MdOutlineStarPurple500 size={'2em'} />} >
+                                <h3 className='mb-5' >My Posts</h3>
                                 <PostsList posts={myPostsData} ></PostsList>
                             </Tab>
 
                             <Tab tabClassName='profileTabs' eventKey="Compartidos" title={<MdShare size={'2em'} />} >
-                                <h3>Shared</h3>
+                                <h3 className='mb-5'>Shared</h3>
                                 <PostsList posts={userData.sharedPosts}></PostsList>
                             </Tab>
                             {
                                 isOwner &&
                                 <Tab tabClassName='profileTabs' eventKey="My Favs" title={<MdFavorite size={'2em'} />}>
 
-                                    <h3>My Favs</h3>
+                                    <h3 className='mb-5' >My Favs</h3>
                                     <PostsList posts={userData.favPosts}></PostsList>
                                 </Tab>
                             }

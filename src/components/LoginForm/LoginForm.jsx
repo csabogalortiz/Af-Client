@@ -45,8 +45,8 @@ const LoginForm = () => {
 
         <Container className='loginCard'>
             <Row>
-                <Col xs={6} className=" login d-flex justify-content-around align-items-center ml-3 mb-2 mt-10" >
-                    <h1 className="rf_Hero_login_Random"> Welcome To Where Art & Feelings Meet. </h1>
+                <Col xs={6} className=" rf_Hero_login_Login d-flex justify-content-around align-items-center ml-3 mb-2 mt-10" >
+                    <h1 className="rf_Hero_login_Login"> Welcome To The Space Where Art & Feelings Meet. </h1>
 
 
                 </Col>
@@ -65,7 +65,7 @@ const LoginForm = () => {
 
 
                         <div className="d-grid">
-                            <Button variant="outline-light rounded" type="submit" size="lg" >ACCES</Button>
+                            <Button variant="outline-light rounded" type="submit" size="lg" >ACCESS</Button>
                         </div>
                     </Form>
                 </Col>

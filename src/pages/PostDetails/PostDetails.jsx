@@ -36,17 +36,17 @@ const PostDetails = () => {
                                     <div className="information">
                                         <div>
                                             <div className="detailsContent content mt-4">
-                                                <h1 className="detailCaptionTitle"> CAPTION: </h1>
+                                                <h1 className="detailCaptionTitle"> CAPTION</h1>
                                                 <p> " {post.content} "</p>
                                             </div>
                                         </div>
+
                                         <hr></hr>
                                         <div >
                                             <h5 className="d-flex md={{ span: 3, offset: 3 }} rf_Hero_Title_postDetails mt-4">  {post.feeling.title} </h5>
                                             <p className="d-flex md={{ span: 3, offset: 3 }} mt-4"> {post.feeling.content} </p>
                                         </div>
-                                        <hr></hr>
-                                        <div className="mt-5 d-flex justify-content-around align-items-center px-3 gap-3 ">
+                                        <div className="mt-5  mr-3 d-flex align-items-center px-3 gap-3 ">
                                             <div>
                                                 <img className="profileimg" src={post.owner.profileImg} />
                                             </div>
@@ -59,7 +59,7 @@ const PostDetails = () => {
 
                                 </Col>
                                 <Col xs={6}>
-                                    <div className="postDetails mt-5">
+                                    <div className="detailCaptionTitle postDetails mt-5">
                                         <img src={post.postImg} style={{ width: '100%' }} />
                                         {post.canvas && <DisplayCanvas canvasData={post.canvas} />}
                                         {
@@ -73,17 +73,23 @@ const PostDetails = () => {
                                     </div>
                                 </Col>
                             </Row >
-                            <h3 className='mt-5'>Comments</h3>
-                            <hr />
+                            <h3 className='detailCaptionTitle text-center mt-5'>How others feel...</h3>
+
                             {post.comments.map(elem => {
-                                return <div className="d-flex justify-content-around align-items-center">
-                                    <img className="img-owner" src={elem.owner.profileImg} style={{ width: '100%' }} />
-                                    < h3 > {elem.owner.username}</h3>
-                                    <p>{elem.description}</p>
-                                    <hr />
+                                return <div className='text-center align-items-center mt-4 mb-5'>
+
+                                    <div> <img className="img-owner" src={elem.owner.profileImg} style={{ width: '100%' }} /></div>
+                                    <div>
+                                        <h2>{elem.owner.username}</h2>
+                                        <p>{elem.description}</p>
+
+                                    </div>
+
                                 </div>
 
                             })}
+
+
 
 
                         </Container>

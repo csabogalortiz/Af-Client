@@ -30,8 +30,8 @@ const Community = () => {
             </div>
 
             <h1 className='rf_Hero_Title_Community'>Our Commmunity</h1>
-            <Row>
-                <Col md={{ span: 8, offset: 2 }}>
+            <Row className="users-cards">
+                <Col className="position-relative" md={{ span: 8, offset: 2 }}>
                     {!users ? <Loader /> : <UsersList users={users} setRefresh={setRefresh} />}
 
 

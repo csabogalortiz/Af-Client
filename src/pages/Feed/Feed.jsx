@@ -77,8 +77,6 @@ const Feed = () => {
                                 <div className='actionButtons actionButton d-flex justify-content-around align-items-center pt-2 px-3 gap-3'>
                                     <div className="actionButton love d-grid mb-5">
                                         <MdFavorite size="sm" color="FE53BB" />
-
-
                                     </div>
 
                                 </div>
@@ -87,7 +85,10 @@ const Feed = () => {
                             <hr>
                             </hr>
                         </Link>
-                        {!posts ? <Loader /> : <PostsList posts={posts} setRefresh={setRefresh} />}
+                        <div className="mt-5">
+
+                            {!posts ? <Loader /> : <PostsList posts={posts} setRefresh={setRefresh} />}
+                        </div>
 
                     </Col>
                 </Row>

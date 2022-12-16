@@ -41,7 +41,7 @@ const UserCard = (props) => {
 
     return (
 
-        <Card className={`mb-4 UserCard ${cardStyles[index]}`} style={{ minHeight: '400px' }}>
+        <Card className={`mb-4 position-absoute UserCard ${cardStyles[index]}`} style={{ minHeight: '400px' }}>
             <Card.Body>
                 <div>
                     <div className='mb-2'>
@@ -58,11 +58,11 @@ const UserCard = (props) => {
                     </div>
                     {
                         !isFollower ?
-                            <Button onClick={handleFollow} size="lg" variant="dark">
+                            <Button className="mb-5" onClick={handleFollow} size="lg" variant="dark">
                                 Follow
                             </Button>
                             :
-                            <Button onClick={handleUnFollow} size="lg" variant="dark">
+                            <Button className="mb-5" onClick={handleUnFollow} size="lg" variant="dark">
                                 Unfollow
                             </Button>
 

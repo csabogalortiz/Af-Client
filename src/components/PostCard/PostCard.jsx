@@ -114,7 +114,7 @@ const PostCard = (props) => {
             <Card.Body>
                 <div>
                     <Link className='d-flex justify-content-around align-items-center px-3 gap-3' to={`/profile/${owner?._id}`} activeclassname="activeClicked" style={{ textDecoration: 'none' }}>
-                        <div className='p-0 m-0 imgOfPost'>
+                        <div className='p-0 m-0'>
                             <img className="imgOfPost" src={owner?.profileImg}></img>
                         </div>
                         <Card.Title className="cardText" style={{ textDecoration: 'none' }}>{owner?.username}</Card.Title>
