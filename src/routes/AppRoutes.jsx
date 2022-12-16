@@ -9,6 +9,7 @@ import Community from "../pages/Community/Community"
 import PostDetails from "../pages/PostDetails/PostDetails"
 import NewPost from "../pages/NewPost/NewPost"
 import PrivateRoute from "./PrivateRoutes"
+import { Navigate } from "react-router-dom"
 // import Quiz from "../components/Quiz/Quiz"
 
 const AppRoutes = () => {
@@ -18,7 +19,7 @@ const AppRoutes = () => {
         <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/*" element={<h1>404</h1>} />
+            <Route path="/*" element={<Navigate to="/login" />} />
 
 
             <Route element={<PrivateRoute />}>

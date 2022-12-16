@@ -2,7 +2,39 @@
     padding: 80px
 }
 
-.rf_Hero_Title {
+
+
+
+.animate-charcter {
+    text-transform: uppercase;
+    background-image: linear-gradient(-225deg,
+            #2cceff 0%,
+            #199fff 29%,
+            #ab2dff 67%,
+            #4d04cb 100%);
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 2s linear infinite;
+    display: inline-block;
+    font-family: 'Montserrat' sans-serif;
+    font-size: 170px;
+    font-weight: 800;
+    letter-spacing: -4px;
+}
+
+@keyframes textclip {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.rf_Hero_Title_Random {
     font-family: 'Montserrat' sans-serif;
     font-size: 170px;
     font-weight: 800;

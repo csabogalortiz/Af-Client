@@ -9,8 +9,6 @@ const Login = () => {
 
     return (
         <Container className="Login">
-
-            <h1>Log In!</h1>
             <hr />
             <LoginForm />
 

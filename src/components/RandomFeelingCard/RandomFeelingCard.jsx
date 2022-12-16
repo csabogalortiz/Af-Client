@@ -10,7 +10,7 @@ const RandomFeeling = ({ _id, content, title, language }) => {
   return (
 
     <Container className='rf_Hero'>
-      <div className='rf_Hero_Title'>
+      <div className='animate-charcter animate__fadeIn'>
         {title}
       </div>
       <div className="rf_Hero_SubTitle mt-3 mb-4">

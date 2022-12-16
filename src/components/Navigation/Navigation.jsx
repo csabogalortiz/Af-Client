@@ -11,13 +11,13 @@ const SidebarComponent = () => {
     const { collapseSidebar, collapsed } = useProSidebar();
 
     return (
-        <Sidebar
+        <Sidebar className="sidebar-content"
             rootStyles={{
                 backgroundColor: '#000000 !important',
                 minHeight: '100vh',
 
             }}>
-            <CDBSidebarHeader onClick={() => collapseSidebar(!collapsed)} prefix={<i className="fa fa-bars fa-large"></i>}></CDBSidebarHeader>
+            <CDBSidebarHeader onClick={() => collapseSidebar(!collapsed)} prefix={<i className="d-flex-start sidebar-content fa fa-bars fa-large"></i>}></CDBSidebarHeader>
 
             <CDBSidebarContent className="sidebar-content">
                 <CDBSidebarMenu>
@@ -25,19 +25,18 @@ const SidebarComponent = () => {
                     {user ?
                         <>
                             <NavLink to={`/myprofile`} activeclassname="activeClicked">
-                                <CDBSidebarMenuItem> ¡Hola,  {!user ? 'invitad@' : user.username}!</CDBSidebarMenuItem>
-
+                                <CDBSidebarMenuItem> Hey,{!user ? ' invitad@' : user.username}!</CDBSidebarMenuItem>
                             </NavLink>
 
+                            <NavLink to="/feed" activeclassname="activeClicked">
+                                <CDBSidebarMenuItem icon="columns">Feed</CDBSidebarMenuItem>
+                            </NavLink>
                             <NavLink to="/Discover" activeclassname="activeClicked">
-                                <CDBSidebarMenuItem icon="columns">Discover</CDBSidebarMenuItem>
+                                <CDBSidebarMenuItem icon="info">Discover</CDBSidebarMenuItem>
                             </NavLink>
 
                             <NavLink to="/community" activeclassname="activeClicked">
-                                <CDBSidebarMenuItem icon="columns">Community</CDBSidebarMenuItem>
-                            </NavLink>
-                            <NavLink to="/feed" activeclassname="activeClicked">
-                                <CDBSidebarMenuItem icon="columns">Feed</CDBSidebarMenuItem>
+                                <CDBSidebarMenuItem icon="th">Community</CDBSidebarMenuItem>
                             </NavLink>
                             <NavLink to="/login" target="_blank" activeclassname="activeClicked">
                                 <CDBSidebarMenuItem as="div" onClick={logoutUser} icon="exclamation-circle">Log-Out</CDBSidebarMenuItem>

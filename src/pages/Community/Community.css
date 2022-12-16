@@ -22,3 +22,9 @@
     -webkit-text-fill-color: transparent;
     margin-bottom: 40px;
 }
+
+.Community {
+    max-height: 100%;
+    max-width: 100%;
+
+}

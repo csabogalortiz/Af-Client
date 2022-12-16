@@ -1,9 +1,11 @@
 import { useState, useContext } from "react"
-import { Form, Button } from "react-bootstrap"
+import { Container, Row, Col, Button, Form } from 'react-bootstrap'
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../contexts/auth.context"
 import authService from "../../services/auth.service"
 import ErrorMessage from './../ErrorMessage/ErrorMessage'
+import './LoginForm.css'
+
 
 const LoginForm = () => {
 
@@ -41,23 +43,34 @@ const LoginForm = () => {
 
     return (
 
-        <Form onSubmit={handleSubmit}>
+        <Container className='loginCard'>
+            <Row>
+                <Col xs={6} className=" login d-flex justify-content-around align-items-center ml-3 mb-2 mt-10" >
+                    <h1 className="rf_Hero_login_Random"> Welcome To Where Art & Feelings Meet. </h1>
 
-            <Form.Group className="mb-3" controlId="email">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="email" value={email} onChange={handleInputChange} name="email" />
-            </Form.Group>
 
-            <Form.Group className="mb-3" controlId="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" value={password} onChange={handleInputChange} name="password" />
-            </Form.Group>
+                </Col>
+                <Col xs={6}>
+                    <Form className="login-form" onSubmit={handleSubmit}>
 
-            <div className="d-grid">
-                <Button variant="dark" type="submit">Access</Button>
-            </div>
+                        <Form.Group className="mb-3" controlId="email">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control type="email" value={email} onChange={handleInputChange} name="email" />
+                        </Form.Group>
 
-        </Form>
+                        <Form.Group className="mb-3" controlId="password">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" value={password} onChange={handleInputChange} name="password" />
+                        </Form.Group>
+
+
+                        <div className="d-grid">
+                            <Button variant="outline-light rounded" type="submit" size="lg" >ACCES</Button>
+                        </div>
+                    </Form>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 

@@ -30,35 +30,38 @@ const PostDetails = () => {
                     <h1>Loading</h1>
                     :
                     <>
-                        <Container>
+                        <Container className='detailsCard'>
                             <Row>
-                                <Col xs={6}>
-                                    <div className="  information">
+                                <Col xs={6} className="d-flex justify-content-around align-items-center ml-3 mb-2" >
+                                    <div className="information">
+                                        <div>
+                                            <div className="detailsContent content mt-4">
+                                                <h1 className="detailCaptionTitle"> CAPTION: </h1>
+                                                <p> " {post.content} "</p>
+                                            </div>
+                                        </div>
+                                        <hr></hr>
                                         <div >
-
-
-                                            <h5 className="rf_Hero_Title mt-4">  {post.feeling.title}  </h5>
-
-                                            <p className="content mt-4"> {post.content}</p>
-                                            <hr />
-
-                                            <img className="profileimg " src={post.owner.profileImg} /> <span className=" d-flex justify-content-around align-items-center pt-2 px-3 gap-3 ">{post.owner.username} </span>
-
+                                            <h5 className="d-flex md={{ span: 3, offset: 3 }} rf_Hero_Title_postDetails mt-4">  {post.feeling.title} </h5>
+                                            <p className="d-flex md={{ span: 3, offset: 3 }} mt-4"> {post.feeling.content} </p>
+                                        </div>
+                                        <hr></hr>
+                                        <div className="mt-5 d-flex justify-content-around align-items-center px-3 gap-3 ">
+                                            <div>
+                                                <img className="profileimg" src={post.owner.profileImg} />
+                                            </div>
+                                            <div className="userNameDetails">
+                                                {post.owner.username}
+                                            </div>
                                         </div>
                                     </div>
+
+
                                 </Col>
                                 <Col xs={6}>
-                                    <div className="profile-pic mt-5">
-
-
-
+                                    <div className="postDetails mt-5">
                                         <img src={post.postImg} style={{ width: '100%' }} />
-
-
-
-
                                         {post.canvas && <DisplayCanvas canvasData={post.canvas} />}
-
                                         {
                                             post.videoId &&
                                             <div className="App">
@@ -69,19 +72,22 @@ const PostDetails = () => {
 
                                     </div>
                                 </Col>
-
                             </Row >
                             <h3 className='mt-5'>Comments</h3>
                             <hr />
                             {post.comments.map(elem => {
-                                return <div>
+                                return <div className="d-flex justify-content-around align-items-center">
                                     <img className="img-owner" src={elem.owner.profileImg} style={{ width: '100%' }} />
-                                    <h3>{elem.owner.username}</h3>
+                                    < h3 > {elem.owner.username}</h3>
                                     <p>{elem.description}</p>
+                                    <hr />
                                 </div>
+
                             })}
 
+
                         </Container>
+
                     </>
             }
 

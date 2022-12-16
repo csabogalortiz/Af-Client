@@ -34,9 +34,7 @@ const Community = () => {
                 <Col md={{ span: 8, offset: 2 }}>
                     {!users ? <Loader /> : <UsersList users={users} setRefresh={setRefresh} />}
 
-                    <Link to="/feed">
-                        <Button as="div" variant="dark">Feed</Button>
-                    </Link>
+
 
                 </Col>
 

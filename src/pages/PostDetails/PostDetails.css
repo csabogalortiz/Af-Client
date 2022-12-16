@@ -1,15 +1,24 @@
 .profileimg {
     border-radius: 50%;
     object-fit: cover;
-    width: 100px;
-    height: 100px;
-
-
+    width: 80px;
+    height: 80px;
 }
 
-.profileimg {
-    margin-top: 80px;
-    margin-right: 28px;
+.detailCaptionTitle {
+    font-family: 'Montserrat';
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 55px;
+    letter-spacing: 0.51em;
+    color: #FFFFFF;
+}
+
+
+.detailsCard {
+    margin: 60px;
 }
 
 .content {
@@ -19,11 +28,21 @@
 
 }
 
+.detailsContent {
+    font-size: 20px;
+}
 
-.rf_Hero_Title {
+.userNameDetails {
+    font-size: 30px;
+    font-weight: 100;
+
+}
+
+.rf_Hero_Title_postDetails {
+    padding-top: 20px;
     font-family: 'Montserrat' sans-serif;
-    font-size: 100px;
-    font-weight: 700;
+    font-size: 40px;
+    font-weight: 400;
     letter-spacing: -4px;
     background: #07E1FB;
     background: linear-gradient(to right, #07E1FB 0%, #439eff 100%);
@@ -36,13 +55,22 @@
     /* margin-right: 50px; */
     font-family: 'Montserrat' sans-serif;
     font-weight: 70;
-    /* margin-top: 15px */
+
 }
 
 .img-owner {
     border-radius: 50%;
     object-fit: cover;
-    width: 150px !important;
-    height: 150px;
+    width: 100px !important;
+    height: 100px;
     margin-top: 5px
+}
+
+.postDetails {
+    padding: 80px;
+}
+
+.postDetails img {
+    border-radius: 20px;
+    margin: 20px
 }

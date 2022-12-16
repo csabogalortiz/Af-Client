@@ -25,10 +25,17 @@
     padding: 0px !important;
 }
 
+.createPostUser {
+    margin-bottom: 20px;
+}
+
 .createPostUser p {
     text-align: start !important;
-    font-size: 20px !important;
-    color: rgb(116, 116, 116)
+    font-size: 22px !important;
+    color: rgb(174, 174, 174);
+    font-weight: lighter !important;
+
+
 }
 
 .colInPost {

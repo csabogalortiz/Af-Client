@@ -64,13 +64,14 @@ const Discover = () => {
                             <Button onClick={openModal} variant="dark" size="sm">Create a feeling</Button>
                         }
 
-
-                        <hr />
-                        <h1>Dictionary</h1>
-                        <SearchBar filterFeelings={filterFeelings} />
-
-
-                        {!copyFeelings ? <Loader /> : <FeelingsList posts={copyFeelings} />}
+                        <h1 className='rf_Hero_Title_Discover'>Discover</h1>
+                        <div className="rf_Hero_SubTitle_Page mb-4">
+                            <p>SEARCH .  LEARN .   FEEL</p>
+                        </div>
+                        <SearchBar className='mb-5' filterFeelings={filterFeelings} />
+                        <div className='mt-5'>
+                            {!copyFeelings ? <Loader /> : <FeelingsList posts={copyFeelings} />}
+                        </div>
                     </Col>
                 </Row>
             </div >

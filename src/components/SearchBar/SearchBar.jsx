@@ -13,8 +13,7 @@ const SearchBar = ({ filterFeelings }) => {
     return (
         <form className='SearchBar'>
             <div className="mb-3">
-                <label for="search" class="form-label">Search</label>
-                <input onChange={handleSearch} type="text" class="form-control" id="search" />
+                <input onChange={handleSearch} type="text" class="form-control" id="search" placeholder="🔎" />
             </div>
         </form>
     )

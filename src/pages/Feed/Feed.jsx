@@ -69,7 +69,7 @@ const Feed = () => {
                                     <img src={user.profileImg} class='createPostImg' ></img>
                                 </div>
                                 <div className="createPostUser">
-                                    <p className='m-0'>How would you express this feeling artistically?</p>
+                                    <p className='m-0'>How would you express this feeling?</p>
                                 </div>
 
                                 {/* <Col>
