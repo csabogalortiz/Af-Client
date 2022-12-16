@@ -1,16 +1,44 @@
 .loginCard {
     max-width: 100%;
     max-height: 100%;
-    margin-top: 100px;
+    margin-top: 250px;
 }
 
 .rf_Hero_login_Login {
     font-family: 'Montserrat' sans-serif;
-    font-size: 80px;
-    font-weight: 1000px;
+    font-size: 120px;
+    font-weight: bold;
     letter-spacing: -4px;
     background: #07E1FB;
     background: linear-gradient(to right, #07E1FB 0%, #439eff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.rf_subtitle_login_Login {
+    font-family: 'Montserrat' sans-serif;
+    font-size: 40px;
+    font-weight: 100px;
+
+}
+
+.detailCaptionTitleLogin {
+    font-family: 'Montserrat';
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 30px;
+    letter-spacing: 0.51em;
+    color: #FFFFFF;
+
+}
+
+.login-form {
+    padding: 40px;
+    font-family: 'Montserrat';
+    font-weight: lighter;
+    padding-bottom: 10px;
+    text-align: left;
+
 }

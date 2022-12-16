@@ -45,9 +45,15 @@ const LoginForm = () => {
 
         <Container className='loginCard'>
             <Row>
-                <Col xs={6} className=" rf_Hero_login_Login d-flex justify-content-around align-items-center ml-3 mb-2 mt-10" >
-                    <h1 className="rf_Hero_login_Login"> Welcome To The Space Where Art & Feelings Meet. </h1>
+                <Col xs={6} className="align-items-center ml-3 mb-2 mt-10" >
+                    <div>
+                        <h1 className="rf_Hero_login_Login"> Artsy Feel</h1>
 
+
+                    </div>
+                    <div className="detailCaptionTitleLogin">
+                        <h3 className="detailCaptionTitleLogin"> Welcome To The Space Where Art & Feelings Meet. </h3>
+                    </div>
 
                 </Col>
                 <Col xs={6}>

@@ -9,7 +9,6 @@ const Login = () => {
 
     return (
         <Container className="Login">
-            <hr />
             <LoginForm />
 
         </Container>

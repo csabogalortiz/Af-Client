@@ -18,7 +18,6 @@ const SidebarComponent = () => {
 
             }}>
             <CDBSidebarHeader onClick={() => collapseSidebar(!collapsed)} prefix={<i className="d-flex-start sidebar-content fa fa-bars fa-large"></i>}></CDBSidebarHeader>
-
             <CDBSidebarContent className="sidebar-content">
                 <CDBSidebarMenu>
 
@@ -41,6 +40,7 @@ const SidebarComponent = () => {
                             <NavLink to="/login" target="_blank" activeclassname="activeClicked">
                                 <CDBSidebarMenuItem as="div" onClick={logoutUser} icon="exclamation-circle">Log-Out</CDBSidebarMenuItem>
                             </NavLink>
+
                         </>
                         :
                         <>
