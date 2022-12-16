@@ -1,0 +1,24 @@
+.rf_Hero_Title_Feeling {
+    font-family: 'Montserrat' sans-serif;
+    font-size: 120px;
+    font-weight: 700;
+    letter-spacing: -4px;
+    background: #07E1FB;
+    background: linear-gradient(to right, #07E1FB 0%, #439eff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+.rf_Hero_body_feeling {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 35px;
+    text-align: center;
+    letter-spacing: -0.005em;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-bottom: 20px;
+}

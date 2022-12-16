@@ -79,7 +79,7 @@ const UsersDetails = ({ isOwner }) => {
                                 ?
                                 <h1 className="profileUsername">{userData.username}</h1>
                                 :
-                                <h1 className="mb-4 profileUsername"> Welcome to {userData.username} Profile</h1>
+                                <h1 className="mb-4 profileUsername"> {userData.username}</h1>
                         }
 
                         <div className="profileBio">
@@ -92,7 +92,7 @@ const UsersDetails = ({ isOwner }) => {
 
                             {userData.followers.map(elem => {
                                 return (<div>
-                                    <Group position="center ">
+                                    <Group className="followers_bubbles" position="center ">
                                         <HoverCard width={230} shadow="md" withArrow openDelay={200} closeDelay={400}>
                                             <HoverCard.Target>
                                                 <Avatar src={elem.profileImg} radius="x4 " />

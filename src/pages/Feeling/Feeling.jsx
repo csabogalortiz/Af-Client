@@ -34,13 +34,16 @@ const Feeling = () => {
 
         <Container className='mt-5'>
             <Row>
-                <h1 className='rf_Hero_Title'>{feelingData.title}</h1>
+                <div>
+                    <h1 className='rf_Hero_Title_Feeling'>{feelingData.title}</h1>
+                </div>
                 <div className="rf_Hero_SubTitle mt-3 mb-4">
                     <p> Language: {feelingData.language}</p>
                 </div>
-                <div className="rf_Hero_body">
+                <div className="rf_Hero_body_feeling">
                     <p>{feelingData.content}</p>
                 </div>
+                <hr></hr>
 
             </Row>
             <Row>

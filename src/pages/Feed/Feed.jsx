@@ -13,6 +13,8 @@ import feelingService from '../../services/feeling.service'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import 'animate.css'
+import { MdFavorite, MdFavoriteBorder, MdOutlineModeComment, MdOutlineShare, MdShare, MdOutlineMoreHoriz } from "react-icons/md";
+
 
 const Feed = () => {
 
@@ -63,6 +65,7 @@ const Feed = () => {
                 </Row>
                 <Row>
                     <Col>
+
                         <Link className='d-flex justify-content-center' onClick={openModal} style={{ textDecoration: 'none' }}>
                             <div className='CreatePost d-flex justify-content-around align-items-center px-3 gap-3' >
                                 <div className='colInPost'>
@@ -71,12 +74,15 @@ const Feed = () => {
                                 <div className="createPostUser">
                                     <p className='m-0'>How would you express this feeling?</p>
                                 </div>
+                                <div className='actionButtons actionButton d-flex justify-content-around align-items-center pt-2 px-3 gap-3'>
+                                    <div className="actionButton love d-grid mb-5">
+                                        <MdFavorite size="sm" color="FE53BB" />
 
-                                {/* <Col>
-                                    <div className='CreatePost'>
-                                        {user && <Button onClick={openModal} ></Button>}
+
                                     </div>
-                                </Col> */}
+
+                                </div>
+
                             </div>
                             <hr>
                             </hr>
